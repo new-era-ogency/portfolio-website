@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --color-espresso: #2d1b14;
+  --color-espresso-light: #4a2e22;
+  --color-alabaster: #f9f9f7;
+  --color-alabaster-dark: #efede8;
+  --color-amber: #fdba74;
+  --color-amber-deep: #f59d45;
+  --color-garden: #3f4e33;
+  --color-stone: #8c7b6b;
+  --color-fog: #d4cfc9;
+
+  --font-display: var(--font-limelight), ui-serif, Georgia, serif;
+  --font-body: ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --ease-organic: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-alabaster);
+  color: var(--color-espresso);
+}
+
+/* Boutique custom cursor — toggled by CustomCursor when pointer is fine */
+html.mehana-custom-cursor button:not([disabled]),
+html.mehana-custom-cursor a,
+html.mehana-custom-cursor [role="button"] {
+  cursor: none !important;
+}
+
+html.mehana-custom-cursor [data-cursor="gallery"] {
+  cursor: none !important;
+}
+
+html.mehana-custom-cursor input,
+html.mehana-custom-cursor textarea,
+html.mehana-custom-cursor select,
+html.mehana-custom-cursor [contenteditable="true"] {
+  cursor: text !important;
+}
+
+.mehana-daypicker .rdp-root {
+  --rdp-accent-color: #2d1b14;
+  --rdp-accent-background-color: rgba(253, 186, 116, 0.38);
+  --rdp-day_button-border-radius: 10px;
+  --rdp-nav_button-border-radius: 10px;
+  --rdp-today-color: #f59d45;
+  font-family: var(--font-body);
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

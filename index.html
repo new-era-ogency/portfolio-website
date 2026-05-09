@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<!--
+  Stella Restaurant · static launch page (PRD codename: stella-web)
+  Stack: HTML5, Tailwind CDN, Alpine.js, Lucide. Host on GitHub Pages as index.html only.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stella Restaurant — refined dining on the Black Sea coast in Sveti Vlas, Bulgaria." />
+  <meta name="theme-color" content="#1a1a1a" />
+  <title>Stella Restaurant | Sveti Vlas</title>
+  <!-- Placeholders use placehold.co/W×H (static equivalent to /api/placeholder/W/H routes on dynamic hosts). Swap URLs in production. -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Stella Restaurant",
+    "image": ["https://placehold.co/1200x630/242420/d4af37/png?text=Stella+Restaurant"],
+    "description": "Full-service refined dining on the Black Sea coast in Sveti Vlas — flame, seafood, and warm hospitality.",
+    "servesCuisine": ["Bulgarian", "Mediterranean", "Seafood", "BBQ Grill"],
+    "telephone": "+359-888-000-419",
+    "email": "reservations@stellasvetivlas.bg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ul. Yasen 13",
+      "addressLocality": "Sveti Vlas",
+      "postalCode": "8256",
+      "addressRegion": "Burgas",
+      "addressCountry": "BG"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 42.7135,
+      "longitude": 27.7589
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "11:30",
+      "closes": "23:30"
+    }],
+    "priceRange": "$$$–$$$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "bestRating": "5",
+      "reviewCount": "186"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind theme extension -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            charcoal: '#1a1a1a',
+            mist: '#f5f5f5',
+            gold: '#d4af37',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --color-charcoal: #1a1a1a;
+      --color-stone: #f5f5f5;
+      --color-gold: #d4af37;
+      --nav-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5.25rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .btn-gold:hover {
+        transform: none;
+      }
+      .group:hover .vibe-masonry__photo {
+        transform: none;
+      }
+    }
+
+    body.has-mobile-book-cta {
+      padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    @media (min-width: 768px) {
+      body.has-mobile-book-cta {
+        padding-bottom: 0;
+      }
+    }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background-color: var(--color-charcoal);
+      color: var(--color-stone);
+    }
+
+    .font-display {
+      font-family: "Playfair Display", Georgia, serif;
+    }
+
+    /* Glass navigation — default (over hero): transparent + blur */
+    .site-nav {
+      transition:
+        background-color 0.5s var(--nav-ease),
+        border-color 0.5s var(--nav-ease),
+        box-shadow 0.5s var(--nav-ease),
+        backdrop-filter 0.5s var(--nav-ease);
+    }
+
+    .site-nav.is-scrolled {
+      background-color: rgba(26, 26, 26, 0.82);
+      border-color: rgba(212, 175, 55, 0.15);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .site-nav:not(.is-scrolled) {
+      background-color: rgba(26, 26, 26, 0);
+      border-color: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* Hero background layer — placeholder until video/photo asset */
+    .hero-bg {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(212, 175, 55, 0.12), transparent 55%),
+        linear-gradient(to bottom, rgba(26, 26, 26, 0.25), rgba(26, 26, 26, 0.65)),
+        url("https://placehold.co/1920x1080/1a1a1a/d4af37/png?text=Hero") center / cover no-repeat;
+    }
+
+    .hero-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(26, 26, 26, 0.35) 0%,
+        rgba(26, 26, 26, 0.55) 45%,
+        rgba(26, 26, 26, 0.88) 100%
+      );
+    }
+
+    .btn-gold {
+      background-color: var(--color-gold);
+      color: var(--color-charcoal);
+      transition:
+        transform 0.35s var(--nav-ease),
+        box-shadow 0.35s var(--nav-ease),
+        background-color 0.35s var(--nav-ease);
+    }
+
+    .btn-gold:hover {
+      background-color: #e5c047;
+      box-shadow: 0 8px 32px rgba(212, 175, 55, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* Image placeholder frames */
+    .placeholder-frame {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #252525 100%);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    /* Sticky menu category bar offsets below fixed header */
+    .menu-filter-sentinel {
+      top: calc(4rem + env(safe-area-inset-top, 0px));
+    }
+
+    @media (min-width: 768px) {
+      .menu-filter-sentinel {
+        top: calc(5rem + env(safe-area-inset-top, 0px));
+      }
+    }
+
+    /* Macro dish photo treatment */
+    .menu-card-photo {
+      aspect-ratio: 4 / 3;
+    }
+
+    /* Masonry-ish gallery (CSS Grid) */
+    .vibe-masonry {
+      display: grid;
+      gap: clamp(0.75rem, 2vw, 1.25rem);
+      grid-auto-rows: minmax(200px, auto);
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 580px) {
+      .vibe-masonry {
+        grid-auto-rows: 76px;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .vibe-masonry__item {
+        min-height: 0;
+      }
+
+      .vibe-masonry__item:nth-child(1) {
+        grid-column: span 8;
+        grid-row: span 3;
+      }
+      .vibe-masonry__item:nth-child(2) {
+        grid-column: span 4;
+        grid-row: span 2;
+      }
+      .vibe-masonry__item:nth-child(3) {
+        grid-column: span 4;
+        grid-row: span 2;
+      }
+      .vibe-masonry__item:nth-child(4) {
+        grid-column: span 6;
+        grid-row: span 2;
+      }
+      .vibe-masonry__item:nth-child(5) {
+        grid-column: span 6;
+        grid-row: span 3;
+      }
+      .vibe-masonry__item:nth-child(6) {
+        grid-column: span 6;
+        grid-row: span 2;
+      }
+      .vibe-masonry__item:nth-child(7) {
+        grid-column: 1 / -1;
+        grid-row: span 2;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .vibe-masonry__item:nth-child(1) {
+        grid-column: span 9;
+        grid-row: span 4;
+      }
+      .vibe-masonry__item:nth-child(2) {
+        grid-column: span 3;
+        grid-row: span 2;
+      }
+      .vibe-masonry__item:nth-child(3) {
+        grid-column: span 3;
+        grid-row: span 2;
+      }
+      .vibe-masonry__item:nth-child(4) {
+        grid-column: span 5;
+        grid-row: span 3;
+      }
+      .vibe-masonry__item:nth-child(5) {
+        grid-column: span 7;
+        grid-row: span 3;
+      }
+      .vibe-masonry__item:nth-child(6) {
+        grid-column: span 12;
+        grid-row: span 2;
+      }
+      .vibe-masonry__item:nth-child(7) {
+        grid-column: 1 / -1;
+        grid-row: span 3;
+      }
+    }
+
+    .vibe-masonry__photo {
+      min-height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition:
+        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      filter: brightness(1) saturate(1.03);
+    }
+
+    .group:hover .vibe-masonry__photo {
+      filter: brightness(1.06) saturate(1.06);
+      transform: scale(1.04);
+    }
+
+    .input-luxury {
+      border-radius: 0.25rem;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgba(212, 175, 55, 0.22);
+      background-color: rgba(26, 26, 26, 0.65);
+      color: var(--color-stone);
+      transition:
+        border-color 0.3s var(--nav-ease),
+        box-shadow 0.3s var(--nav-ease);
+    }
+
+    .input-luxury::placeholder {
+      color: rgba(245, 245, 245, 0.35);
+    }
+
+    .input-luxury:focus {
+      outline: none;
+      border-color: rgba(212, 175, 55, 0.55);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+    }
+
+    /* Mobile sticky conversion bar */
+    .mobile-book-strip {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 45;
+      padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+      background: linear-gradient(
+        180deg,
+        rgba(26, 26, 26, 0) 0%,
+        rgba(26, 26, 26, 0.92) 28%,
+        rgba(26, 26, 26, 0.98) 100%
+      );
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    @media (min-width: 768px) {
+      .mobile-book-strip {
+        display: none;
+      }
+    }
+
+    [x-cloak] {
+      display: none !important;
+    }
+
+    #reservations {
+      scroll-margin-bottom: 5.5rem;
+    }
+
+    @media (min-width: 768px) {
+      #reservations {
+        scroll-margin-bottom: 0;
+      }
+    }
+
+    .featured-strip {
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(212, 175, 55, 0.35) transparent;
+    }
+
+    .featured-strip::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .featured-strip::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.35);
+      border-radius: 4px;
+    }
+
+    .bbq-strip {
+      background:
+        radial-gradient(ellipse 100% 80% at 50% 0%, rgba(139, 46, 26, 0.35), transparent 55%),
+        linear-gradient(180deg, #1f1210 0%, #1a1a1a 100%);
+    }
+  </style>
+</head>
+<body class="antialiased has-mobile-book-cta">
+
+  <!-- Sticky glassmorphism navigation -->
+  <header
+    id="site-header"
+    class="site-nav fixed top-0 left-0 right-0 z-50 border-b border-gold/10"
+    role="banner"
+  >
+    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 lg:px-8" aria-label="Primary">
+      <a href="#" class="font-display text-xl tracking-[0.2em] text-mist lg:text-2xl">STELLA</a>
+
+      <ul class="hidden items-center gap-6 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-mist/90 lg:gap-8 md:flex">
+        <li><a class="transition hover:text-gold" href="#about">Our Story</a></li>
+        <li><a class="transition hover:text-gold" href="#featured-dishes">Chef’s picks</a></li>
+        <li><a class="transition hover:text-gold" href="#menu">Menu</a></li>
+        <li><a class="transition hover:text-gold" href="#bbq">Grill</a></li>
+        <li><a class="transition hover:text-gold" href="#vibe">Gallery</a></li>
+        <li><a class="transition hover:text-gold" href="#words">Stories</a></li>
+        <li><a class="transition hover:text-gold" href="#reservations">Reservations</a></li>
+      </ul>
+
+      <div class="flex items-center gap-4">
+        <button type="button" class="rounded-full p-2 text-mist hover:text-gold md:hidden" aria-label="Open menu">
+          <i data-lucide="menu" class="h-6 w-6 stroke-[1.5]"></i>
+        </button>
+        <a
+          href="#reservations"
+          class="hidden rounded-full border border-gold/50 bg-gold/5 px-4 py-2 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-gold shadow-[0_0_0_1px_rgba(212,175,55,0.08)] transition hover:border-gold hover:bg-gold/12 md:inline-flex"
+        >
+          Reserve
+        </a>
+        <span class="hidden h-4 w-px bg-gold/15 md:block" aria-hidden="true"></span>
+        <div
+          class="flex items-center gap-1 rounded-full border border-gold/25 bg-charcoal/40 px-1 py-0.5 text-[0.65rem] uppercase tracking-[0.15em] text-mist/60"
+          x-data="{ lang: 'en' }"
+          role="group"
+          aria-label="Language"
+        >
+          <button
+            type="button"
+            class="rounded-full px-2.5 py-1 transition"
+            x-bind:class="lang === 'en' ? 'bg-gold/20 text-gold ring-1 ring-gold/35' : 'text-mist/55 hover:text-mist'"
+            x-on:click="lang='en'; document.documentElement.lang = 'en'"
+          >
+            EN
+          </button>
+          <span class="select-none text-gold/25" aria-hidden="true">|</span>
+          <button
+            type="button"
+            class="rounded-full px-2.5 py-1 transition"
+            x-bind:class="lang === 'bg' ? 'bg-gold/20 text-gold ring-1 ring-gold/35' : 'text-mist/55 hover:text-mist'"
+            x-on:click="lang='bg'; document.documentElement.lang = 'bg'"
+          >
+            BG
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section
+      id="hero"
+      class="relative flex min-h-screen flex-col items-center justify-center px-5 pt-24 text-center lg:px-8"
+      aria-labelledby="hero-heading"
+    >
+      <div class="hero-bg absolute inset-0 -z-20" aria-hidden="true"></div>
+      <div class="hero-overlay absolute inset-0 -z-10" aria-hidden="true"></div>
+
+      <p class="mb-4 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-gold/90">
+        Sveti Vlas · Black Sea Coast
+      </p>
+      <h1 id="hero-heading" class="font-display max-w-4xl text-4xl font-medium leading-tight text-mist sm:text-5xl md:text-6xl lg:text-7xl">
+        Where fire, sea, and <span class="italic text-gold/95">refined</span> hospitality meet
+      </h1>
+      <p class="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-mist/80 md:text-lg">
+        A full-service dining experience on the coast — candlelit interiors, terrace stone, and plates shaped by the grill and the day’s catch.
+      </p>
+      <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+        <a
+          href="#reservations"
+          class="btn-gold inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] ring-1 ring-gold/40"
+        >
+          <i data-lucide="calendar-check" class="h-4 w-4 stroke-[2]"></i>
+          Book a Table
+        </a>
+        <a href="#about" class="flex items-center gap-2 text-sm font-medium uppercase tracking-[0.2em] text-mist/85 transition hover:text-gold">
+          Discover Stella
+          <i data-lucide="arrow-down" class="h-4 w-4 stroke-[1.5]"></i>
+        </a>
+      </div>
+
+      <address class="mt-16 max-w-md text-[0.8rem] not-italic leading-relaxed text-mist/50">
+        <span class="inline-flex items-start gap-2 justify-center flex-wrap">
+          <i data-lucide="map-pin" class="mt-0.5 h-4 w-4 shrink-0 text-gold/70"></i>
+          ul. Yasen 13, Sveti Vlas 8256, Bulgaria
+        </span>
+      </address>
+    </section>
+
+    <!-- Tagline strip (PRD §3.2 Home) -->
+    <div class="border-y border-gold/15 bg-[#232323] px-5 py-5 lg:py-6">
+      <div class="mx-auto flex max-w-7xl flex-col items-center justify-center gap-5 text-[0.7rem] font-medium uppercase tracking-[0.32em] text-mist/80 sm:flex-row sm:flex-wrap lg:justify-between lg:gap-10 lg:px-8">
+        <span class="inline-flex items-center gap-2">
+          <i data-lucide="waves" class="h-4 w-4 text-gold" aria-hidden="true"></i>
+          Black Sea Coast
+        </span>
+        <span class="hidden h-px w-px bg-transparent sm:inline sm:h-10 sm:w-px sm:bg-gold/25" aria-hidden="true"></span>
+        <span class="inline-flex items-center gap-2">
+          <i data-lucide="chef-hat" class="h-4 w-4 text-gold" aria-hidden="true"></i>
+          Est. 2019
+        </span>
+        <span class="hidden h-px w-px bg-transparent sm:inline sm:h-10 sm:w-px sm:bg-gold/25" aria-hidden="true"></span>
+        <span class="inline-flex items-center gap-2">
+          <i data-lucide="map-pin" class="h-4 w-4 text-gold" aria-hidden="true"></i>
+          Sveti Vlas · ul. Yasen 13
+        </span>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section
+      id="about"
+      class="bg-mist py-20 text-charcoal lg:py-28"
+      aria-labelledby="about-heading"
+    >
+      <div class="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8">
+        <div>
+          <p class="mb-3 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-gold">
+            About Us
+          </p>
+          <h2 id="about-heading" class="font-display text-3xl font-medium md:text-4xl lg:text-[2.65rem] leading-tight">
+            A luminous corner of <span class="italic">coastal Bulgaria</span>
+          </h2>
+          <div class="mt-6 space-y-4 text-[0.95rem] font-light leading-relaxed text-charcoal/80 md:text-base">
+            <p>
+              Stella was imagined as more than a menu — it is an atmosphere grounded in warmth: ember-toned accents, terraces that catch the salt air, and a kitchen that honours both flame and finesse.
+            </p>
+            <p>
+              Our guests wander in from the Sunny Beach corridor and quiet Sveti Vlas evenings alike. We greet them with craft cocktails, attentive service, and plates that spotlight Black Sea seafood alongside fire-kissed grills — the heart of our house.
+            </p>
+            <p>
+              Whether you are here for a long holiday table or an intimate two-top, we reserve the same care: unhurried pacing, generous hospitality, and a setting that feels quietly cinematic.
+            </p>
+          </div>
+          <a
+            href="#reservations"
+            class="mt-8 inline-flex items-center gap-2 border-b border-gold/60 pb-0.5 text-sm font-medium uppercase tracking-[0.2em] text-charcoal transition hover:border-gold hover:text-gold"
+          >
+            Plan your evening
+            <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </a>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-1 lg:gap-6">
+          <figure class="placeholder-frame relative aspect-[4/5] overflow-hidden rounded-sm border border-gold/25 sm:col-span-2 lg:col-span-1 lg:aspect-[16/11]">
+            <img
+              src="https://placehold.co/1200x800/242420/d4af37/png?text=Dining+Interior"
+              alt=""
+              class="h-full w-full object-cover opacity-90"
+              loading="lazy"
+              width="1200"
+              height="800"
+            />
+            <figcaption class="sr-only">Interior dining atmosphere placeholder</figcaption>
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" aria-hidden="true"></div>
+          </figure>
+          <figure class="placeholder-frame relative aspect-square overflow-hidden rounded-sm border border-gold/25">
+            <img
+              src="https://placehold.co/400x400/1a1a1a/d4af37/png?text=Grill"
+              alt=""
+              class="h-full w-full object-cover"
+              loading="lazy"
+              width="400"
+              height="400"
+            />
+          </figure>
+          <figure class="placeholder-frame relative aspect-square overflow-hidden rounded-sm border border-gold/25">
+            <img
+              src="https://placehold.co/400x400/1f1f1f/d4af37/png?text=Seafood"
+              alt=""
+              class="h-full w-full object-cover"
+              loading="lazy"
+              width="400"
+              height="400"
+            />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured dishes (PRD carousel — horizontal scroll, static MVP) -->
+    <section id="featured-dishes" class="scroll-mt-28 border-y border-gold/10 bg-charcoal py-20 lg:py-24" aria-labelledby="featured-heading">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="max-w-xl">
+          <p class="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-gold">Chef’s table</p>
+          <h2 id="featured-heading" class="mt-3 font-display text-3xl font-medium text-mist md:text-[2rem] leading-tight">
+            Featured creations
+          </h2>
+          <p class="mt-4 text-[0.95rem] font-light leading-relaxed text-mist/60">
+            A rolling highlight of staples from <span class="text-gold/90 italic">chef’s specials</span> through mains and grill — horizontally scrollable on touch devices like the PRD carousel pattern.
+          </p>
+        </div>
+      </div>
+      <div class="featured-strip mt-10 flex gap-5 overflow-x-auto px-5 pb-2 pt-1 lg:px-8 lg:gap-6">
+        <article class="w-[280px] shrink-0 snap-start overflow-hidden rounded-sm border border-gold/20 bg-[#1f1f1f] shadow-[0_20px_50px_rgba(0,0,0,0.45)] lg:w-[300px]" style="scroll-snap-align: start;">
+          <div class="aspect-[16/11] overflow-hidden">
+            <img src="https://placehold.co/600x412/353535/d4af37/png?text=Chef's+Special+I" alt="" class="size-full object-cover" loading="lazy" width="600" height="412" />
+          </div>
+          <div class="p-4">
+            <p class="inline-block rounded border border-gold/30 px-2 py-0.5 text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-gold">Special</p>
+            <h3 class="mt-3 font-display text-lg text-mist">Tasting of the Adriatic Catch</h3>
+            <p class="mt-2 text-[0.8rem] font-light leading-snug text-mist/55">Anchovy butter, squid ink crumble, pickled sea fennel.</p>
+            <p class="mt-4 flex items-baseline justify-between border-t border-gold/15 pt-3 font-display text-gold"><span class="text-base">62,90 лв.</span><span class="text-[0.65rem] uppercase tracking-wide text-mist/45">≈ € 32,21</span></p>
+          </div>
+        </article>
+        <article class="w-[280px] shrink-0 snap-start overflow-hidden rounded-sm border border-gold/20 bg-[#1f1f1f] shadow-[0_20px_50px_rgba(0,0,0,0.45)] lg:w-[300px]" style="scroll-snap-align: start;">
+          <div class="aspect-[16/11] overflow-hidden">
+            <img src="https://placehold.co/600x412/393939/d4af37/png?text=Starter+Featured" alt="" class="size-full object-cover" loading="lazy" width="600" height="412" />
+          </div>
+          <div class="p-4">
+            <p class="inline-block rounded border border-gold/30 px-2 py-0.5 text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-gold">Starter</p>
+            <h3 class="mt-3 font-display text-lg text-mist">Duck Foie Gras Torchon</h3>
+            <p class="mt-2 text-[0.8rem] font-light leading-snug text-mist/55">Quince glaze, hazelnut crumble, rye brioche soldier.</p>
+            <p class="mt-4 flex items-baseline justify-between border-t border-gold/15 pt-3 font-display text-gold"><span class="text-base">56,90 лв.</span><span class="text-[0.65rem] uppercase tracking-wide text-mist/45">≈ € 29,06</span></p>
+          </div>
+        </article>
+        <article class="w-[280px] shrink-0 snap-start overflow-hidden rounded-sm border border-gold/20 bg-[#1f1f1f] shadow-[0_20px_50px_rgba(0,0,0,0.45)] lg:w-[300px]" style="scroll-snap-align: start;">
+          <div class="aspect-[16/11] overflow-hidden">
+            <img src="https://placehold.co/600x412/474747/d4af37/png?text=Fish+Featured" alt="" class="size-full object-cover" loading="lazy" width="600" height="412" />
+          </div>
+          <div class="p-4">
+            <p class="inline-block rounded border border-gold/30 px-2 py-0.5 text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-gold">Seafood</p>
+            <h3 class="mt-3 font-display text-lg text-mist">Scallops in Sherry Smoke</h3>
+            <p class="mt-2 text-[0.8rem] font-light leading-snug text-mist/55">Citrus emulsion, chive blossom, rye shards.</p>
+            <p class="mt-4 flex items-baseline justify-between border-t border-gold/15 pt-3 font-display text-gold"><span class="text-base">44,90 лв.</span><span class="text-[0.65rem] uppercase tracking-wide text-mist/45">≈ € 22,91</span></p>
+          </div>
+        </article>
+        <article class="w-[280px] shrink-0 snap-start overflow-hidden rounded-sm border border-gold/20 bg-[#1f1f1f] shadow-[0_20px_50px_rgba(0,0,0,0.45)] lg:w-[300px]" style="scroll-snap-align: start;">
+          <div class="aspect-[16/11] overflow-hidden">
+            <img src="https://placehold.co/600x412/2c2c2c/d4af37/png?text=Main+Featured" alt="" class="size-full object-cover" loading="lazy" width="600" height="412" />
+          </div>
+          <div class="p-4">
+            <p class="inline-block rounded border border-gold/30 px-2 py-0.5 text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-gold">Main</p>
+            <h3 class="mt-3 font-display text-lg text-mist">Pork Tenderloin Chimichurri</h3>
+            <p class="mt-2 text-[0.8rem] font-light leading-snug text-mist/55">Parsnip purée, glazed baby carrots.</p>
+            <p class="mt-4 flex items-baseline justify-between border-t border-gold/15 pt-3 font-display text-gold"><span class="text-base">38,90 лв.</span><span class="text-[0.65rem] uppercase tracking-wide text-mist/45">≈ € 19,85</span></p>
+          </div>
+        </article>
+        <article class="w-[280px] shrink-0 snap-start overflow-hidden rounded-sm border border-gold/20 bg-[#1f1f1f] shadow-[0_20px_50px_rgba(0,0,0,0.45)] lg:w-[300px]" style="scroll-snap-align: start;">
+          <div class="aspect-[16/11] overflow-hidden">
+            <img src="https://placehold.co/600x412/58351f/d4af37/png?text=BBQ+Featured" alt="" class="size-full object-cover" loading="lazy" width="600" height="412" />
+          </div>
+          <div class="p-4">
+            <p class="inline-block rounded border border-gold/30 px-2 py-0.5 text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-[#cf8f6f]">Grill</p>
+            <h3 class="mt-3 font-display text-lg text-mist">Stella Flame-Roasted Pork Belly</h3>
+            <p class="mt-2 text-[0.8rem] font-light leading-snug text-mist/55">Beer molasses glaze, dill pickles.</p>
+            <p class="mt-4 flex items-baseline justify-between border-t border-gold/15 pt-3 font-display text-gold"><span class="text-base">36,90 лв.</span><span class="text-[0.65rem] uppercase tracking-wide text-mist/45">≈ € 18,83</span></p>
+          </div>
+        </article>
+        <article class="w-[280px] shrink-0 snap-start overflow-hidden rounded-sm border border-gold/20 bg-[#1f1f1f] shadow-[0_20px_50px_rgba(0,0,0,0.45)] lg:w-[300px]" style="scroll-snap-align: start;">
+          <div class="aspect-[16/11] overflow-hidden">
+            <img src="https://placehold.co/600x412/554433/d4af37/png?text=Dessert+Featured" alt="" class="size-full object-cover" loading="lazy" width="600" height="412" />
+          </div>
+          <div class="p-4">
+            <p class="inline-block rounded border border-gold/30 px-2 py-0.5 text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-gold">Dessert</p>
+            <h3 class="mt-3 font-display text-lg text-mist">Sour Cherry Baba</h3>
+            <p class="mt-2 text-[0.8rem] font-light leading-snug text-mist/55">Sabayon, hazelnut crumble, bourbon vanilla.</p>
+            <p class="mt-4 flex items-baseline justify-between border-t border-gold/15 pt-3 font-display text-gold"><span class="text-base">21,90 лв.</span><span class="text-[0.65rem] uppercase tracking-wide text-mist/45">≈ € 11,17</span></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Menu deep-link CTA (PRD) -->
+    <section class="relative overflow-hidden bg-[#0f0f0f] py-24 lg:py-28" aria-labelledby="menu-cta-heading">
+      <div class="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_70%_30%,rgba(212,175,55,0.08),transparent_62%)]" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-7xl px-5 text-center lg:px-8">
+        <p class="mb-5 text-[0.7rem] font-medium uppercase tracking-[0.4em] text-gold">The menu arc</p>
+        <h2 id="menu-cta-heading" class="font-display text-3xl font-medium leading-snug text-mist md:text-5xl lg:text-[3.35rem]">
+          Explore categories from <span class="italic text-gold/95">chef’s starters</span> to sea, grill &amp; nightcaps
+        </h2>
+        <p class="mx-auto mt-6 max-w-2xl font-light leading-relaxed text-mist/55">
+          Dive into every category on-site or stay on Stella’s curated ChoiceQR storefront for takeaway and delivery cues.
+        </p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+          <a href="#menu" class="btn-gold inline-flex items-center gap-2 rounded-full px-10 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] ring-1 ring-gold/35">
+            <i data-lucide="layers" class="h-4 w-4 stroke-[2]"></i>
+            Explore full digital menu
+          </a>
+          <a href="https://stella219.choiceqr.com/" class="rounded-full border border-gold/40 px-10 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-gold transition hover:border-gold hover:bg-gold/10" target="_blank" rel="noopener noreferrer">Open ChoiceQR storefront</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Digital menu (Alpine.js) -->
+    <section id="menu" class="relative border-y border-gold/15 bg-charcoal py-20 lg:py-28" aria-labelledby="menu-heading" x-data="menuBoard()" x-cloak>
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="mb-3 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-gold">
+              Stella · Digital Menu
+            </p>
+            <h2 id="menu-heading" class="font-display text-3xl font-medium md:text-4xl leading-tight text-mist lg:text-[2.5rem]">
+              Flavours from flame &amp; coast
+            </h2>
+            <p class="mt-4 max-w-xl text-[0.95rem] font-light leading-relaxed text-mist/70">
+              Sample dishes mirror the structure of Stella’s live menu on
+              <a href="https://stella219.choiceqr.com/" class="text-gold/90 underline decoration-gold/30 underline-offset-4 hover:text-gold" target="_blank" rel="noopener noreferrer">stella219.choiceqr.com</a>
+              — switch categories without leaving the page.
+            </p>
+          </div>
+          <div class="text-right text-[0.7rem] font-medium uppercase tracking-[0.2em] text-mist/55">
+            <span class="text-gold/90">BGN · EUR</span>
+            <p class="mt-2 font-normal lowercase tracking-normal text-mist/40">Converted at&nbsp;fixed rate 1 € = 1.95583 лв.</p>
+          </div>
+        </div>
+
+        <!-- Sticky category filter -->
+        <div class="menu-filter-sentinel sticky z-30 -mx-5 mt-12 border-y border-gold/15 bg-charcoal/80 px-5 py-3 backdrop-blur-md lg:-mx-8 lg:px-8" role="tablist" aria-label="Menu categories">
+          <div class="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] md:flex-wrap md:justify-center [&::-webkit-scrollbar]:hidden">
+            <template x-for="cat in categories" :key="cat.id">
+              <button
+                type="button"
+                role="tab"
+                class="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border px-4 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.18em] transition duration-300"
+                x-bind:class="activeCategory === cat.id
+                  ? 'border-gold/60 bg-gold/15 text-gold shadow-[0_0_24px_rgba(212,175,55,0.12)]'
+                  : 'border-gold/15 bg-transparent text-mist/70 hover:border-gold/40 hover:text-mist'"
+                x-on:click="activeCategory = cat.id"
+                x-bind:aria-selected="activeCategory === cat.id"
+                x-text="cat.label"
+              ></button>
+            </template>
+          </div>
+        </div>
+
+        <div class="relative mt-10 min-h-[28rem]" role="tabpanel" x-bind:aria-label="'Menu — ' + activeCategory">
+          <template x-for="catKey in [activeCategory]" :key="catKey">
+            <div
+              class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+              style="contain: layout"
+              x-transition:enter="transition ease-out duration-500 delay-75"
+              x-transition:enter-start="opacity-0 translate-y-5"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              x-transition:leave="transition ease-in duration-250"
+              x-transition:leave-start="opacity-100"
+              x-transition:leave-end="opacity-0"
+            >
+              <template x-for="item in dishes[catKey]" :key="item.id">
+                <article class="group flex flex-col overflow-hidden rounded-sm border border-gold/15 bg-[#1f1f1f] shadow-[0_16px_48px_rgba(0,0,0,0.35)] transition duration-500 ease-out hover:border-gold/45">
+                  <div class="menu-card-photo relative overflow-hidden">
+                    <img
+                      class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.04]"
+                      x-bind:src="item.img"
+                      x-bind:alt="item.name"
+                      loading="lazy"
+                      width="800"
+                      height="600"
+                    />
+                    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent" aria-hidden="true"></div>
+                  </div>
+                  <div class="flex flex-1 flex-col gap-2 px-5 pb-5 pt-4">
+                    <h3 class="font-display text-lg leading-snug text-mist md:text-xl" x-text="item.name"></h3>
+                    <p class="text-sm font-light leading-relaxed text-mist/60" x-text="item.note"></p>
+                    <div class="mt-auto flex flex-wrap items-baseline justify-between gap-3 border-t border-gold/15 pt-4">
+                      <span class="font-display text-lg font-medium text-gold" x-text="formatBgn(item.bgn)"></span>
+                      <span class="text-[0.7rem] font-medium uppercase tracking-[0.14em] text-mist/50" x-text="'€ ' + eurFromBgn(item.bgn)"></span>
+                    </div>
+                  </div>
+                </article>
+              </template>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- BBQ / grill highlight (PRD ember accent) -->
+    <section id="bbq" class="bbq-strip scroll-mt-28 border-y border-[#8b2e1a]/40 py-20 lg:py-28" aria-labelledby="bbq-heading">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
+        <div class="relative aspect-[4/3] overflow-hidden rounded-sm border border-gold/25 shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
+          <img src="https://placehold.co/960x720/3d1810/d4af37/png?text=Open+Flame+Grill" alt="" class="size-full object-cover" loading="lazy" width="960" height="720" />
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#1a1a1a]/70 to-transparent" aria-hidden="true"></div>
+        </div>
+        <div>
+          <p class="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-[#cf8f6f]">From the coals</p>
+          <h2 id="bbq-heading" class="mt-3 font-display text-3xl font-medium text-mist md:text-4xl leading-tight">
+            Our <span class="italic text-gold">philosophy</span> on live fire
+          </h2>
+          <p class="mt-5 text-[0.95rem] font-light leading-relaxed text-mist/70">
+            The PRD’s BBQ chapter is the pulse of Stella: skewers, ribs, and mince-shaped favourites kissed by charcoal. We layer smoke with bright pickles, lyutenitsa, and Black Sea herbs so every bite keeps the coast in mind.
+          </p>
+          <a href="#menu" class="mt-8 inline-flex items-center gap-2 border-b border-gold/50 pb-1 text-sm font-semibold uppercase tracking-[0.22em] text-gold transition hover:border-gold hover:text-mist">
+            Jump to grill menu
+            <i data-lucide="flame" class="h-4 w-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials (PRD pull quotes) -->
+    <section id="words" class="scroll-mt-28 border-y border-gold/10 bg-mist py-20 text-charcoal lg:py-28" aria-labelledby="testimonials-heading">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <p class="text-center text-[0.7rem] font-medium uppercase tracking-[0.35em] text-gold">Guest notes</p>
+        <h2 id="testimonials-heading" class="mt-3 text-center font-display text-3xl font-medium md:text-4xl">Whispers from the dining room</h2>
+        <div class="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
+          <figure class="relative border-l-2 border-gold/50 pl-6">
+            <blockquote class="font-display text-xl font-medium leading-snug italic text-charcoal md:text-[1.35rem]">
+              “A rare balance of spectacle and sincerity — Stella feels like supper at a dear friend’s sea house.”
+            </blockquote>
+            <figcaption class="mt-4 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-charcoal/50">Holiday guest · Dresden</figcaption>
+          </figure>
+          <figure class="relative border-l-2 border-gold/50 pl-6">
+            <blockquote class="font-display text-xl font-medium leading-snug italic text-charcoal md:text-[1.35rem]">
+              “The grill perfumes the terrace — we chased every course with Bulgarian rosés we’d never tasted.”
+            </blockquote>
+            <figcaption class="mt-4 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-charcoal/50">Food editor · Sofia</figcaption>
+          </figure>
+          <figure class="relative border-l-2 border-gold/50 pl-6 md:col-span-1">
+            <blockquote class="font-display text-xl font-medium leading-snug italic text-charcoal md:text-[1.35rem]">
+              “We walked in dusty from Sunny Beach — and left polished, spoiled, plotting our return.”
+            </blockquote>
+            <figcaption class="mt-4 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-charcoal/50">Family table · München</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vibe gallery -->
+    <section id="vibe" class="bg-[#151515] py-20 lg:py-28" aria-labelledby="vibe-heading">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <p class="mb-3 text-center text-[0.7rem] font-medium uppercase tracking-[0.35em] text-gold">
+          In the Restaurant
+        </p>
+        <h2 id="vibe-heading" class="font-display text-center text-3xl font-medium text-mist md:text-4xl">
+          Ambience · Service · Moments
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-center text-[0.95rem] font-light leading-relaxed text-mist/60">
+          A masonry grid snapshot of terraces, pours, plating, and the quiet theatre of Stella’s evenings — placeholders you can swap for production imagery.
+        </p>
+
+        <div class="vibe-masonry mt-14 items-stretch">
+          <figure class="vibe-masonry__item group relative h-full min-h-[220px] overflow-hidden rounded-sm border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+            <img class="vibe-masonry__photo absolute inset-0 size-full object-cover" src="https://placehold.co/960x720/252525/d4af37/png?text=Dining+Ritual" alt="" loading="lazy" width="960" height="720" />
+            <figcaption class="sr-only">Candlelit fine dining tables</figcaption>
+          </figure>
+          <figure class="vibe-masonry__item group relative h-full min-h-[220px] overflow-hidden rounded-sm border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+            <img class="vibe-masonry__photo absolute inset-0 size-full object-cover" src="https://placehold.co/480x640/282828/d4af37/png?text=Plating" alt="" loading="lazy" width="480" height="640" />
+            <figcaption class="sr-only">Chef plating macro</figcaption>
+          </figure>
+          <figure class="vibe-masonry__item group relative h-full min-h-[220px] overflow-hidden rounded-sm border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+            <img class="vibe-masonry__photo absolute inset-0 size-full object-cover" src="https://placehold.co/560x840/303030/d4af37/png?text=Stemware" alt="" loading="lazy" width="560" height="840" />
+            <figcaption class="sr-only">Bar and stemware lifestyle</figcaption>
+          </figure>
+          <figure class="vibe-masonry__item group relative h-full min-h-[220px] overflow-hidden rounded-sm border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+            <img class="vibe-masonry__photo absolute inset-0 size-full object-cover" src="https://placehold.co/720x540/343434/d4af37/png?text=Wine" alt="" loading="lazy" width="720" height="540" />
+            <figcaption class="sr-only">Wine pour close-up</figcaption>
+          </figure>
+          <figure class="vibe-masonry__item group relative h-full min-h-[220px] overflow-hidden rounded-sm border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+            <img class="vibe-masonry__photo absolute inset-0 size-full object-cover" src="https://placehold.co/900x620/383838/d4af37/png?text=Terrace" alt="" loading="lazy" width="900" height="620" />
+            <figcaption class="sr-only">Outdoor terrace dusk</figcaption>
+          </figure>
+          <figure class="vibe-masonry__item group relative h-full min-h-[220px] overflow-hidden rounded-sm border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+            <img class="vibe-masonry__photo absolute inset-0 size-full object-cover" src="https://placehold.co/640x560/424242/d4af37/png?text=Table" alt="" loading="lazy" width="640" height="560" />
+            <figcaption class="sr-only">Table setting detail</figcaption>
+          </figure>
+          <figure class="vibe-masonry__item group relative h-full min-h-[220px] overflow-hidden rounded-sm border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+            <img class="vibe-masonry__photo absolute inset-0 size-full object-cover" src="https://placehold.co/1600x600/484848/d4af37/png?text=Lifestyle+Moments+Wide+Placeholder" alt="" loading="lazy" width="1600" height="600" />
+            <figcaption class="sr-only">Coastal supper lifestyle wide</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reservations -->
+    <section
+      id="reservations"
+      class="relative border-y border-gold/20 bg-[#141414] py-20 lg:py-28"
+      aria-labelledby="reserve-heading"
+      x-data="reservationForm()"
+    >
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_0%,rgba(212,175,55,0.08),transparent_50%)]"></div>
+      <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <p class="mb-3 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-gold">
+            Reservations
+          </p>
+          <h2 id="reserve-heading" class="font-display text-3xl font-medium text-mist md:text-4xl lg:text-[2.5rem]">
+            Secure your table
+          </h2>
+          <p class="mt-4 text-[0.95rem] font-light leading-relaxed text-mist/65">
+            Send a concise request via email or WhatsApp — your details open prefilled so our team can confirm availability for you promptly.
+          </p>
+        </div>
+
+        <form class="relative mx-auto mt-12 grid max-w-3xl gap-5 rounded-sm border border-gold/20 bg-charcoal/50 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-md sm:p-8" action="#" autocomplete="off" novalidate>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div class="sm:col-span-1">
+              <label class="block text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-gold/80" for="r-date">Date</label>
+              <input id="r-date" name="date" required type="date" class="input-luxury mt-2 block w-full px-3 py-2.5 text-sm" x-model="rDate" />
+            </div>
+            <div class="sm:col-span-1">
+              <label class="block text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-gold/80" for="r-time">Time</label>
+              <input id="r-time" name="time" required type="time" class="input-luxury mt-2 block w-full px-3 py-2.5 text-sm" x-model="rTime" />
+            </div>
+            <div class="sm:col-span-2 sm:grid sm:grid-cols-3 sm:gap-5">
+              <div class="sm:col-span-1">
+                <label class="block text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-gold/80" for="r-guests">Guests</label>
+                <input id="r-guests" name="guests" required type="number" min="1" max="24" class="input-luxury mt-2 block w-full px-3 py-2.5 text-sm" x-model.number="guests" />
+              </div>
+              <div class="mt-5 sm:col-span-2 sm:mt-0">
+                <label class="block text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-gold/80" for="r-name">Name</label>
+                <input id="r-name" name="name" required type="text" class="input-luxury mt-2 block w-full px-3 py-2.5 text-sm" placeholder="Maria Ivanova" x-model="guestName" />
+              </div>
+              <div class="mt-5 sm:col-span-3 sm:mt-0">
+                <label class="block text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-gold/80" for="r-phone">Phone</label>
+                <input id="r-phone" name="phone" required type="tel" class="input-luxury mt-2 block w-full px-3 py-2.5 text-sm" placeholder="+359 888 000 419" x-model="guestPhone" />
+              </div>
+            </div>
+          </div>
+
+          <fieldset class="border-t border-gold/15 pt-6">
+            <legend class="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-mist/80">Send request via</legend>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+              <label class="flex cursor-pointer items-center gap-3 rounded-sm border border-gold/20 bg-charcoal/30 px-4 py-3 transition hover:border-gold/40 has-[:checked]:border-gold/55 has-[:checked]:bg-gold/10">
+                <input class="accent-gold" name="reserve-channel" type="radio" value="whatsapp" x-model="sendVia" />
+                <span class="text-sm text-mist">WhatsApp<span class="ml-2 text-xs text-mist/45">(instant)</span></span>
+              </label>
+              <label class="flex cursor-pointer items-center gap-3 rounded-sm border border-gold/20 bg-charcoal/30 px-4 py-3 transition hover:border-gold/40 has-[:checked]:border-gold/55 has-[:checked]:bg-gold/10">
+                <input class="accent-gold" name="reserve-channel" type="radio" value="email" x-model="sendVia" />
+                <span class="text-sm text-mist">Email<span class="ml-2 text-xs text-mist/45">(mailto)</span></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
+            <button
+              type="button"
+              class="rounded-full border border-gold/40 px-8 py-3 text-center text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-gold transition hover:border-gold hover:bg-gold/10"
+              x-on:click="previewMessage = !previewMessage"
+            >
+              <span x-text="previewMessage ? 'Hide prefilled preview' : 'Preview message'"></span>
+            </button>
+            <button
+              type="button"
+              class="btn-gold inline-flex flex-1 items-center justify-center gap-2 rounded-full px-10 py-3.5 text-sm font-semibold uppercase tracking-[0.15em] sm:flex-none"
+              x-on:click="submitReservation()"
+            >
+              <i data-lucide="send" class="h-4 w-4 stroke-[2]"></i>
+              Open request
+            </button>
+          </div>
+          <div
+            class="rounded-sm border border-gold/15 bg-charcoal/40 p-4"
+            x-show="previewMessage"
+            x-transition.opacity.duration.300ms
+          >
+            <pre class="whitespace-pre-wrap font-sans text-sm leading-relaxed text-mist/70" x-text="composeBody()"></pre>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mobile sticky booking CTA (below lg) -->
+  <div class="mobile-book-strip md:hidden">
+    <a
+      href="#reservations"
+      class="btn-gold flex items-center justify-center gap-2 rounded-full py-4 text-xs font-semibold uppercase tracking-[0.25em] ring-1 ring-gold/35"
+    >
+      <i data-lucide="calendar-check" class="h-5 w-5 shrink-0 stroke-[2]"></i>
+      Book a Table
+    </a>
+  </div>
+
+  <footer id="contact" class="border-t border-gold/15 bg-charcoal pb-36 pt-16 md:pb-16" aria-labelledby="footer-heading">
+    <div class="mx-auto max-w-7xl px-5 lg:px-8">
+      <h2 id="footer-heading" class="sr-only">Contact and location</h2>
+      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+        <div>
+          <p class="font-display text-lg tracking-[0.25em] text-mist">STELLA</p>
+          <p class="mt-3 text-sm font-light leading-relaxed text-mist/55">
+            Coastal dining in Sveti Vlas — reservations, delivery, and takeaway via our digital menu partners.
+          </p>
+        </div>
+        <div>
+          <p class="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-gold">Find us</p>
+          <address class="mt-4 text-sm font-light not-italic leading-relaxed text-mist/70">
+            ul. Yasen 13<br />
+            Sveti Vlas 8256<br />
+            Bulgaria
+          </address>
+          <a
+            class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-gold transition hover:text-mist"
+            href="https://www.google.com/maps/search/?api=1&amp;query=Yasen+13+8256+Sveti+Vlas+Bulgaria+Stella"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i data-lucide="map-pin" class="h-4 w-4"></i>
+            Google Maps
+          </a>
+        </div>
+        <div>
+          <p class="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-gold">Opening hours</p>
+          <ul class="mt-4 space-y-2 text-sm font-light text-mist/70">
+            <li class="flex justify-between gap-4 border-b border-gold/10 pb-2">
+              <span>Every day</span>
+              <span class="font-medium text-mist/85">11:30 – 23:30</span>
+            </li>
+            <li class="text-xs leading-relaxed text-mist/45">Hours may vary on public holidays — message us to confirm.</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-gold">Social</p>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a class="rounded-full border border-gold/35 bg-charcoal/30 p-2.5 text-mist transition hover:border-gold hover:bg-gold/10 hover:text-gold" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i data-lucide="instagram" class="h-5 w-5 stroke-[1.5]"></i>
+            </a>
+            <a class="rounded-full border border-gold/35 bg-charcoal/30 p-2.5 text-mist transition hover:border-gold hover:bg-gold/10 hover:text-gold" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <i data-lucide="facebook" class="h-5 w-5 stroke-[1.5]"></i>
+            </a>
+            <a class="rounded-full border border-gold/35 bg-charcoal/30 p-2.5 text-mist transition hover:border-gold hover:bg-gold/10 hover:text-gold" href="tel:+359888000419" aria-label="Phone">
+              <i data-lucide="phone" class="h-5 w-5 stroke-[1.5]"></i>
+            </a>
+          </div>
+          <p class="mt-6 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-gold">Language</p>
+          <div
+            class="mt-3 inline-flex items-center gap-1 rounded-full border border-gold/35 bg-charcoal/40 px-1 py-0.5 text-[0.62rem] uppercase tracking-[0.14em] text-mist/60"
+            x-data="{ langFoot: 'en' }"
+            aria-label="Footer language preview"
+          >
+            <button type="button" class="rounded-full px-2 py-1 transition" x-bind:class="langFoot === 'en' ? 'bg-gold/20 text-gold ring-1 ring-gold/35' : 'text-mist/55 hover:text-mist'" x-on:click="langFoot='en'; document.documentElement.lang='en'">EN</button>
+            <span class="text-gold/25" aria-hidden="true">|</span>
+            <button type="button" class="rounded-full px-2 py-1 transition" x-bind:class="langFoot === 'bg' ? 'bg-gold/20 text-gold ring-1 ring-gold/35' : 'text-mist/55 hover:text-mist'" x-on:click="langFoot='bg'; document.documentElement.lang='bg'">BG</button>
+          </div>
+          <p class="mt-4 text-xs leading-relaxed text-mist/40">
+            Menu:
+            <a class="font-medium text-gold/85 underline decoration-gold/30 underline-offset-4 hover:text-gold" href="https://stella219.choiceqr.com/" target="_blank" rel="noopener noreferrer">stella219.choiceqr.com</a>
+          </p>
+        </div>
+      </div>
+      <div class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-gold/15 pt-8 text-center text-[0.7rem] text-mist/40 md:flex-row md:text-left">
+        <p class="tracking-wide">© <span id="stella-year"></span> Stella Restaurant. All rights reserved.</p>
+        <p class="uppercase tracking-[0.22em] text-mist/35">Sveti Vlas · Black Sea coast</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>
+    function reservationForm() {
+      return {
+        rDate: '',
+        rTime: '',
+        guests: 2,
+        guestName: '',
+        guestPhone: '',
+        sendVia: 'whatsapp',
+        previewMessage: false,
+        targetEmail: 'reservations@stellasvetivlas.bg',
+        waNumberDigits: '359888000419',
+        composeBody() {
+          return [
+            'Reservation request — Stella Restaurant (Sveti Vlas)',
+            'Date: ' + (this.rDate || '—'),
+            'Time: ' + (this.rTime || '—'),
+            'Guests: ' + (this.guests != null ? String(this.guests) : '—'),
+            'Name: ' + (this.guestName || '—'),
+            'Phone: ' + (this.guestPhone || '—'),
+          ].join('\n');
+        },
+        submitReservation() {
+          var form = this.$el.querySelector('form');
+          if (form && !form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+          if (this.sendVia === 'whatsapp') {
+            this.openWhatsApp();
+          } else {
+            this.openMailto();
+          }
+        },
+        openMailto() {
+          var subject = encodeURIComponent('Stella reservation');
+          var body = encodeURIComponent(this.composeBody());
+          window.location.href = 'mailto:' + this.targetEmail + '?subject=' + subject + '&body=' + body;
+        },
+        openWhatsApp() {
+          var text = encodeURIComponent(this.composeBody());
+          window.open('https://wa.me/' + this.waNumberDigits + '?text=' + text, '_blank', 'noopener,noreferrer');
+        },
+      };
+    }
+
+    function menuBoard() {
+      return {
+        activeCategory: 'starters',
+        eurRate: 1.95583,
+        categories: [
+          { id: 'starters', label: 'Starters' },
+          { id: 'main', label: 'Main' },
+          { id: 'bbq', label: 'BBQ' },
+          { id: 'desserts', label: 'Desserts' },
+          { id: 'drinks', label: 'Drinks' },
+        ],
+        eurFromBgn(bgn) {
+          return (Number(bgn) / this.eurRate).toFixed(2);
+        },
+        formatBgn(bgn) {
+          return Number(bgn).toFixed(2).replace('.', ',') + ' лв.';
+        },
+        dishes: {
+          starters: [
+            {
+              id: 'st1',
+              name: 'Traditional Shopska Salad',
+              note: 'Cold starter classic — sirene (white brine cheese), cucumbers, peppers, olives, sunflower oil dressing.',
+              bgn: 15.9,
+              img: 'https://placehold.co/800x600/242420/d4af37/png?text=Shopska+Salad',
+            },
+            {
+              id: 'st2',
+              name: 'Smoked Trout Rillettes',
+              note: 'Local Black Sea trout, capers, chive crème fraîche, brioche crisps.',
+              bgn: 22.9,
+              img: 'https://placehold.co/800x600/282828/d4af37/png?text=Smoked+Trout',
+            },
+            {
+              id: 'st3',
+              name: 'Beef Tartare Stella',
+              note: 'Prime beef tenderloin cap, cornichons, quail egg, pepper tuile.',
+              bgn: 28.5,
+              img: 'https://placehold.co/800x600/303030/d4af37/png?text=Beef+Tartare',
+            },
+            {
+              id: 'st4',
+              name: 'Grilled Vegetables & Goat Cheese',
+              note: 'Aubergines, zucchini, marinated peppers, balsamic glaze.',
+              bgn: 17.9,
+              img: 'https://placehold.co/800x600/252525/d4af37/png?text=Veg+Starter',
+            },
+          ],
+          main: [
+            {
+              id: 'm1',
+              name: 'Whole Grilled Seabass',
+              note: 'Fish & seafood — seabass stuffed with lemons & herbs; lemon-brown butter (+150g side).',
+              bgn: 38.9,
+              img: 'https://placehold.co/800x600/242420/d4af37/png?text=Seabass',
+            },
+            {
+              id: 'm2',
+              name: 'Black Angus Ribeye Steak',
+              note: 'Main course steak — rosemary butter, Cabernet jus (+ side of your choice).',
+              bgn: 76.9,
+              img: 'https://placehold.co/800x600/383838/d4af37/png?text=Ribeye',
+            },
+            {
+              id: 'm3',
+              name: 'Slow-Braised Beef Cheek',
+              note: 'Root vegetable purée, red wine glacé — comfort-forward winter favourite.',
+              bgn: 35.9,
+              img: 'https://placehold.co/800x600/343434/d4af37/png?text=Beef+Cheek',
+            },
+            {
+              id: 'm4',
+              name: 'Lamb Cutlets Herb Crust',
+              note: 'Rack trim, yoghurt-mint relish, smoky aubergine.',
+              bgn: 51.9,
+              img: 'https://placehold.co/800x600/323232/d4af37/png?text=Lamb',
+            },
+          ],
+          bbq: [
+            {
+              id: 'b1',
+              name: 'Chef’s Pork Skewer Platter',
+              note: 'Stella barbecue — glazed pork cubes, spiced onion, pickles & flatbread.',
+              bgn: 29.9,
+              img: 'https://placehold.co/800x600/242420/d4af37/png?text=Pork+Skewers',
+            },
+            {
+              id: 'b2',
+              name: 'BBQ Pork Ribs (Half Rack)',
+              note: 'House smoker glaze; coleslaw with apple cider dressing.',
+              bgn: 33.9,
+              img: 'https://placehold.co/800x600/484848/d4af37/png?text=Ribs',
+            },
+            {
+              id: 'b3',
+              name: 'Kyufte & Kebapche Trio',
+              note: 'Grill speciality — spiced minced pork & beef, lyutenitsa, roasted peppers.',
+              bgn: 25.9,
+              img: 'https://placehold.co/800x600/2a2a2a/d4af37/png?text=BBQ+Mince',
+            },
+            {
+              id: 'b4',
+              name: 'Charcoal-Spiced Chicken Thigh',
+              note: 'Yoghurt-marinated, pomegranate molasses drizzle, pickled onion.',
+              bgn: 22.9,
+              img: 'https://placehold.co/800x600/454545/d4af37/png?text=Chicken+BBQ',
+            },
+          ],
+          desserts: [
+            {
+              id: 'd1',
+              name: 'Baklava & Rose Ice Cream',
+              note: 'Layered walnuts, golden syrup, Bulgarian yoghurt ice cream scoop.',
+              bgn: 15.9,
+              img: 'https://placehold.co/800x600/3a3835/d4af37/png?text=Baklava',
+            },
+            {
+              id: 'd2',
+              name: 'Dark Chocolate Délice',
+              note: 'Pistachio praline, salt caramel core, cacao nib tuile.',
+              bgn: 14.9,
+              img: 'https://placehold.co/800x600/393939/d4af37/png?text=Chocolate',
+            },
+            {
+              id: 'd3',
+              name: 'Raspberry Vanilla Panna Cotta',
+              note: 'Mascarpone set cream, marinated berries, iced basil oil.',
+              bgn: 13.9,
+              img: 'https://placehold.co/800x600/474747/d4af37/png?text=Panna+Cotta',
+            },
+          ],
+          drinks: [
+            {
+              id: 'dk1',
+              name: 'Stella Signature Spritz',
+              note: 'Aperitifs — grapefruit, prosecco cordial, gold leaf.',
+              bgn: 13.9,
+              img: 'https://placehold.co/800x600/404040/d4af37/png?text=Spritz',
+            },
+            {
+              id: 'dk2',
+              name: 'House Red (glass)',
+              note: 'Local Thracian Valley blend · sommelier’s pour.',
+              bgn: 13.9,
+              img: 'https://placehold.co/800x600/505050/d4af37/png?text=House+Wine',
+            },
+            {
+              id: 'dk3',
+              name: 'Barrel-aged Negroni',
+              note: 'Gin-forward classic, orange oils, Stella ice stamp.',
+              bgn: 16.9,
+              img: 'https://placehold.co/800x600/444444/d4af37/png?text=Negroni',
+            },
+            {
+              id: 'dk4',
+              name: 'Coffee & Digestif Duo',
+              note: 'Double espresso · 40ml Bulgarian aged rakia.',
+              bgn: 12.9,
+              img: 'https://placehold.co/800x600/3d3d3d/d4af37/png?text=Coffee+Rakia',
+            },
+          ],
+        },
+      };
+    }
+
+    lucide.createIcons();
+
+    document.addEventListener('alpine:initialized', function () {
+      lucide.createIcons();
+    });
+
+    var yEl = document.getElementById('stella-year');
+    if (yEl) yEl.textContent = String(new Date().getFullYear());
+
+    (function () {
+      var header = document.getElementById('site-header');
+      var threshold = 24;
+
+      function onScroll() {
+        if (window.scrollY > threshold) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      }
+
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Better Specialty Coffee</title>
+    <meta
+      name="description"
+      content="Better Specialty Coffee — SCA 80+ slow-bar sanctuary. Coffee till I die: radical transparency, Bean Matrix, Coffee Concierge."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bone: "#FFFFFF",
+              forest: "#1B4332",
+              "coffee-brown": "#3C2A21",
+            },
+            fontFamily: {
+              sans: [
+                "Inter",
+                "ui-sans-serif",
+                "system-ui",
+                "sans-serif",
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bsc-forest: #1b4332;
+        --bsc-forest-hover: #2d6a4f;
+        --bsc-coffee: #3c2a21;
+        --bsc-coffee-hover: #5c4033;
+        --bsc-grain-opacity: 0.14;
+      }
+
+      .bsc-grain {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: var(--bsc-grain-opacity);
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+        background-size: 180px 180px;
+      }
+
+      .bsc-surface {
+        position: relative;
+        z-index: 2;
+      }
+
+      .bsc-bean-card {
+        border: 1px solid var(--bsc-coffee);
+        background-color: rgba(255, 255, 255, 0.02);
+        transition:
+          border-color 0.55s ease,
+          box-shadow 0.55s ease,
+          transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+          background-color 0.55s ease;
+      }
+
+      .bsc-bean-card:hover {
+        border-color: var(--bsc-coffee-hover);
+        transform: translateY(-3px);
+        box-shadow: 0 18px 48px -14px rgba(60, 42, 33, 0.55);
+        background-color: rgba(255, 255, 255, 0.04);
+      }
+
+      .bsc-btn-forest {
+        background-color: var(--bsc-forest);
+        border-color: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        transition:
+          background-color 0.45s ease,
+          border-color 0.45s ease,
+          transform 0.35s ease,
+          box-shadow 0.45s ease;
+      }
+
+      .bsc-btn-forest:hover {
+        background-color: var(--bsc-forest-hover);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 0 1px rgba(45, 106, 79, 0.35);
+      }
+
+      .bsc-btn-forest:active {
+        transform: scale(0.98);
+      }
+
+      .bsc-btn-forest:focus-visible {
+        outline: 2px solid var(--bsc-forest-hover);
+        outline-offset: 3px;
+      }
+
+      .bsc-plan-label {
+        border-color: var(--bsc-coffee);
+        color: rgba(255, 255, 255, 0.75);
+        transition:
+          background-color 0.45s ease,
+          color 0.45s ease,
+          border-color 0.45s ease;
+      }
+
+      .bsc-plan-label:has(:checked) {
+        background-color: var(--bsc-forest);
+        color: #fff;
+        border-color: var(--bsc-forest-hover);
+      }
+
+      .bsc-plan-label:hover:not(:has(:checked)) {
+        border-color: var(--bsc-coffee-hover);
+        color: #fff;
+      }
+
+      .bsc-loading {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #000;
+        transition:
+          opacity 0.65s ease,
+          visibility 0.65s ease;
+      }
+
+      .bsc-loading--done {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .bsc-stir {
+        transform-origin: 60px 74px;
+        animation: bsc-stir-motion 1.2s ease-in-out infinite alternate;
+      }
+
+      @keyframes bsc-stir-motion {
+        from {
+          transform: rotate(-22deg);
+        }
+        to {
+          transform: rotate(22deg);
+        }
+      }
+
+      body.bsc-loading-active {
+        overflow: hidden;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .bsc-bean-card,
+        .bsc-btn-forest,
+        .bsc-plan-label {
+          transition-duration: 0.01ms !important;
+        }
+
+        .bsc-bean-card:hover {
+          transform: none;
+        }
+
+        .bsc-stir {
+          animation: none;
+        }
+
+        .bsc-loading {
+          transition-duration: 0.2s;
+        }
+      }
+
+      .bsc-checkbox {
+        accent-color: var(--bsc-forest);
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen bg-[#000000] text-[#FFFFFF] font-sans antialiased bsc-loading-active"
+  >
+    <div
+      id="bsc-loading"
+      class="bsc-loading"
+      role="alert"
+      aria-busy="true"
+      aria-label="Loading Better Specialty Coffee"
+    >
+      <div class="flex flex-col items-center gap-6 px-6 text-center">
+        <svg
+          width="140"
+          height="140"
+          viewBox="0 0 120 120"
+          class="text-white/90"
+          aria-hidden="true"
+        >
+          <path
+            d="M38 52 L38 86 Q38 96 60 96 Q82 96 82 86 L82 52"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.35"
+            stroke-linecap="round"
+          />
+          <path
+            d="M38 52 L82 52"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.2"
+            opacity="0.5"
+          />
+          <g class="bsc-stir">
+            <line
+              x1="60"
+              y1="28"
+              x2="60"
+              y2="80"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+            <circle
+              cx="60"
+              cy="24"
+              r="5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            />
+          </g>
+        </svg>
+        <p class="max-w-xs text-[11px] font-medium uppercase tracking-[0.35em] text-white/50">
+          Steady pour. No rush.
+        </p>
+      </div>
+    </div>
+
+    <div class="bsc-grain" aria-hidden="true"></div>
+
+    <div class="bsc-surface">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:text-black"
+      >Skip to content</a
+    >
+
+    <header
+      class="border-b border-[#3C2A21]/80"
+      role="banner"
+    >
+      <div
+        class="mx-auto flex max-w-6xl flex-col items-center gap-10 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between md:gap-8 md:px-10 md:py-14"
+      >
+        <nav
+          class="order-2 flex w-full justify-center md:order-1 md:flex-1 md:justify-end"
+          aria-label="Primary left"
+        >
+          <ul
+            class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs font-medium tracking-[0.18em] uppercase text-white/75 sm:text-sm sm:tracking-[0.2em] md:justify-end md:gap-10"
+          >
+            <li>
+              <a
+                href="#shop"
+                class="transition-colors duration-300 hover:text-white"
+                title="The Bean Matrix — advanced product discovery"
+                >Shop</a
+              >
+            </li>
+            <li>
+              <a
+                href="#guides"
+                class="transition-colors duration-300 hover:text-white"
+                title="Integrated brewing intelligence"
+                >Guides</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <div
+          class="order-1 flex shrink-0 flex-col items-center gap-2 md:order-2"
+        >
+          <a
+            href="/"
+            class="group flex flex-col items-center outline-none focus-visible:ring-2 focus-visible:ring-[#2D6A4F]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+            aria-label="Better Specialty Coffee — home"
+          >
+            <span
+              class="relative flex h-14 w-14 items-center justify-center md:h-16 md:w-16"
+              aria-hidden="true"
+            >
+              <span
+                class="pointer-events-none absolute inset-0 rounded-full opacity-35 blur-md transition-opacity duration-500 group-hover:opacity-65"
+                style="box-shadow: 0 0 26px rgba(27, 67, 50, 0.55)"
+              ></span>
+              <svg
+                viewBox="0 0 64 64"
+                class="relative h-full w-full text-white drop-shadow-[0_0_1px_rgba(255,255,255,0.6)]"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M32 8c-8 0-14 6-14 14v6c0 3 1 6 3 8l2 22h18l2-22c2-2 3-5 3-8v-6c0-8-6-14-14-14z" />
+                <circle cx="24" cy="26" r="3" fill="currentColor" stroke="none" />
+                <circle cx="40" cy="26" r="3" fill="currentColor" stroke="none" />
+                <path d="M24 42c2 4 6 6 8 6s6-2 8-6" />
+              </svg>
+            </span>
+            <span class="mt-2 text-[10px] font-medium tracking-[0.35em] uppercase text-white/50"
+              >Skull</span
+            >
+          </a>
+        </div>
+
+        <nav
+          class="order-3 flex w-full justify-center md:flex-1 md:justify-start"
+          aria-label="Primary right"
+        >
+          <ul
+            class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs font-medium tracking-[0.18em] uppercase text-white/75 sm:text-sm sm:tracking-[0.2em] md:justify-start md:gap-10"
+          >
+            <li>
+              <a
+                href="#subscription"
+                class="transition-colors duration-300 hover:text-white"
+                title="Coffee Concierge — premium subscription"
+                >Subscription</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section
+        class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 md:px-10 md:py-28 lg:py-36"
+        aria-labelledby="hero-heading"
+      >
+        <div
+          class="grid gap-12 sm:gap-16 lg:grid-cols-12 lg:gap-12 lg:items-center"
+        >
+          <div class="lg:col-span-7">
+            <p
+              class="mb-8 text-xs font-medium tracking-[0.35em] uppercase text-white/45"
+            >
+              Better Specialty Coffee · SCA 80+ · No compromise lots
+            </p>
+            <h1
+              id="hero-heading"
+              class="text-3xl font-bold leading-[1.08] tracking-tight text-white sm:text-4xl md:text-6xl lg:text-7xl"
+            >
+              COFFEE TILL I DIE
+            </h1>
+            <p
+              class="mt-10 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg md:text-xl"
+            >
+              A slow-bar digital sanctuary for people who brew like they mean it.
+              Only lots at <strong class="font-semibold text-white">SCA 80+</strong>
+              make the cut—altitude, process, and farm story on full display. No
+              filler bags, no mystery blends: just the elite tier, served cold and
+              honest on black.
+            </p>
+            <p class="mt-8 max-w-xl text-sm leading-relaxed text-white/50">
+              Underground aesthetic, Swiss discipline. The skull marks the standard;
+              the rest is ritual.
+            </p>
+          </div>
+
+          <div class="lg:col-span-5">
+            <figure
+              class="flex flex-col items-stretch border border-dashed border-[#3C2A21]/90 bg-white/[0.02] px-6 py-12 text-center sm:px-8 sm:py-14"
+              aria-label="Skeleton Barista illustration placeholder"
+            >
+              <div
+                class="mx-auto mb-6 flex aspect-[4/5] w-full max-w-[280px] items-center justify-center rounded-sm bg-white/[0.03] ring-1 ring-inset ring-white/10"
+              >
+                <span
+                  class="text-xs font-medium tracking-[0.25em] uppercase text-white/35"
+                  >Illustration</span
+                >
+              </div>
+              <figcaption class="text-sm text-white/55">
+                <span class="font-medium text-white/85">Skeleton Barista</span>
+                — brand mascot territory: bone hands on the V60, eyes on the roast.
+                Illustration drops here when the art lands.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="shop"
+        class="border-t border-[#3C2A21]/40 scroll-mt-20 sm:scroll-mt-24"
+        aria-labelledby="shop-heading"
+      >
+        <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 md:px-10 md:py-24">
+          <h2
+            id="shop-heading"
+            class="text-xs font-semibold tracking-[0.3em] uppercase text-white/40"
+          >
+            The Bean Matrix
+          </h2>
+          <p class="mt-4 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
+            Hunt by sensory tag. Your Coffee Concierge plan (below) decides how wild
+            the lineup gets—rotational chaos for the curious, fixed steel for the
+            daily driver.
+          </p>
+
+          <fieldset
+            class="mt-10 border border-[#3C2A21]/80 bg-white/[0.02] px-5 py-7 sm:mt-12 sm:px-6 sm:py-8 md:px-8"
+          >
+            <legend class="text-[11px] font-semibold tracking-[0.28em] uppercase text-white/45">
+              Flavor notes
+            </legend>
+            <p id="flavor-filter-hint" class="mt-2 text-sm text-white/45">
+              Match any selected note. Leave them blank to see the full matrix for
+              your plan.
+            </p>
+            <div
+              class="mt-6 flex flex-wrap gap-4"
+              role="group"
+              aria-describedby="flavor-filter-hint"
+            >
+              <label
+                class="flex cursor-pointer items-center gap-3 border border-[#3C2A21]/90 px-4 py-3 text-sm tracking-wide transition-[border-color,background-color] duration-300 has-[:checked]:border-[#1B4332] has-[:checked]:bg-[#1B4332]/25"
+              >
+                <input
+                  type="checkbox"
+                  name="flavor-note"
+                  value="fruity"
+                  class="bsc-checkbox h-4 w-4"
+                />
+                <span>Fruity</span>
+              </label>
+              <label
+                class="flex cursor-pointer items-center gap-3 border border-[#3C2A21]/90 px-4 py-3 text-sm tracking-wide transition-[border-color,background-color] duration-300 has-[:checked]:border-[#1B4332] has-[:checked]:bg-[#1B4332]/25"
+              >
+                <input
+                  type="checkbox"
+                  name="flavor-note"
+                  value="chocolatey"
+                  class="bsc-checkbox h-4 w-4"
+                />
+                <span>Chocolatey</span>
+              </label>
+              <label
+                class="flex cursor-pointer items-center gap-3 border border-[#3C2A21]/90 px-4 py-3 text-sm tracking-wide transition-[border-color,background-color] duration-300 has-[:checked]:border-[#1B4332] has-[:checked]:bg-[#1B4332]/25"
+              >
+                <input
+                  type="checkbox"
+                  name="flavor-note"
+                  value="floral"
+                  class="bsc-checkbox h-4 w-4"
+                />
+                <span>Floral</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <p
+            id="bean-matrix-status"
+            class="mt-8 text-sm text-white/50"
+            aria-live="polite"
+          ></p>
+
+          <div
+            id="bean-matrix-grid"
+            class="mt-8 grid grid-cols-1 gap-5 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3"
+          ></div>
+        </div>
+      </section>
+
+      <section
+        id="guides"
+        class="border-t border-[#3C2A21]/40 scroll-mt-20 sm:scroll-mt-24"
+        aria-labelledby="guides-heading"
+      >
+        <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 md:px-10 md:py-24">
+          <h2
+            id="guides-heading"
+            class="text-xs font-semibold tracking-[0.3em] uppercase text-white/40"
+          >
+            Integrated brewing intelligence
+          </h2>
+          <p class="mt-4 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
+            Lock your numbers before you touch the kettle. Dial water from mass and
+            ratio—V60 or AeroPress—then chase the cup, not the guesswork.
+          </p>
+
+          <form
+            id="brew-calculator-form"
+            class="mt-10 max-w-xl border border-[#3C2A21]/85 bg-white/[0.02] p-5 sm:mt-12 sm:p-6 md:p-8"
+            novalidate
+          >
+            <div class="space-y-8">
+              <div>
+                <label
+                  for="brew-method"
+                  class="block text-[11px] font-semibold tracking-[0.28em] uppercase text-white/45"
+                  >Method</label
+                >
+                <select
+                  id="brew-method"
+                  name="method"
+                  class="mt-3 w-full border border-[#3C2A21]/90 bg-black px-4 py-3 text-sm text-white transition-[border-color,box-shadow] duration-300 focus:border-[#1B4332] focus:outline-none focus:ring-1 focus:ring-[#2D6A4F]/60"
+                >
+                  <option value="v60">V60</option>
+                  <option value="aeropress">AeroPress</option>
+                </select>
+                <p id="brew-method-hint" class="mt-2 text-xs text-white/40"></p>
+              </div>
+
+              <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+                <div>
+                  <label
+                    for="brew-coffee-g"
+                    class="block text-[11px] font-semibold tracking-[0.28em] uppercase text-white/45"
+                    >Coffee (g)</label
+                  >
+                  <input
+                    id="brew-coffee-g"
+                    name="coffeeG"
+                    type="number"
+                    inputmode="decimal"
+                    min="1"
+                    step="0.1"
+                    value="20"
+                    class="mt-3 w-full border border-[#3C2A21]/90 bg-black px-4 py-3 text-sm text-white transition-[border-color,box-shadow] duration-300 focus:border-[#1B4332] focus:outline-none focus:ring-1 focus:ring-[#2D6A4F]/60"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="brew-ratio"
+                    class="block text-[11px] font-semibold tracking-[0.28em] uppercase text-white/45"
+                    >Ratio (1 : n water)</label
+                  >
+                  <input
+                    id="brew-ratio"
+                    name="ratio"
+                    type="number"
+                    inputmode="decimal"
+                    min="1"
+                    step="0.5"
+                    value="16"
+                    class="mt-3 w-full border border-[#3C2A21]/90 bg-black px-4 py-3 text-sm text-white transition-[border-color,box-shadow] duration-300 focus:border-[#1B4332] focus:outline-none focus:ring-1 focus:ring-[#2D6A4F]/60"
+                  />
+                  <p class="mt-2 text-xs text-white/40">1 g coffee : n g water</p>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                class="bsc-btn-forest w-full border px-6 py-3.5 text-xs font-semibold tracking-[0.2em] uppercase sm:w-auto"
+              >
+                Calculate water
+              </button>
+            </div>
+          </form>
+
+          <div
+            id="brew-result"
+            class="mt-8 max-w-xl border border-[#3C2A21]/90 bg-[#1B4332]/15 px-5 py-6 text-sm text-white/85 sm:px-6"
+            role="status"
+            aria-live="polite"
+            hidden
+          ></div>
+        </div>
+      </section>
+
+      <section
+        id="subscription"
+        class="border-t border-[#3C2A21]/40 scroll-mt-20 sm:scroll-mt-24"
+        aria-labelledby="sub-heading"
+      >
+        <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 md:px-10 md:pb-28 md:pt-24">
+          <h2
+            id="sub-heading"
+            class="text-xs font-semibold tracking-[0.3em] uppercase text-white/40"
+          >
+            Coffee Concierge
+          </h2>
+          <p class="mt-4 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
+            Premium subscription logic: go rotational and chase the rare, or lock
+            fixed and let the same ruthless profile meet you every morning. Either
+            way, the Matrix above obeys your call.
+          </p>
+
+          <fieldset
+            class="mt-10 max-w-xl border border-[#3C2A21]/85 bg-white/[0.02] px-5 py-7 sm:mt-12 sm:px-6 sm:py-8 md:px-8"
+          >
+            <legend class="text-[11px] font-semibold tracking-[0.28em] uppercase text-white/45">
+              Plan
+            </legend>
+            <div
+              class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-0 sm:border sm:border-[#3C2A21]/90"
+              role="radiogroup"
+              aria-label="Coffee Concierge plan"
+            >
+              <label
+                class="bsc-plan-label flex min-h-[3.25rem] cursor-pointer items-center justify-center border border-[#3C2A21]/90 px-4 py-4 text-center text-xs font-semibold tracking-[0.2em] uppercase sm:border-r sm:border-[#3C2A21]/90"
+              >
+                <input
+                  type="radio"
+                  name="concierge-plan"
+                  value="rotational"
+                  class="sr-only"
+                  checked
+                />
+                Rotational
+              </label>
+              <label
+                class="bsc-plan-label flex min-h-[3.25rem] cursor-pointer items-center justify-center border border-[#3C2A21]/90 px-4 py-4 text-center text-xs font-semibold tracking-[0.2em] uppercase sm:border-0"
+              >
+                <input
+                  type="radio"
+                  name="concierge-plan"
+                  value="fixed"
+                  class="sr-only"
+                />
+                Fixed
+              </label>
+            </div>
+            <p id="plan-description" class="mt-6 text-sm leading-relaxed text-white/55"></p>
+          </fieldset>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="border-t border-[#3C2A21]/70 px-4 py-10 text-center text-[10px] leading-relaxed tracking-[0.22em] text-white/40 sm:py-12 sm:text-[11px]"
+    >
+      Better Specialty Coffee · Coffee till I die · Swiss discipline, underground
+      pulse
+    </footer>
+
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
