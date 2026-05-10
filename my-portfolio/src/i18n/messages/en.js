@@ -93,7 +93,17 @@ export const en = {
       solution:
         'Visual identity: a deep dark theme built around “Patina Copper” and “Graphite”. UX/UI: multilingual interactive menu with smooth navigation tuned for fast first paint. Architecture: lightweight single‑page app structure for instant response on mobile.',
       stack: 'SPA · HTML5 · CSS3 · JavaScript',
-      linkLabel: 'Live soon',
+      linkLabel: 'View live',
+    },
+    barDinner88: {
+      title: 'Bar & Dinner 88',
+      tagline: 'Sofia · Vitosha Blvd · premium digital experience',
+      task:
+        'Deliver a high-end one-page experience for an elite Vitosha restaurant — translate premium dining into cinematic visuals, fluid motion, and a booking path guests complete in seconds.',
+      solution:
+        'Luxury dark aesthetic — obsidian base with gold accents and editorial typography. Dynamic menu (breakfast, lunch, dinner, drinks) built for fast scanning on mobile. Tablein integration for real-time reservations under ~60 seconds. Full BG / EN localisation. Parallax and Motion (Framer Motion) for depth without clutter. Map module with a precise Vitosha marker. Implementation: HTML5 + modular app.js, Tailwind for theming velocity, Motion for animation; GitHub Pages delivery targeting fast loads and strong Lighthouse scores.',
+      stack: 'HTML5 · Tailwind CSS · Motion · GitHub Pages',
+      linkLabel: 'View live',
     },
     opaRestaurant: {
       title: 'Opa! Greek Restaurant',

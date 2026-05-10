@@ -35,6 +35,11 @@ export default function App() {
       return {
         ...def,
         ...copy,
+        id: def.id,
+        accent: def.accent,
+        icon: def.icon,
+        coverImage: def.coverImage,
+        tags: def.tags,
         title:
           typeof copy.title === 'string' && copy.title.trim()
             ? copy.title.trim()
@@ -280,6 +285,8 @@ export default function App() {
                 }) => {
                   const linkHref =
                     typeof href === 'string' && href.length > 0 ? href : '#'
+                  const IconComp =
+                    typeof Icon === 'function' ? Icon : () => null
                   return (
                   <li id={`project-${id}`} key={id}>
                     <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[var(--color-mist)]/80 transition duration-300 hover:border-[var(--color-accent)]/25 hover:bg-[var(--color-mist)] hover:shadow-[0_0_0_1px_rgba(196,165,116,0.08)]">
@@ -298,7 +305,7 @@ export default function App() {
                             className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/[0.06] bg-[var(--color-accent-soft)] text-[var(--color-accent)] transition group-hover:border-[var(--color-accent)]/20"
                             aria-hidden
                           >
-                            <Icon className="h-5 w-5" strokeWidth={1.5} />
+                            <IconComp className="h-5 w-5" strokeWidth={1.5} />
                           </div>
                           <span
                             className={
