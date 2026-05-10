@@ -95,6 +95,16 @@ export const bg = {
       stack: 'SPA · HTML5 · CSS3 · JavaScript',
       linkLabel: 'Скоро онлайн',
     },
+    opaRestaurant: {
+      title: 'Opa! Greek Restaurant',
+      tagline: 'София · автентична гръцка кухня · бул. Витоша',
+      task:
+        'Премиален едностраничен лендинг за гръцки ресторант „Opa!“ в центъра на София — средиземноморско гостоприемство, резервации и меню в един спокоен разказ.',
+      solution:
+        'Визуална концепция: гръцка палитра с акцент Santorini Blue, контрастна типография и whitespace за висок клас. Структура: hero със силно заглавие и CTA за резервация/меню; „Нашата история“ с цитат на шефа; социални доказателства (Google/TripAdvisor, броячи за резервации); интерактивно меню по категории (мезета, грил, морски дарове, вина); галерия в Pinterest стил. Форма за резервация с дата, час и брой гости и учтиво BG потвърждение. Тройно езиково превключване (BG / EN / EL); футер с бул. „Витоша“ 42, работно време и контакти. Технически: index.html + app.js + Tailwind — лека статична архитектура, готова за презентация.',
+      stack: 'HTML5 · Tailwind CSS · JavaScript',
+      linkLabel: 'Отворете на живо',
+    },
     blackLabelCoffee: {
       title: 'Black Label Coffee House & Bakery',
       tagline:
@@ -104,6 +114,17 @@ export const bg = {
       solution:
         'Визуален код: The Void — #000; Vibrant Neon — #00FF41 / #39FF14 за бутони, кандзи и линии; Warm Wood — #3E2723. Типография: Oswald / Anton, JetBrains Mono. Детайли: вертикални кандзи (напр. 珈琲), 3D skele-ristas, мерцащ неон при hover, лек glitch при зареждане, smooth scroll и фин matrix rain в тъмнокафяви тонове.',
       stack: 'HTML5 · CSS3 · JavaScript',
+      linkLabel: 'Към сайта',
+    },
+    betterSpecialtyCoffee: {
+      title: 'Better Specialty Coffee',
+      tagline:
+        'София · specialty slow bar · премиум магазин и ритуал на запарване',
+      task:
+        'Високотехнологична дигитална платформа за истински ентусиасти на кафената култура: съчетава премиален онлайн магазин и атмосфера на имерсивен „slow bar“, безкомпромисно качество на зърното.',
+      solution:
+        'Философия „Coffee till I Die“ — Edgy Sophistication: „тъмен академизъм“ и улична култура вместо светли клишета. Палитра: дълбоко черно (#000), типография „кост“ (#FFFFFF), акценти „гора“. Маскот: стилизирани скелети-бариста. Швейцарски минимализъм — строга мрежа, празно пространство, силен визуал. The Bean Matrix: търсене по сензорни белези (киселинност, сладост, тяло), обработка, надморска височина. SCA 80+: прозрачност от ферма до дата на печене. Integrated Brewing Intelligence: V60, AeroPress, Espresso с калкулатори. Coffee Concierge: абонаменти. Стек за LCP < 1,5 s: Next.js App Router, Tailwind, Shopify Storefront API, Sanity, Vercel Edge. Фаза 1 MVP; лоялност „The Bone Club“ в разработка.',
+      stack: 'Next.js · Tailwind CSS · Shopify · Sanity · Vercel',
       linkLabel: 'Към сайта',
     },
     mistralCafe: {

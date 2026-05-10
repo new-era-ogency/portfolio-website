@@ -28,13 +28,18 @@ export default function App() {
   const { locale, setLocale, t, langOptions } = useLocale()
 
   const projects = useMemo(() => {
+    const catalog = t.projects ?? {}
     return projectDefs.map((def) => {
-      const copy = t.projects[def.id] ?? {}
+      const copy = catalog[def.id] ?? {}
+      const hrefRaw = copy.href ?? def.href ?? '#'
       return {
         ...def,
         ...copy,
-        title: copy.title ?? def.id,
-        href: copy.href ?? def.href ?? '#',
+        title:
+          typeof copy.title === 'string' && copy.title.trim()
+            ? copy.title.trim()
+            : def.id,
+        href: typeof hrefRaw === 'string' ? hrefRaw : '#',
       }
     })
   }, [t])
@@ -273,9 +278,10 @@ export default function App() {
                   coverImage,
                   tags: hashTags,
                 }) => {
-                  const linkHref = href ?? '#'
+                  const linkHref =
+                    typeof href === 'string' && href.length > 0 ? href : '#'
                   return (
-                  <li key={id}>
+                  <li id={`project-${id}`} key={id}>
                     <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[var(--color-mist)]/80 transition duration-300 hover:border-[var(--color-accent)]/25 hover:bg-[var(--color-mist)] hover:shadow-[0_0_0_1px_rgba(196,165,116,0.08)]">
                       {coverImage ? (
                         <div className="relative aspect-[16/10] shrink-0 overflow-hidden border-b border-white/[0.06]">

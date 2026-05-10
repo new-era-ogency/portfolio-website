@@ -95,6 +95,16 @@ export const en = {
       stack: 'SPA · HTML5 · CSS3 · JavaScript',
       linkLabel: 'Live soon',
     },
+    opaRestaurant: {
+      title: 'Opa! Greek Restaurant',
+      tagline: 'Sofia · authentic Greek cuisine · Vitosha Blvd',
+      task:
+        'Ship a polished one-page landing for a premium Greek restaurant in central Sofia — Mediterranean hospitality, reservations, and menu discovery in a single calm narrative.',
+      solution:
+        'Visual language: Greek palette with Santorini blue accents, high-contrast typography, and generous negative space for a refined, modern read. Structure: hero with decisive headline + booking/menu CTAs; story block with chef quote and freshness cues; social proof (Google/TripAdvisor, weekly booking counters); tabbed menu across mezze, grill, seafood, and wines; Pinterest-style responsive gallery. Booking flow with date, time, and party size plus a friendly BG confirmation state. Trilingual header (BG / EN / EL); footer with Vitosha 42, hours, and contacts. Built as index.html + app.js + Tailwind for a lightweight, presentation-ready static site.',
+      stack: 'HTML5 · Tailwind CSS · JavaScript',
+      linkLabel: 'View live',
+    },
     blackLabelCoffee: {
       title: 'Black Label Coffee House & Bakery',
       tagline:
@@ -104,6 +114,16 @@ export const en = {
       solution:
         'Design system — The Void: #000 so content feels suspended. Vibrant Neon: #00FF41 / #39FF14 on CTAs, kanji, and interactive lines. Warm Wood: #3E2723 for coffee‑toned calm. Type: Oswald / Anton headlines, JetBrains Mono for terminal body copy. Atmosphere: vertical kanji (e.g. 珈琲), “skele‑rista” 3D baristas, flickering neon on links, light glitch on headings, smooth scroll, and a subtle brown‑tinted matrix rain.',
       stack: 'HTML5 · CSS3 · JavaScript',
+      linkLabel: 'View live',
+    },
+    betterSpecialtyCoffee: {
+      title: 'Better Specialty Coffee',
+      tagline: 'Sofia · specialty slow bar · premium shop & immersive ritual',
+      task:
+        'A high‑tech digital platform for people serious about coffee: merge a premium storefront with the atmosphere of an immersive slow bar, and communicate uncompromising quality from farm to cup.',
+      solution:
+        'Philosophy “Coffee till I Die” — Edgy Sophistication: dark academia and street culture instead of generic bright café clichés. Palette: deep black (#000), bone‑white type (#FFFFFF), forest‑green accents. Mascot: stylized skeleton baristas framing brewing as timeless craft. Swiss minimalist UI — strict grid, generous space, editorial imagery. Product engine: Bean Matrix (sensorial bean search — acidity, sweetness, body, process, elevation), SCA 80+ transparency from named farm to roast date, Integrated Brewing Intelligence (V60, AeroPress, Espresso) with live ratio calculators, Coffee Concierge subscriptions. Stack tuned for LCP < 1.5s: Next.js App Router, Tailwind, Shopify Storefront API, Sanity CMS, Vercel Edge. Active Phase 1 MVP; loyalty program “The Bone Club” in development.',
+      stack: 'Next.js · Tailwind CSS · Shopify · Sanity · Vercel',
       linkLabel: 'View live',
     },
     mistralCafe: {
