@@ -9,6 +9,7 @@ export const en = {
     about: 'About',
     github: 'GitHub',
     language: 'Language',
+    pricing: 'Pricing',
   },
   hero: {
     badge: 'New Era Agency · open for projects',
@@ -45,10 +46,37 @@ export const en = {
     screenshotAltSuffix: 'home page screenshot',
     mobileBadge: 'Mobile Optimized',
   },
+  pricing: {
+    title: 'Pricing',
+    lead:
+      'Starter packages — scope and timeline are always tailored to your brief.',
+    colPackage: 'Package',
+    colIncludes: "What's included",
+    colPrice: 'Price',
+    rows: [
+      {
+        name: 'Basic',
+        includes: 'One-page brochure site',
+        price: '150€',
+      },
+      {
+        name: 'Standard',
+        includes: 'Site + SEO setup + Google Maps',
+        price: '250€',
+      },
+      {
+        name: 'Premium',
+        includes: 'Site + SEO + booking form + 1 month support',
+        price: '350€',
+      },
+    ],
+  },
   footer: {
     title: "Let's talk",
     lead:
       'Tell us about your brand, goals, and timeline — we’ll reply with direction and timings.',
+    instagramLabel: 'Instagram',
+    phoneLabel: 'Phone',
     note: ({ year }) =>
       `© ${year} New Era Agency — React & Tailwind`,
   },

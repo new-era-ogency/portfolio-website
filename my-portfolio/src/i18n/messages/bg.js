@@ -9,6 +9,7 @@ export const bg = {
     about: 'За нас',
     github: 'GitHub',
     language: 'Език',
+    pricing: 'Цени',
   },
   hero: {
     badge: 'New Era Agency · отворени за проекти',
@@ -45,10 +46,37 @@ export const bg = {
     screenshotAltSuffix: 'начална страница',
     mobileBadge: 'Оптимизирано за мобилни устройства',
   },
+  pricing: {
+    title: 'Ценоразпис',
+    lead:
+      'Стартови пакети — обхватът и сроковете винаги уточняваме според задачата.',
+    colPackage: 'Пакет',
+    colIncludes: 'Какво включва',
+    colPrice: 'Цена',
+    rows: [
+      {
+        name: 'Базов',
+        includes: 'Сайт-визитка',
+        price: '150€',
+      },
+      {
+        name: 'Стандарт',
+        includes: 'Сайт + SEO настройка + Google Maps',
+        price: '250€',
+      },
+      {
+        name: 'Премиум',
+        includes: 'Сайт + SEO + форма за резервация + месец поддръжка',
+        price: '350€',
+      },
+    ],
+  },
   footer: {
     title: 'Хайде да говорим',
     lead:
       'Разкажете за марка, цели и срокове — отговаряме с насока и времева рамка.',
+    instagramLabel: 'Instagram',
+    phoneLabel: 'Телефон',
     note: ({ year }) =>
       `© ${year} New Era Agency — React и Tailwind`,
   },

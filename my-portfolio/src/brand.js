@@ -6,3 +6,11 @@ export const GITHUB_ORG = {
   avatarUrl: 'https://avatars.githubusercontent.com/u/275119920?v=4',
   displayName: 'New Era Agency',
 }
+
+/** Личные контакты для футера. */
+export const CONTACT = {
+  instagramHref:
+    'https://www.instagram.com/rodionkhrn96?igsh=bTk3aHMzYWpwZGMx&utm_source=qr',
+  phoneDisplay: '+380 68 805 38 60',
+  phoneTel: '+380688053860',
+}

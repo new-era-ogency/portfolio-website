@@ -9,6 +9,7 @@ export const uk = {
     about: 'Про команду',
     github: 'GitHub',
     language: 'Мова',
+    pricing: 'Прайс',
   },
   hero: {
     badge: 'New Era Agency · відкриті до проєктів',
@@ -45,10 +46,37 @@ export const uk = {
     screenshotAltSuffix: 'головна сторінка',
     mobileBadge: 'Оптимізовано під смартфони',
   },
+  pricing: {
+    title: 'Прайс-лист',
+    lead:
+      'Стартові пакети — обсяг і терміни завжди узгоджуємо під задачу.',
+    colPackage: 'Пакет',
+    colIncludes: 'Що входить',
+    colPrice: 'Ціна',
+    rows: [
+      {
+        name: 'Базовий',
+        includes: 'Сайт-візитка',
+        price: '150€',
+      },
+      {
+        name: 'Стандарт',
+        includes: 'Сайт + SEO-налаштування + Google Maps',
+        price: '250€',
+      },
+      {
+        name: 'Преміум',
+        includes: 'Сайт + SEO + форма бронювання + місяць підтримки',
+        price: '350€',
+      },
+    ],
+  },
   footer: {
     title: 'Почнімо діалог',
     lead:
       'Опишіть бренд, цілі та таймінг — повернемо напрямок і попередню оцінку термінів.',
+    instagramLabel: 'Instagram',
+    phoneLabel: 'Телефон',
     note: ({ year }) =>
       `© ${year} New Era Agency — React та Tailwind`,
   },

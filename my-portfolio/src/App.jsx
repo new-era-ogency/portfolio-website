@@ -2,14 +2,16 @@ import { useMemo } from 'react'
 import {
   ArrowUpRight,
   Github,
+  Instagram,
   Mail,
   MapPin,
+  Phone,
   Smartphone,
 } from 'lucide-react'
 
 import { projectDefs } from './i18n/projectDefs.js'
 import { useLocale } from './i18n/useLocale.js'
-import { GITHUB_ORG } from './brand.js'
+import { CONTACT, GITHUB_ORG } from './brand.js'
 
 function TelegramIcon({ className }) {
   return (
@@ -99,6 +101,12 @@ export default function App() {
             className="transition-colors hover:text-zinc-100"
           >
             {t.nav.projects}
+          </a>
+          <a
+            href="#pricing"
+            className="transition-colors hover:text-zinc-100"
+          >
+            {t.nav.pricing}
           </a>
           <a
             href="#contact"
@@ -409,6 +417,77 @@ export default function App() {
           </div>
         </section>
 
+        <section
+          id="pricing"
+          aria-labelledby="pricing-heading"
+          className="border-t border-white/[0.06] bg-black/30 py-20 sm:py-28"
+        >
+          <div className="mx-auto max-w-6xl px-6 sm:px-8">
+            <div className="mb-10 sm:mb-12">
+              <h2
+                id="pricing-heading"
+                className="font-display text-3xl font-medium tracking-tight text-zinc-50 sm:text-4xl"
+              >
+                {t.pricing.title}
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-500">
+                {t.pricing.lead}
+              </p>
+            </div>
+            <div className="overflow-x-auto rounded-2xl border border-white/[0.08] bg-[var(--color-mist)]/70 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+              <table className="w-full min-w-[32rem] border-collapse">
+                <caption className="sr-only border-b-0">
+                  {t.pricing.title}
+                </caption>
+                <thead>
+                  <tr className="border-b border-white/[0.1]">
+                    <th
+                      scope="col"
+                      className="font-display px-5 py-4 text-left text-sm font-semibold text-zinc-100 sm:px-6 sm:py-5"
+                    >
+                      {t.pricing.colPackage}
+                    </th>
+                    <th
+                      scope="col"
+                      className="font-display px-5 py-4 text-left text-sm font-semibold text-zinc-100 sm:px-6 sm:py-5"
+                    >
+                      {t.pricing.colIncludes}
+                    </th>
+                    <th
+                      scope="col"
+                      className="whitespace-nowrap px-5 py-4 text-right font-display text-sm font-semibold text-zinc-100 sm:px-6 sm:py-5"
+                    >
+                      {t.pricing.colPrice}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(t.pricing.rows ?? []).map((row, i, arr) => (
+                    <tr
+                      key={row.name}
+                      className={
+                        i < arr.length - 1
+                          ? 'border-b border-white/[0.06]'
+                          : ''
+                      }
+                    >
+                      <td className="align-top px-5 py-4 font-display text-sm font-semibold text-zinc-50 sm:px-6 sm:py-5">
+                        {row.name}
+                      </td>
+                      <td className="align-top px-5 py-4 text-sm leading-relaxed text-zinc-400 sm:px-6 sm:py-5">
+                        {row.includes}
+                      </td>
+                      <td className="whitespace-nowrap px-5 py-4 text-right font-display text-sm font-semibold text-[var(--color-accent)] sm:px-6 sm:py-5">
+                        {row.price}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
         <footer
           id="contact"
           className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24"
@@ -427,6 +506,23 @@ export default function App() {
               >
                 <Mail className="h-4 w-4 text-[var(--color-accent)]" />
                 hirneyrodion@gmail.com
+              </a>
+              <a
+                href={`tel:${CONTACT.phoneTel}`}
+                className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-sm text-zinc-300 transition hover:border-white/20 hover:bg-white/[0.07]"
+                aria-label={t.footer.phoneLabel}
+              >
+                <Phone className="h-4 w-4 text-[var(--color-accent)]" />
+                {CONTACT.phoneDisplay}
+              </a>
+              <a
+                href={CONTACT.instagramHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-sm text-zinc-300 transition hover:border-white/20 hover:bg-white/[0.07]"
+              >
+                <Instagram className="h-4 w-4 text-[var(--color-accent)]" />
+                {t.footer.instagramLabel}
               </a>
               <a
                 href={GITHUB_ORG.url}
