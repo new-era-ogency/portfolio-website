@@ -1,0 +1,3154 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="ICAN Women Foundation — психологічна, юридична та соціальна допомога жінкам і дітям у громадах Харківщини.">
+  <meta property="og:title" content="ICAN Women Foundation">
+  <meta property="og:description" content="Supporting women and children living beside war in Ukraine.">
+  <meta property="og:image" content="https://icanwomen.org/og-image.jpg">
+  <meta property="og:url" content="https://icanwomen.org/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://icanwomen.org/">
+
+  <title>ICAN Women Foundation — Підтримка жінок і дітей Харківщини</title>
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ICAN Women Foundation",
+    "url": "https://icanwomen.org",
+    "description": "Psychological, legal and social support for women and children in Kharkiv region communities affected by war.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "UA",
+      "addressRegion": "Kharkiv Oblast"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "info@icanwomen.org"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts: Onest (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Onest:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       DESIGN SYSTEM — CSS CUSTOM PROPERTIES  (PRD §7)
+       ============================================================ */
+    :root {
+      /* --- Colours (white + dusty rose — ICAN-style) --- */
+      --color-accent:        #D989A3;
+      --color-accent-hover:  #C4708D;
+      --color-accent-muted:  #E8B3C5;
+      --color-accent-soft:   #FDF4F7;
+      --color-accent-rgb:    217, 137, 163;
+
+      --color-dark:          #2A2526;
+      --color-mid:           #5C5356;
+      --color-muted:         #8A8285;
+      --color-border:        #EDE5E8;
+      --color-surface:       #FAF8F9;
+      --color-white:         #FFFFFF;
+      --color-warm-bg:       #FFFBFC;
+      --color-warm-pink:     #FDF2F6;
+
+      --color-success:       #22C55E;
+      --color-error:         #B73950;
+      --color-warning:       #F59E0B;
+
+      /* --- Spacing Scale --- */
+      --space-xs:   0.25rem;   /*  4px */
+      --space-sm:   0.5rem;    /*  8px */
+      --space-md:   1rem;      /* 16px */
+      --space-lg:   1.5rem;    /* 24px */
+      --space-xl:   2rem;      /* 32px */
+      --space-2xl:  3rem;      /* 48px */
+      --space-3xl:  4.5rem;    /* 72px */
+      --space-4xl:  6rem;      /* 96px */
+
+      /* --- Border Radius --- */
+      --radius-sm:   6px;
+      --radius-md:   12px;
+      --radius-lg:   20px;
+      --radius-xl:   32px;
+      --radius-full: 9999px;
+
+      /* --- Shadows --- */
+      --shadow-sm:     0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md:     0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+      --shadow-lg:     0 12px 40px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-accent: 0 4px 20px rgba(var(--color-accent-rgb), 0.22);
+
+      /* --- Typography --- */
+      --font-heading: 'Onest', sans-serif;
+      --font-body:    'Inter', sans-serif;
+
+      /* --- Transitions --- */
+      --transition-fast: 0.15s ease;
+      --transition-base: 0.3s ease;
+      --transition-slow: 0.6s ease;
+
+      /* --- Layout --- */
+      --container-max:  1200px;
+      --container-pad:  var(--space-md);
+      --header-height:  56px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      overflow-x: clip;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--color-dark);
+      background: var(--color-white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img, svg { display: block; max-width: 100%; }
+    a        { color: inherit; text-decoration: none; }
+    button   { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul, ol   { list-style: none; }
+    input, textarea, select { font-family: inherit; font-size: inherit; }
+
+    /* ============================================================
+       ACCESSIBILITY
+       ============================================================ */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      z-index: 9999;
+      transition: top var(--transition-fast);
+    }
+    .skip-link:focus { top: var(--space-md); }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* ============================================================
+       LAYOUT UTILITIES
+       ============================================================ */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding-inline: max(var(--container-pad), env(safe-area-inset-left, 0px))
+        max(var(--container-pad), env(safe-area-inset-right, 0px));
+    }
+
+    .section-pad { padding: var(--space-3xl) 0; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: none;
+      color: var(--color-muted);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--color-dark);
+      line-height: 1.26;
+      font-size: clamp(1.65rem, 3.85vw, 2.45rem);
+    }
+
+    .section-subtitle {
+      font-size: clamp(0.975rem, 1.95vw, 1.0625rem);
+      color: var(--color-mid);
+      margin-top: var(--space-md);
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.75;
+    }
+
+    .section-pad-relaxed { padding: clamp(4rem, 10vw, 6.5rem) 0; }
+    .section-pad-snug { padding: clamp(3rem, 7vw, 4.75rem) 0; }
+
+    /* Asymmetric splits */
+    .split-asym {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+
+    .section-warm-bg   { background: var(--color-warm-bg); }
+    .section-soft-pink { background: var(--color-warm-pink); }
+    .section-header--wide .section-subtitle { max-width: 720px; }
+
+    .section-header--left {
+      text-align: left;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .section-header--left .section-subtitle {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* ============================================================
+       TYPOGRAPHY SCALE
+       ============================================================ */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      line-height: 1.2;
+      color: var(--color-dark);
+    }
+    p { color: var(--color-mid); line-height: 1.76; }
+
+    /* Softer headings (trust / editorial nonprofit) */
+    h1 { font-weight: 600 !important; letter-spacing: -0.025em !important; }
+    h2, h3 { font-weight: 600; }
+
+    /* ============================================================
+       BUTTONS  (PRD §7.2.3)
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      border: 2px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition:
+        background var(--transition-fast),
+        box-shadow  var(--transition-fast),
+        transform   var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    .btn-primary {
+      padding: 14px 28px;
+      background: var(--color-accent);
+      color: var(--color-white);
+    }
+    .btn-primary:hover {
+      background: var(--color-accent-hover);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); box-shadow: none; }
+
+    .btn-secondary {
+      padding: 12px 26px;
+      background: transparent;
+      color: var(--color-dark);
+      border-color: var(--color-border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: var(--color-accent-soft);
+    }
+
+    .btn-sm { padding: 10px 22px; font-size: 0.875rem; }
+
+    .btn .btn-spinner {
+      display: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+    .btn.loading .btn-spinner { display: block; }
+    .btn.loading .btn-text    { display: none;  }
+
+    /* ============================================================
+       HEADER / NAVIGATION  (PRD §7.2.1)
+       ============================================================ */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      padding-top: env(safe-area-inset-top, 0px);
+      background: transparent;
+      transition:
+        background  var(--transition-base),
+        box-shadow  var(--transition-base);
+    }
+
+    /* Glassmorphism state — applied by JS on scroll > 80px */
+    .site-header.scrolled {
+      background: rgba(255, 251, 252, 0.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 1px 0 rgba(var(--color-accent-rgb), 0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--header-height);
+      gap: var(--space-lg);
+    }
+
+    /* Logo */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-shrink: 0;
+    }
+    .brand-logo-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      line-height: 0;
+      isolation: isolate;
+    }
+    .brand-logo-mark img {
+      display: block;
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      image-rendering: auto;
+      /* Чіткіший дрібний текст у колі після масштабування */
+      filter: contrast(1.08);
+      -webkit-filter: contrast(1.08);
+    }
+    .nav-logo__text {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: var(--color-dark);
+      letter-spacing: -0.03em;
+    }
+    .nav-logo__text span { color: var(--color-accent); }
+
+    /* Desktop links */
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: clamp(1rem, 2vw, 1.75rem);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .nav-links a {
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-dark);
+      position: relative;
+      transition: color var(--transition-fast);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--color-accent);
+      border-radius: var(--radius-full);
+      transform: scaleX(0);
+      transition: transform var(--transition-fast);
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--color-accent); opacity: 1; }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { transform: scaleX(1); }
+
+    /* Nav actions wrapper */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-shrink: 0;
+    }
+
+    .nav-donate {
+      padding: 10px 20px !important;
+      font-weight: 500 !important;
+      font-size: 0.875rem !important;
+      box-shadow: none !important;
+    }
+
+    /* Language Toggle */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      padding: 3px;
+      gap: 2px;
+    }
+    .lang-btn {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: none;
+      background: transparent;
+      color: var(--color-muted);
+      cursor: pointer;
+      line-height: 1;
+      transition: all var(--transition-fast);
+    }
+    .lang-btn.active { background: var(--color-accent); color: var(--color-white); }
+    .lang-btn:hover:not(.active) { color: var(--color-dark); }
+
+    /* Hamburger */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      gap: 5px;
+      border-radius: var(--radius-sm);
+      transition: background var(--transition-fast);
+    }
+    .hamburger:hover { background: var(--color-surface); }
+    .hamburger__line {
+      width: 22px;
+      height: 2px;
+      background: var(--color-dark);
+      border-radius: var(--radius-full);
+      transition: transform var(--transition-base), opacity var(--transition-base), width var(--transition-base);
+    }
+    .hamburger.is-open .hamburger__line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.is-open .hamburger__line:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger.is-open .hamburger__line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ============================================================
+       MOBILE MENU — бічна панель + затемнення (краще за fullscreen)
+       ============================================================ */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 101;
+      pointer-events: none;
+      visibility: hidden;
+      transition:
+        visibility 0.42s step-end,
+        opacity 0s linear 0.42s;
+      opacity: 0;
+    }
+    .mobile-menu.is-open {
+      pointer-events: auto;
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0s step-start, opacity 0s linear;
+    }
+
+    .mobile-menu__backdrop {
+      position: absolute;
+      inset: 0;
+      border: none;
+      padding: 0;
+      margin: 0;
+      background: rgba(42, 37, 38, 0.48);
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .mobile-menu.is-open .mobile-menu__backdrop {
+      opacity: 1;
+    }
+
+    .mobile-menu__panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(20.5rem, calc(100vw - 2.25rem));
+      max-width: 100%;
+      background: var(--color-white);
+      box-shadow: -10px 0 36px rgba(0, 0, 0, 0.14);
+      display: flex;
+      flex-direction: column;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: max(var(--space-lg), env(safe-area-inset-bottom, 0px));
+      padding-left: var(--space-lg);
+      padding-right: max(var(--space-lg), env(safe-area-inset-right, 0px));
+      transform: translateX(100%);
+      transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .mobile-menu.is-open .mobile-menu__panel {
+      transform: translateX(0);
+    }
+
+    .mobile-menu__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      min-height: var(--header-height);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: var(--space-md);
+    }
+
+    .mobile-menu__nav {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .mobile-menu__nav a {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--color-border);
+      transition: color var(--transition-fast);
+    }
+    .mobile-menu__nav a:hover { color: var(--color-accent); }
+
+    .mobile-menu__footer {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--color-border);
+      flex-shrink: 0;
+    }
+    .mobile-menu__footer .lang-toggle { align-self: flex-start; }
+
+    /* ============================================================
+       HERO SECTION  (PRD §7.2.2)
+       ============================================================ */
+    .hero {
+      min-height: min(88svh, 780px);
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: calc(var(--header-height) + env(safe-area-inset-top, 0px));
+      padding-bottom: max(var(--space-2xl), env(safe-area-inset-bottom, 0px));
+      background: var(--color-white);
+      overflow: hidden;
+    }
+
+    /* Дуже легкий рожевий ритм — без «стартапового» шуму */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        -48deg,
+        transparent,
+        transparent 56px,
+        rgba(var(--color-accent-rgb), 0.028) 56px,
+        rgba(var(--color-accent-rgb), 0.028) 57px
+      );
+      pointer-events: none;
+    }
+
+    /* Soft radial glow blob */
+    .hero__blob {
+      position: absolute;
+      top: -12%;
+      right: -14%;
+      width: 52%;
+      height: 75%;
+      background: radial-gradient(ellipse at center, rgba(var(--color-accent-rgb), 0.07) 0%, transparent 72%);
+      pointer-events: none;
+      filter: blur(36px);
+    }
+
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+      align-items: center;
+      width: 100%;
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+
+    /* Рожева панель зліва як на референсі ICAN — білий текст */
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(148deg, var(--color-accent) 0%, #D0829C 45%, var(--color-accent-hover) 100%);
+      border-radius: clamp(28px, 5vw, 44px);
+      padding: clamp(1.85rem, 5vw, 3.15rem);
+      box-shadow:
+        0 20px 48px rgba(var(--color-accent-rgb), 0.28),
+        0 1px 0 rgba(255,255,255,0.22) inset;
+    }
+
+    .hero .hero__headline {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: clamp(2.1rem, 5vw, 3.35rem);
+      line-height: 1.14;
+      letter-spacing: -0.025em;
+      color: var(--color-white);
+      margin-bottom: var(--space-md);
+    }
+    .hero .hero__headline mark {
+      color: rgba(255,255,255,0.98);
+      background: none;
+      font-weight: 900;
+    }
+
+    .hero .hero__subheading {
+      font-size: clamp(1rem, 1.9vw, 1.125rem);
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.93);
+      margin-bottom: var(--space-sm);
+      max-width: 520px;
+    }
+
+    .hero .hero__mission {
+      font-size: 0.975rem;
+      line-height: 1.72;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 520px;
+      margin-bottom: var(--space-sm);
+    }
+
+    .hero .hero__impact-line {
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.96);
+      margin-bottom: var(--space-xl);
+      max-width: 520px;
+      line-height: 1.5;
+    }
+
+    .hero .hero__cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-md);
+      align-items: center;
+    }
+
+    .hero .hero__cta-note {
+      width: 100%;
+      margin-top: var(--space-xs);
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .hero .hero__cta-note a {
+      color: var(--color-white);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .hero .hero__trust {
+      margin-top: var(--space-xl);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md) var(--space-lg);
+    }
+    .hero .hero__trust-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.84);
+    }
+    .hero .hero__trust-item svg {
+      color: rgba(255, 255, 255, 0.95);
+      flex-shrink: 0;
+    }
+
+    /* CTAs всередині рожевої панелі: білий solid + ghost — як на макеті */
+    .hero .btn-primary {
+      background: var(--color-white);
+      color: var(--color-dark);
+      border: 2px solid transparent;
+    }
+    .hero .btn-primary:hover {
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+    .hero .btn-secondary {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.88);
+      color: var(--color-white);
+    }
+    .hero .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--color-white);
+      color: var(--color-white);
+    }
+
+    /* Hero image — великі радіуси, білий кордон */
+    .hero__visual {
+      position: relative;
+      border-radius: clamp(28px, 5vw, 46px);
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-md);
+      border: 3px solid var(--color-white);
+    }
+    .hero__visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 38% center;
+    }
+    .hero__visual-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      color: var(--color-muted);
+      font-size: 0.875rem;
+      text-align: center;
+      padding: var(--space-xl);
+    }
+    .hero__visual-placeholder svg {
+      width: 52px;
+      height: 52px;
+      color: var(--color-accent);
+      opacity: 0.35;
+    }
+
+    /* Scroll chevron */
+    .scroll-indicator {
+      position: absolute;
+      bottom: max(var(--space-xl), env(safe-area-inset-bottom, 0px));
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--color-muted);
+      animation: bounce 2s ease-in-out infinite;
+      transition: opacity var(--transition-base);
+    }
+    .scroll-indicator.hidden { opacity: 0; pointer-events: none; }
+
+    /* ============================================================
+       IMPACT STATS SECTION
+       ============================================================ */
+    .our-impact {
+      background: var(--color-warm-bg);
+      padding: clamp(3.75rem, 8.5vw, 5.75rem) 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .our-impact__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .impact-pillar {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+      transition:
+        box-shadow var(--transition-base),
+        border-color var(--transition-base);
+    }
+    .impact-pillar:hover {
+      box-shadow: var(--shadow-sm);
+      border-color: rgba(0,0,0,0.12);
+    }
+
+    .impact-pillar__num {
+      font-family: var(--font-heading);
+      font-size: clamp(1.75rem, 3.8vw, 2.5rem);
+      font-weight: 600;
+      color: var(--color-accent);
+      line-height: 1.05;
+      margin-bottom: var(--space-sm);
+      letter-spacing: -0.02em;
+    }
+
+    .impact-pillar__label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-mid);
+      line-height: 1.45;
+    }
+
+    /* Real stories — staggered cards + expandable body */
+    .stories {
+      padding: clamp(4.25rem, 9vw, 6.25rem) 0;
+      background: var(--color-warm-bg);
+    }
+
+    .stories__philosophy {
+      font-family: var(--font-heading);
+      font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+      font-weight: 700;
+      color: var(--color-dark);
+      line-height: 1.45;
+      margin: var(--space-md) 0 var(--space-sm);
+      max-width: 42rem;
+    }
+
+    .stories__mosaic {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+      margin-top: var(--space-xl);
+    }
+
+    .story-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: box-shadow var(--transition-base);
+    }
+    .story-card:hover { box-shadow: var(--shadow-md); }
+
+    .story-card__media {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: var(--color-surface);
+      flex-shrink: 0;
+    }
+    .story-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .story-card__body {
+      padding: var(--space-lg) var(--space-xl) var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: var(--space-sm);
+    }
+
+    .story-card__name {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--color-dark);
+      margin: 0 0 var(--space-xs);
+    }
+
+    .story-card__text-inner {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      overflow: hidden;
+      transition: -webkit-line-clamp 0.35s ease;
+    }
+    .story-card.is-expanded .story-card__text-inner {
+      -webkit-line-clamp: unset;
+      display: block;
+    }
+
+    .story-card__text-inner p {
+      font-size: 0.9375rem;
+      color: var(--color-mid);
+      line-height: 1.78;
+      margin: 0 0 var(--space-sm);
+    }
+    .story-card__text-inner p:last-child { margin-bottom: 0; }
+
+    .story-card__help {
+      margin-top: var(--space-sm);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--color-border);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-mid);
+      line-height: 1.65;
+    }
+
+    .story-card__toggle {
+      align-self: flex-start;
+      margin-top: var(--space-md);
+      padding: 0;
+      border: none;
+      background: none;
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+    .story-card__toggle:hover,
+    .story-card__toggle:focus-visible {
+      color: var(--color-accent-hover);
+    }
+    .story-card__toggle:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+
+    /* Mission / founder human block */
+    .mission-started { background: var(--color-white); padding: clamp(4.5rem, 10vw, 6.75rem) 0; }
+
+    .mission-started__figure {
+      margin: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-border);
+    }
+    .mission-started__figure img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .mission-started__body {
+      color: var(--color-mid);
+      font-size: 1.0625rem;
+      line-height: 1.78;
+      margin-bottom: var(--space-md);
+    }
+
+    .mission-started__subhead {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin: var(--space-xl) 0 var(--space-sm);
+      line-height: 1.35;
+    }
+
+    .mission-values {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-lg);
+    }
+
+    .mission-values li {
+      position: relative;
+      padding-left: 1.125rem;
+      margin-bottom: var(--space-sm);
+      color: var(--color-mid);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .mission-values li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+
+    .pull-quote {
+      margin: var(--space-xl) 0 0;
+      padding: var(--space-lg) var(--space-xl);
+      border-left: 3px solid var(--color-accent);
+      background: var(--color-warm-bg);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-family: var(--font-heading);
+      font-size: 1.0625rem;
+      font-weight: 500;
+      font-style: normal;
+      color: var(--color-dark);
+      line-height: 1.55;
+    }
+
+    /* Team */
+    .team { padding: clamp(4rem, 9vw, 6rem) 0; }
+
+    .team__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .team-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      text-align: center;
+      transition: box-shadow var(--transition-base);
+    }
+    .team-card:hover { box-shadow: var(--shadow-sm); }
+
+    .team-card__photo {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto var(--space-md);
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--color-border);
+      background: var(--color-surface);
+    }
+    .team-card__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-card__placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--color-muted);
+      background: var(--color-accent-soft);
+    }
+
+    .team-card__name {
+      font-family: var(--font-heading);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--color-dark);
+    }
+
+    .team-card__role {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      margin: var(--space-xs) 0 var(--space-md);
+    }
+
+    .team-card__bio {
+      font-size: 0.875rem;
+      color: var(--color-mid);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Timeline / history */
+    .history { background: var(--color-white); padding: clamp(3.75rem, 8vw, 5.5rem) 0; }
+
+    .timeline {
+      max-width: 720px;
+      margin: 0 auto;
+      padding-left: var(--space-lg);
+      border-left: 2px solid var(--color-border);
+    }
+
+    .timeline__item {
+      position: relative;
+      padding-bottom: var(--space-xl);
+      padding-left: var(--space-lg);
+    }
+    .timeline__item:last-child { padding-bottom: 0; }
+
+    .timeline__item::before {
+      content: '';
+      position: absolute;
+      left: calc(-1 * var(--space-lg) - 7px);
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-white);
+      border: 2px solid var(--color-accent);
+    }
+
+    .timeline__year {
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: var(--space-xs);
+    }
+
+    .timeline__desc {
+      font-size: 0.9375rem;
+      color: var(--color-mid);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .hero-quote-strip {
+      margin-top: var(--space-xl);
+      padding: var(--space-md) var(--space-lg);
+      background: rgba(0, 0, 0, 0.22);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      font-size: 0.9375rem;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.65;
+      max-width: 540px;
+    }
+
+    /* ============================================================
+       OUR PROJECTS (formerly about narrative + photo)
+       ============================================================ */
+    .our-projects { background: var(--color-warm-bg); }
+
+    .our-projects__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+
+    .our-projects__figure {
+      margin: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .our-projects__figure img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .our-projects__body {
+      color: var(--color-mid);
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      margin-bottom: var(--space-md);
+    }
+
+    .our-projects__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+
+    /* Activity reports — PDF cards */
+    .activity-reports {
+      background: var(--color-white);
+      padding: clamp(4rem, 9vw, 6rem) 0;
+      border-top: 1px solid var(--color-border);
+    }
+    .reports__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+    .report-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding: var(--space-xl);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      transition: box-shadow var(--transition-base), border-color var(--transition-base);
+    }
+    .report-card:hover {
+      box-shadow: var(--shadow-sm);
+      border-color: rgba(0,0,0,0.12);
+    }
+    .report-card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+    }
+    .report-card__title {
+      font-family: var(--font-heading);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--color-dark);
+      margin: 0;
+      line-height: 1.35;
+    }
+    .report-card__actions {
+      margin-top: auto;
+      padding-top: var(--space-sm);
+    }
+
+    /* ============================================================
+       PROGRAMS SECTION  (PRD §7.2.4)
+       ============================================================ */
+    .programs { background: var(--color-surface); }
+
+    .programs.section-soft-pink {
+      background: var(--color-warm-pink);
+    }
+
+    .programs__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .program-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      transition:
+        box-shadow  var(--transition-base),
+        transform   var(--transition-base),
+        border-color var(--transition-base);
+    }
+    .program-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: rgba(0,0,0,0.12);
+    }
+
+    .program-card__icon {
+      width: 48px;
+      height: 48px;
+      background: var(--color-accent-soft);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-lg);
+      color: var(--color-accent);
+    }
+
+    .program-card__title {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: var(--space-sm);
+    }
+
+    .program-card__body {
+      font-size: 0.9375rem;
+      color: var(--color-mid);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ============================================================
+       HOW WE WORK SECTION
+       ============================================================ */
+    .how-we-work { background: var(--color-white); }
+
+    .how__steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .how__step {
+      display: flex;
+      gap: var(--space-lg);
+      align-items: flex-start;
+    }
+
+    .how__step-number {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-full);
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-family: var(--font-heading);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .how__step-title {
+      font-family: var(--font-heading);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: var(--space-xs);
+    }
+
+    .how__step-body {
+      font-size: 0.9375rem;
+      color: var(--color-mid);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ============================================================
+       PROJECTS SECTION
+       ============================================================ */
+    .projects { background: var(--color-surface); }
+
+    .projects__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .project-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: box-shadow var(--transition-base), transform var(--transition-base);
+    }
+    .project-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+
+    .project-card__media {
+      aspect-ratio: 16 / 9;
+      background: var(--color-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      overflow: hidden;
+    }
+    .project-card__media img { width: 100%; height: 100%; object-fit: cover; }
+
+    .project-card__body { padding: var(--space-xl); }
+
+    .project-card__tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-sm);
+    }
+
+    .project-card__title {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: var(--space-sm);
+      line-height: 1.3;
+    }
+
+    .project-card__desc {
+      font-size: 0.9375rem;
+      color: var(--color-mid);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ============================================================
+       DONATE SECTION  (PRD §6.2)
+       ============================================================ */
+    .donate {
+      background: var(--color-warm-pink);
+      border-top:    1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .donate__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+
+    .donate__heading {
+      font-family: var(--font-heading);
+      font-size: clamp(1.55rem, 3.5vw, 2.15rem);
+      font-weight: 600;
+      color: var(--color-dark);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: var(--space-md);
+    }
+
+    .donate__subheading {
+      font-size: 1.0625rem;
+      color: var(--color-mid);
+      line-height: 1.7;
+      margin-bottom: var(--space-xl);
+    }
+
+    .donate__impact-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .donate__impact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      font-size: 0.9375rem;
+      color: var(--color-mid);
+    }
+
+    .donate__impact-item svg {
+      color: var(--color-success);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Donation module card */
+    .donate__module {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-border);
+    }
+
+    .donate__module-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-dark);
+      text-align: left;
+      margin-bottom: var(--space-lg);
+      letter-spacing: -0.02em;
+    }
+
+    .donate__field-label {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: var(--space-sm);
+    }
+
+    .donate__seg {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+    }
+
+    .donate__seg-btn {
+      flex: 1;
+      padding: 14px var(--space-md);
+      border: none;
+      border-radius: 14px;
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      background: #f5f5f7;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .donate__seg-btn:hover { background: #ececf0; }
+    .donate__seg-btn.is-active {
+      background: #141414;
+      color: #fff;
+    }
+
+    .donate-amt-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .donate-amt-grid .donate__amount-btn--cell-3 { grid-column: span 2; }
+    .donate-amt-grid .donate__amount-btn--cell-6 { grid-column: span 3; }
+
+    /* [hidden] is overridden by `display:grid` above (same specificity) — enforce hide */
+    .donate-preset-panels > .donate-amt-grid[hidden] {
+      display: none !important;
+    }
+
+    #donate-custom-wrap {
+      display: none;
+      margin-bottom: var(--space-lg);
+    }
+    #donate-custom-wrap.is-visible { display: block; }
+
+    .donate-bank {
+      margin-top: var(--space-xl);
+      padding-top: var(--space-xl);
+      border-top: 1px solid var(--color-border);
+    }
+    .donate-bank__title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: var(--space-md);
+    }
+    .donate-iban-row {
+      display: flex;
+      align-items: stretch;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+      flex-wrap: wrap;
+    }
+    .donate-iban-row:last-child { margin-bottom: 0; }
+    .donate-iban-cur {
+      flex-shrink: 0;
+      min-width: 3rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.9375rem;
+      color: var(--color-dark);
+      display: flex;
+      align-items: center;
+    }
+    .donate-iban-box {
+      flex: 1;
+      min-width: min(100%, 16rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding: 12px 14px;
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      background: var(--color-white);
+    }
+    .donate-iban-code {
+      font-family: ui-monospace, 'Cascadia Code', monospace;
+      font-size: 0.8125rem;
+      color: var(--color-dark);
+      word-break: break-all;
+      line-height: 1.35;
+    }
+    .donate-iban-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 999px;
+      background: #f5f5f7;
+      font-family: var(--font-heading);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .donate-iban-copy:hover { background: #ececf0; }
+    .donate-iban-copy svg { flex-shrink: 0; color: var(--color-mid); }
+
+    .donate__amounts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+
+    .donate__amount-btn {
+      padding: 14px var(--space-sm);
+      border: none;
+      border-radius: 14px;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      background: #f5f5f7;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .donate__amount-btn:hover { background: #ececf0; }
+    .donate__amount-btn.selected {
+      background: #141414;
+      color: #fff;
+    }
+
+    .donate__field {
+      width: 100%;
+      padding: 14px var(--space-lg);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      color: var(--color-dark);
+      background: var(--color-white);
+      transition: border-color var(--transition-fast);
+      appearance: none;
+      -moz-appearance: textfield;
+    }
+    .donate__field:focus { outline: none; border-color: var(--color-accent); }
+    .donate__field::placeholder { color: var(--color-muted); }
+    .donate__field.error { border-color: var(--color-error); }
+
+    .donate__error-msg {
+      color: var(--color-error);
+      font-size: 0.8125rem;
+      margin-top: var(--space-xs);
+      display: none;
+    }
+    .donate__error-msg.visible { display: block; }
+
+      width: 100%;
+      padding: 16px;
+      font-size: 1rem;
+    }
+
+    .donate__trust-line {
+      margin-top: var(--space-md);
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--color-muted);
+    }
+
+    /* ============================================================
+       PARTNERS SECTION  (PRD §6.3)
+       ============================================================ */
+    .partners { background: var(--color-white); }
+
+    .partners.section-warm-bg {
+      background: var(--color-warm-bg);
+    }
+
+    #partners-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+      align-items: center;
+      justify-items: center;
+    }
+
+    .partner-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      width: 100%;
+      transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    }
+    .partner-card:hover { border-color: rgba(0,0,0,0.12); box-shadow: var(--shadow-sm); }
+
+    .partner-card img {
+      max-height: 56px;
+      width: auto;
+      max-width: 130px;
+      filter: grayscale(75%);
+      opacity: 0.72;
+      transition: filter 0.35s ease, opacity 0.35s ease, transform 0.3s ease;
+    }
+    .partner-card:hover img,
+    .partner-card:focus-within img {
+      filter: grayscale(40%);
+      opacity: 0.92;
+      transform: scale(1.02);
+    }
+
+    /* ============================================================
+       VOLUNTEER SECTION
+       ============================================================ */
+    .volunteer { background: var(--color-surface); }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+
+    .benefit-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+    }
+
+    .benefit-item__icon {
+      width: 36px;
+      height: 36px;
+      background: var(--color-accent-soft);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    .benefit-item__title {
+      font-family: var(--font-heading);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: 2px;
+    }
+
+    .benefit-item__body {
+      font-size: 0.875rem;
+      color: var(--color-muted);
+      margin: 0;
+    }
+
+    /* ============================================================
+       FORMS — SHARED  (PRD §6.4)
+       ============================================================ */
+    .form-card {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--color-border);
+    }
+
+    .form__group { margin-bottom: var(--space-lg); }
+
+    .form__label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-dark);
+      margin-bottom: var(--space-xs);
+    }
+    .form__label .req { color: var(--color-error); }
+
+    .form__input,
+    .form__select,
+    .form__textarea {
+      width: 100%;
+      padding: 13px var(--space-md);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: 0.9375rem;
+      color: var(--color-dark);
+      background: var(--color-white);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+      appearance: none;
+    }
+    .form__input:focus,
+    .form__select:focus,
+    .form__textarea:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.12);
+    }
+    .form__input::placeholder,
+    .form__textarea::placeholder { color: var(--color-muted); }
+
+    .form__input.error,
+    .form__select.error,
+    .form__textarea.error {
+      border-color: var(--color-error);
+      animation: shake 0.4s ease;
+    }
+
+    .form__field-error {
+      color: var(--color-error);
+      font-size: 0.8125rem;
+      margin-top: var(--space-xs);
+      display: none;
+    }
+    .form__field-error.visible { display: block; }
+
+    .form__textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form__select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8A8A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right var(--space-md) center;
+      padding-right: var(--space-2xl);
+      cursor: pointer;
+    }
+
+    .form__checkbox-row {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: flex-start;
+    }
+    .form__checkbox {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      appearance: none;
+      -webkit-appearance: none;
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+      position: relative;
+      transition: all var(--transition-fast);
+    }
+    .form__checkbox:checked {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+    }
+    .form__checkbox:checked::after {
+      content: '';
+      position: absolute;
+      top: 2px; left: 5px;
+      width: 4px; height: 8px;
+      border: 2px solid white;
+      border-top: none; border-left: none;
+      transform: rotate(45deg);
+    }
+    .form__checkbox-label {
+      font-size: 0.875rem;
+      color: var(--color-mid);
+      line-height: 1.5;
+    }
+    .form__checkbox-label a { color: var(--color-accent); text-decoration: underline; }
+
+    .form__submit { width: 100%; }
+
+    /* Form states */
+    .form__banner {
+      display: none;
+      padding: var(--space-md);
+      background: rgba(var(--color-accent-rgb), 0.12);
+      border: 1px solid rgba(var(--color-accent-rgb), 0.28);
+      border-radius: var(--radius-md);
+      color: var(--color-error);
+      font-size: 0.875rem;
+      margin-bottom: var(--space-md);
+    }
+    .form__banner.visible { display: block; }
+
+    .form__success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-2xl);
+      text-align: center;
+    }
+    .form__success.visible { display: flex; }
+    .form__success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-success);
+    }
+    .form__success-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-dark);
+    }
+    .form__success-body {
+      font-size: 0.9375rem;
+      color: var(--color-mid);
+      margin: 0;
+    }
+
+    /* ============================================================
+       CONTACT SECTION
+       ============================================================ */
+    .contact { background: var(--color-white); }
+
+    .contact__details {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+
+    .contact__detail {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+    }
+
+    .contact__detail-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--color-accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    .contact__detail-label {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--color-muted);
+      margin-bottom: 2px;
+    }
+
+    .contact__detail-value {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--color-dark);
+    }
+    a.contact__detail-value { color: var(--color-accent); }
+    a.contact__detail-value:hover { text-decoration: underline; }
+
+    .social-links {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-xl);
+    }
+
+    .social-link {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-muted);
+      transition: all var(--transition-fast);
+    }
+    .social-link:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: var(--color-accent-soft);
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .site-footer {
+      background: #1f1f1f;
+      color: rgba(255,255,255,0.7);
+      padding: clamp(3rem, 8vw, 4.5rem) 0 var(--space-xl);
+    }
+
+    .footer__mission {
+      font-size: 0.8125rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.55);
+      margin-top: var(--space-md);
+      max-width: 28rem;
+    }
+
+    .footer__contact-block {
+      margin-top: var(--space-md);
+      font-size: 0.8125rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer__contact-block a {
+      color: rgba(255,255,255,0.85);
+    }
+    .footer__contact-block a:hover { color: var(--color-white); text-decoration: underline; }
+
+    .footer__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .footer__brand .nav-logo__text { color: var(--color-white); }
+
+    .footer__tagline {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: var(--space-sm);
+      line-height: 1.6;
+    }
+
+    .footer__col-title {
+      font-family: var(--font-heading);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-white);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: var(--space-md);
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .footer__links a {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.55);
+      transition: color var(--transition-fast);
+    }
+    .footer__links a:hover { color: var(--color-white); }
+
+    .footer__bottom {
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .footer__reg,
+    .footer__copy {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* Footer social links */
+    .site-footer .social-link {
+      border-color: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.5);
+    }
+    .site-footer .social-link:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: rgba(var(--color-accent-rgb), 0.14);
+    }
+
+    /* ============================================================
+       SCROLL & ENTRANCE ANIMATIONS  (PRD §6.6)
+       ============================================================ */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    [data-animate].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Герой: без translate на рожевій панелі — інакше логотип і дрібний текст у PNG розмиваються в Chrome */
+    #hero .hero__content[data-animate] {
+      opacity: 0;
+      transform: none;
+      transition: opacity 0.55s ease;
+    }
+    #hero .hero__content[data-animate].visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    [data-animate-stagger] > * {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.48s ease, transform 0.48s ease;
+    }
+    [data-animate-stagger].visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0.05s; }
+    [data-animate-stagger].visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.10s; }
+    [data-animate-stagger].visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.15s; }
+    [data-animate-stagger].visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.20s; }
+    [data-animate-stagger].visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.25s; }
+    [data-animate-stagger].visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.30s; }
+    [data-animate-stagger].visible > *:nth-child(7) { opacity:1; transform:none; transition-delay:0.35s; }
+    [data-animate-stagger].visible > *:nth-child(8) { opacity:1; transform:none; transition-delay:0.40s; }
+    [data-animate-stagger].visible > *:nth-child(9) { opacity:1; transform:none; transition-delay:0.45s; }
+    [data-animate-stagger].visible > *:nth-child(10) { opacity:1; transform:none; transition-delay:0.50s; }
+
+    /* ============================================================
+       KEYFRAMES
+       ============================================================ */
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0);  }
+      50%       { transform: translateX(-50%) translateY(7px); }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0);  }
+      25%       { transform: translateX(-6px); }
+      75%       { transform: translateX(6px);  }
+    }
+
+    /* Respect OS motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      [data-animate],
+      [data-animate-stagger] > * {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .scroll-indicator { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --container-pad: 0.875rem;
+      }
+
+      .nav-inner {
+        gap: var(--space-sm);
+      }
+      .nav-logo {
+        min-width: 0;
+      }
+      .nav-logo__text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1.2rem;
+      }
+      .brand-logo-mark img {
+        width: 44px;
+        height: 44px;
+      }
+      .nav-donate {
+        padding: 8px 12px !important;
+        font-size: 0.75rem !important;
+        flex-shrink: 0;
+      }
+
+      .hero {
+        min-height: 0;
+        align-items: flex-start;
+        padding-bottom: max(var(--space-3xl), env(safe-area-inset-bottom, 0px));
+      }
+      .hero__inner {
+        padding-top: var(--space-md);
+        padding-bottom: var(--space-lg);
+      }
+      .hero__content {
+        padding: clamp(1.2rem, 4.5vw, 2.4rem);
+        border-radius: clamp(20px, 4.5vw, 36px);
+      }
+      .hero .hero__headline {
+        font-size: clamp(1.5rem, 6.5vw, 2.15rem);
+        line-height: 1.2;
+      }
+      .hero .hero__cta-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .hero .hero__cta-group .btn {
+        width: 100%;
+        max-width: 100%;
+        white-space: normal;
+        justify-content: center;
+        text-align: center;
+      }
+      .hero .hero__cta-note {
+        text-align: center;
+      }
+
+      .stories__mosaic .story-card:nth-child(2),
+      .stories__mosaic .story-card:nth-child(3) {
+        margin-top: 0;
+      }
+
+      .mobile-menu__nav a {
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+    }
+    @media (min-width: 481px) {
+      :root { --container-pad: var(--space-xl); }
+
+      .our-impact__grid   { grid-template-columns: repeat(2, 1fr); }
+      .programs__grid  { grid-template-columns: repeat(2, 1fr); }
+      .projects__grid  { grid-template-columns: repeat(2, 1fr); }
+      #partners-grid   { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ============================================================
+       RESPONSIVE — md 769px+
+       ============================================================ */
+    @media (min-width: 769px) {
+      :root {
+        --header-height: 68px;
+        --container-pad: var(--space-2xl);
+      }
+
+      .section-pad { padding: var(--space-4xl) 0; }
+
+      /* Show desktop nav, hide hamburger */
+      .nav-links  { display: flex; }
+      .hamburger  { display: none; }
+
+      .hero__inner         { grid-template-columns: 1fr 1fr; gap: var(--space-3xl); padding-bottom: var(--space-3xl); }
+      .our-impact__grid    { grid-template-columns: repeat(3, 1fr); }
+      .our-projects__inner { grid-template-columns: 1fr 1fr; }
+      .reports__grid       { grid-template-columns: repeat(2, 1fr); }
+      .stories__mosaic     { grid-template-columns: repeat(2, 1fr); align-items: start; }
+      .stories__mosaic .story-card:nth-child(2) { margin-top: 2rem; }
+      .mission-started__inner { grid-template-columns: 1fr 1fr; gap: var(--space-3xl); align-items: center; }
+      .team__grid          { grid-template-columns: repeat(3, 1fr); }
+      .programs__grid      { grid-template-columns: repeat(3, 1fr); }
+      .how__steps          { grid-template-columns: repeat(2, 1fr); }
+      .projects__grid      { grid-template-columns: repeat(2, 1fr); }
+      .donate__inner       { grid-template-columns: 1fr 1fr; }
+      #partners-grid       { grid-template-columns: repeat(4, 1fr); }
+      .two-col             { grid-template-columns: 1fr 1fr; }
+      .contact .two-col    { grid-template-columns: 1fr 1fr; }
+      .split-asym          { grid-template-columns: 1fr 1fr; }
+      .footer__inner       { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+      .footer__bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    /* ============================================================
+       RESPONSIVE — lg 1025px+
+       ============================================================ */
+    @media (min-width: 1025px) {
+      :root { --container-pad: var(--space-3xl); }
+
+      .our-impact__grid  { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .reports__grid      { grid-template-columns: repeat(3, 1fr); }
+      .stories__mosaic    { grid-template-columns: repeat(3, 1fr); }
+      .stories__mosaic .story-card:nth-child(2) { margin-top: 2.75rem; }
+      .stories__mosaic .story-card:nth-child(3) { margin-top: 5rem; }
+      .footer__inner      { grid-template-columns: 1.25fr repeat(4, minmax(0, 1fr)); gap: var(--space-2xl); }
+
+      .how__steps    { grid-template-columns: repeat(4, 1fr); }
+      #partners-grid { grid-template-columns: repeat(5, 1fr); }
+    }
+
+    /* ============================================================
+       RESPONSIVE — xl 1281px+
+       ============================================================ */
+    @media (min-width: 1281px) {
+      :root { --container-pad: var(--space-xl); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Accessibility: skip to content -->
+  <a href="#main-content" class="skip-link" data-i18n="a11y.skip_main">Перейти до основного вмісту</a>
+
+  <!-- ================================================================
+       HEADER / NAVIGATION
+       ================================================================ -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="container">
+      <nav class="nav-inner" role="navigation" aria-label="Головне меню">
+
+        <!-- Logo -->
+        <a href="#hero" class="nav-logo" aria-label="I CAN — на початок сторінки">
+          <span class="brand-logo-mark" aria-hidden="true"><img src="logo-ican-foundation.png" width="52" height="52" alt="" decoding="async"></span>
+          <span class="nav-logo__text"><span data-i18n="hero.brand_lockup">I CAN</span></span>
+        </a>
+
+        <!-- Desktop links — 5 основних пунктів -->
+        <ul class="nav-links" role="list">
+          <li><a href="#our-impact"  class="nav-link" data-i18n="nav.impact">Вплив</a></li>
+          <li><a href="#our-projects" class="nav-link" data-i18n="nav.our_projects">Наші проекти</a></li>
+          <li><a href="#programs"    class="nav-link" data-i18n="nav.programs">Програми</a></li>
+          <li><a href="#stories"     class="nav-link" data-i18n="nav.stories">Історії</a></li>
+          <li><a href="#activity-reports" class="nav-link" data-i18n="nav.reports">Звіти</a></li>
+        </ul>
+
+        <!-- Actions -->
+        <div class="nav-actions">
+          <div class="lang-toggle" role="group" aria-label="Вибір мови">
+            <button class="lang-btn active" data-lang="ua" aria-pressed="true">UA</button>
+            <button class="lang-btn"        data-lang="en" aria-pressed="false">EN</button>
+          </div>
+
+          <a href="#donate" class="btn btn-primary btn-sm nav-donate" data-i18n="nav.donate_outline">Підтримати місію</a>
+
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            aria-label="Відкрити меню"
+          >
+            <span class="hamburger__line"></span>
+            <span class="hamburger__line"></span>
+            <span class="hamburger__line"></span>
+          </button>
+        </div>
+
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================================================================
+       MOBILE MENU
+       ================================================================ -->
+  <div
+    class="mobile-menu"
+    id="mobile-menu"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Мобільна навігація"
+    aria-hidden="true"
+  >
+    <button type="button" class="mobile-menu__backdrop" tabindex="-1" aria-label="Закрити меню"></button>
+    <div class="mobile-menu__panel">
+      <div class="mobile-menu__header">
+        <a href="#hero" class="nav-logo" aria-label="I CAN — на початок сторінки">
+          <span class="brand-logo-mark" aria-hidden="true"><img src="logo-ican-foundation.png" width="52" height="52" alt="" decoding="async"></span>
+          <span class="nav-logo__text"><span data-i18n="hero.brand_lockup">I CAN</span></span>
+        </a>
+        <button
+          class="hamburger is-open"
+          id="mobile-close-btn"
+          aria-label="Закрити меню"
+        >
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+
+      <nav class="mobile-menu__nav" aria-label="Мобільна навігація">
+        <a href="#our-impact"  class="nav-link" data-i18n="nav.impact">Вплив</a>
+        <a href="#our-projects" class="nav-link" data-i18n="nav.our_projects">Наші проекти</a>
+        <a href="#programs"    class="nav-link" data-i18n="nav.programs">Програми</a>
+        <a href="#stories"     class="nav-link" data-i18n="nav.stories">Історії</a>
+        <a href="#activity-reports" class="nav-link" data-i18n="nav.reports">Звіти</a>
+      </nav>
+
+      <div class="mobile-menu__footer">
+        <div class="lang-toggle" role="group" aria-label="Вибір мови">
+          <button class="lang-btn active" data-lang="ua">UA</button>
+          <button class="lang-btn"        data-lang="en">EN</button>
+        </div>
+        <a href="#donate" class="btn btn-primary" data-i18n="nav.donate_outline">Підтримати місію</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       MAIN CONTENT
+       ================================================================ -->
+  <main id="main-content">
+
+    <!-- ── HERO ──────────────────────────────────────────────────── -->
+    <section id="hero" class="hero" aria-labelledby="hero-headline">
+      <div class="hero__blob" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero__inner">
+
+          <!-- Content -->
+          <div class="hero__content" data-animate>
+            <h1 class="hero__headline" id="hero-headline">
+              <span data-i18n="hero.headline">Я зможу — ти зможеш</span>
+            </h1>
+
+            <p class="hero__subheading" data-i18n="hero.subheading">
+              Фонд поруч із жінками й дітьми в прифронтових громадах Харківщини: психологічна підтримка, право й гуманітарна допомога — людяно й без зайвого шуму.
+            </p>
+
+            <p class="hero__mission" data-i18n="hero.mission">
+              Наша місія проста: дати кожній жінці простір безпеки, голос та практичні кроки, коли війна зламала звичний ритм життя.
+            </p>
+
+            <p class="hero__impact-line" data-i18n="hero.impact_line">
+              Об’єднали понад 2&nbsp;300 родин із психосоціальною допомогою й гуманітарною підтримкою в 32 громадах.
+            </p>
+
+            <div class="hero__cta-group">
+              <a href="#donate" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <span data-i18n="hero.cta_support">Підтримати місію</span>
+              </a>
+              <a href="https://t.me/bo_bf_ican" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <span data-i18n="hero.cta_get_help">Отримати допомогу</span>
+              </a>
+              <p class="hero__cta-note"><a href="#programs" class="hero-learn-link" data-i18n="hero.cta_learn">Дізнатися більше про програми</a></p>
+            </div>
+
+            <p class="hero-quote-strip" data-i18n="hero.quote">«Ця спільнота допомогла мені відчути, що я не одна» — учасниця групи підтримки</p>
+
+            <div class="hero__trust" aria-label="Знаки довіри">
+              <span class="hero__trust-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="hero.trust1">Зареєстрований благодійний фонд в Україні</span>
+              </span>
+              <span class="hero__trust-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="hero.trust2">Польові команди працюють у громадах на місці</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="hero__visual" data-animate>
+            <img
+              src="hero-meeting.png"
+              alt="Учасниці заходу: жінки в залі на зустрічі або семінарі"
+              width="1024"
+              height="682"
+              loading="eager"
+              fetchpriority="high"
+            >
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="scroll-indicator" id="scroll-indicator" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ── OUR IMPACT ───────────────────────────────────────────── -->
+    <section id="our-impact" class="our-impact" aria-labelledby="our-impact-title">
+      <div class="container">
+        <div class="section-header section-header--wide" data-animate>
+          <p class="section-tag" data-i18n="impact.section_tag">У цифрах</p>
+          <h2 class="section-title" id="our-impact-title" data-i18n="impact.title">Наш вплив</h2>
+          <p class="section-subtitle" data-i18n="impact.subtitle">
+            Показуємо ключові результати, якими керуємось у звітності перед громадою та партнерами.
+          </p>
+        </div>
+        <div class="our-impact__grid" data-animate-stagger>
+          <article class="impact-pillar">
+            <div class="impact-pillar__num" data-counter="2300" data-suffix="+">0</div>
+            <div class="impact-pillar__label" data-i18n="impact.pillar_women">Жінок і родин із комплексною підтримкою</div>
+          </article>
+          <article class="impact-pillar">
+            <div class="impact-pillar__num" data-counter="840" data-suffix="+">0</div>
+            <div class="impact-pillar__label" data-i18n="impact.pillar_consults">Індивідуальних консультацій із психологами та юристами</div>
+          </article>
+          <article class="impact-pillar">
+            <div class="impact-pillar__num" data-counter="140" data-suffix="+">0</div>
+            <div class="impact-pillar__label" data-i18n="impact.pillar_programs">Подій підтримки та освітніх зустрічей у громадах</div>
+          </article>
+          <article class="impact-pillar">
+            <div class="impact-pillar__num" data-counter="55" data-suffix="+">0</div>
+            <div class="impact-pillar__label" data-i18n="impact.pillar_volunteers">Активних волонтерів щомісяця</div>
+          </article>
+          <article class="impact-pillar">
+            <div class="impact-pillar__num" data-counter="6" data-suffix="">0</div>
+            <div class="impact-pillar__label" data-i18n="impact.pillar_partners">Партнерських організацій і громад у спільних програмах</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── OUR PROJECTS ───────────────────────────────────────────── -->
+    <section id="our-projects" class="our-projects section-pad-relaxed" aria-labelledby="our-projects-title">
+      <div class="container">
+        <div class="our-projects__inner">
+
+          <figure class="our-projects__figure" data-animate>
+            <img
+              src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=900&q=80"
+              alt="Волонтери під час роздачі гуманітарної допомоги в місті Харків"
+              width="640"
+              height="480"
+              loading="lazy"
+            >
+          </figure>
+
+          <div>
+            <div data-animate>
+              <p class="section-tag" data-i18n="ourProjects.section_tag">Наші проекти</p>
+              <h2 class="section-title" id="our-projects-title" data-i18n="ourProjects.headline">
+                Ми там, де найскладніше — поруч із громадами на межі
+              </h2>
+              <p class="our-projects__body" data-i18n="ourProjects.body1">
+                ICAN Women Foundation — благодійна організація, яка з 2022 року надає психологічну, юридичну та соціальну підтримку жінкам і дітям у прифронтових громадах Харківщини.
+              </p>
+              <p class="our-projects__body" data-i18n="ourProjects.body2">
+                Ми будуємо стійкість там, де вона потрібна найбільше — у невеликих містах і селах, куди рідко доходить системна допомога.
+              </p>
+              <div class="our-projects__actions">
+                <a href="#activity-reports" class="btn btn-secondary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  <span data-i18n="ourProjects.cta_report">Звіти про діяльність</span>
+                </a>
+                <a href="#donate" class="btn btn-primary" data-i18n="ourProjects.cta_donate">Підтримати місію</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROGRAMS ───────────────────────────────────────────────── -->
+    <section id="programs" class="programs section-pad-relaxed section-soft-pink" aria-labelledby="programs-title">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <p class="section-tag" data-i18n="programs.section_tag">Напрямки діяльності</p>
+          <h2 class="section-title" id="programs-title" data-i18n="programs.headline">Як ми допомагаємо</h2>
+          <p class="section-subtitle" data-i18n="programs.subheading">Три ключові напрями комплексної підтримки</p>
+        </div>
+
+        <div class="programs__grid" data-animate-stagger>
+
+          <article class="program-card">
+            <div class="program-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="program-card__title" data-i18n="programs.pillar_support.title">Комплексна підтримка й захист</h3>
+            <p class="program-card__body"  data-i18n="programs.pillar_support.body">Професійна психосоціальна допомога, зокрема конфіденційна підтримка для переживших насильство на ґрунті статі (ГЗН), а також правовий захист.</p>
+          </article>
+
+          <article class="program-card">
+            <div class="program-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <h3 class="program-card__title" data-i18n="programs.pillar_women.title">Посилення жінок</h3>
+            <p class="program-card__body"  data-i18n="programs.pillar_women.body">Розвиток лідерства, економічних можливостей і спеціалізованого простору «Хаб» для безпечної комунікації та навчання.</p>
+          </article>
+
+          <article class="program-card">
+            <div class="program-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h3 class="program-card__title" data-i18n="programs.pillar_child.title">Підтримка й розвиток дітей</h3>
+            <p class="program-card__body"  data-i18n="programs.pillar_child.body">Психологічна адаптація, соціалізація та особлива увага до дітей з особливими освітніми потребами.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ACTIVITY REPORTS ───────────────────────────────────────── -->
+    <section id="activity-reports" class="activity-reports" aria-labelledby="activity-reports-title">
+      <div class="container">
+        <div class="section-header section-header--wide" data-animate>
+          <p class="section-tag" data-i18n="reports.section_tag">Документи</p>
+          <h2 class="section-title" id="activity-reports-title" data-i18n="reports.headline">Звіт про діяльність</h2>
+          <p class="section-subtitle" data-i18n="reports.subtitle">
+            Офіційні матеріали для партнерів і громади. Посилання — плейсхолдери до публікації реальних PDF.
+          </p>
+        </div>
+        <div class="reports__grid" data-animate-stagger>
+          <article class="report-card">
+            <div class="report-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
+            </div>
+            <h3 class="report-card__title" data-i18n="reports.r2025">Річний звіт 2025</h3>
+            <div class="report-card__actions">
+              <a href="#" class="btn btn-secondary btn-sm" data-i18n="reports.download">Завантажити PDF</a>
+            </div>
+          </article>
+          <article class="report-card">
+            <div class="report-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
+            </div>
+            <h3 class="report-card__title" data-i18n="reports.r2024">Річний звіт 2024</h3>
+            <div class="report-card__actions">
+              <a href="#" class="btn btn-secondary btn-sm" data-i18n="reports.download">Завантажити PDF</a>
+            </div>
+          </article>
+          <article class="report-card">
+            <div class="report-card__icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
+            </div>
+            <h3 class="report-card__title" data-i18n="reports.r_finance">Фінансовий звіт</h3>
+            <div class="report-card__actions">
+              <a href="#" class="btn btn-secondary btn-sm" data-i18n="reports.download">Завантажити PDF</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── REAL STORIES ───────────────────────────────────────────── -->
+    <section id="stories" class="stories" aria-labelledby="stories-title">
+      <div class="container">
+        <div class="section-header section-header--wide" data-animate>
+          <p class="section-tag" data-i18n="stories.tag">Реальні історії</p>
+          <h2 class="section-title" id="stories-title" data-i18n="stories.headline">Історії людей, не кейси для сайту</h2>
+          <p class="stories__philosophy" data-i18n="stories.philosophy">
+            Люди, а не кейси — це не слоган, а наш спосіб працювати з підтримкою й розповідями.
+          </p>
+          <p class="section-subtitle" data-i18n="stories.subtitle">
+            Узагальнені історії без прізвищ — так ми бережемо приватність, але показуємо, що змінилося після нашої роботи поруч.
+          </p>
+        </div>
+
+        <div class="stories__mosaic" data-animate-stagger>
+
+          <article class="story-card story-card--tile">
+            <div class="story-card__media">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80" alt="Портрет жінки, яка ділиться своїм шляхом відновлення" width="640" height="400" loading="lazy">
+            </div>
+            <div class="story-card__body">
+              <h3 class="story-card__name" data-i18n="stories.p1_name">Олена, учасниця програми</h3>
+              <div class="story-card__text-inner">
+                <p data-i18n="stories.p1_a">Через евакуацію зникає не лише дім — губиться звичний коло підтримки. У новому місті складно було навіть запитати про психолога.</p>
+                <p data-i18n="stories.p1_b">Спочатку я прийшла на офлайн-зустріч «коло довіри», потім отримала кілька юридичних консультацій щодо аліментів та статусів.</p>
+              </div>
+              <p class="story-card__help" data-i18n="stories.p1_help">Фонд дав шлях із трьох кроків: група підтримки, правник і гуманітарний пакунок під час кризи — без осуду і згори.</p>
+              <button type="button" class="story-card__toggle" data-story-expand aria-expanded="false">Читати далі</button>
+            </div>
+          </article>
+
+          <article class="story-card story-card--tile">
+            <div class="story-card__media">
+              <img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&q=80" alt="Жінки під час робочої зустрічі команди організації" width="560" height="350" loading="lazy">
+            </div>
+            <div class="story-card__body">
+              <h3 class="story-card__name" data-i18n="stories.p2_name">Марія, координаторка волонтерів</h3>
+              <div class="story-card__text-inner">
+                <p data-i18n="stories.p2_a">На місцях ми бачимо, як жінки тягнуть цілу громаду: діти, літні батьки, робота без вихідних.</p>
+                <p data-i18n="stories.p2_b">Разом із фондом ми відкрити маленький хаб: чай, дитячий куточок дві години на день, та «тихий» запис до спеціаліста.</p>
+              </div>
+              <p class="story-card__help" data-i18n="stories.p2_help">ICAN дав методологію, навчання для команди й фінансування першого місяця оренди — ми зібрали 18 постійних волонтерів.</p>
+              <button type="button" class="story-card__toggle" data-story-expand aria-expanded="false">Читати далі</button>
+            </div>
+          </article>
+
+          <article class="story-card story-card--tile">
+            <div class="story-card__media">
+              <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=80" alt="Спокійний момент під час групової роботи всередині приміщення" width="560" height="350" loading="lazy">
+            </div>
+            <div class="story-card__body">
+              <h3 class="story-card__name" data-i18n="stories.p3_name">Юлія, юристка-партнерка хабу</h3>
+              <div class="story-card__text-inner">
+                <p data-i18n="stories.p3_a">Половина запитів — про безпеку в родині та статус домашнього насильства під час війни. Людині потрібна не лекція, а прості кроки.</p>
+              </div>
+              <p class="story-card__help" data-i18n="stories.p3_help">Разом ми зробили 12 виїздів із мобільними юристами й шаблонами заяв — без «ідеальної» поліграфії лендингу, зате живий контакт.</p>
+              <button type="button" class="story-card__toggle" data-story-expand aria-expanded="false">Читати далі</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MISSION STARTED (human arc) ───────────────────────────── -->
+    <section id="mission-started" class="mission-started" aria-labelledby="mission-started-title">
+      <div class="container split-asym mission-started__inner">
+        <div data-animate>
+          <p class="section-tag" data-i18n="mission.tag">Про ICAN</p>
+          <h2 class="section-title" id="mission-started-title" data-i18n="mission.title">Історія, місія й цінності</h2>
+          <p class="mission-started__body" data-i18n="mission.body1">
+            ICAN засновано у 2023 році в Харкові. Наша мета — допомагати тим, хто найбільше постраждав від війни.
+          </p>
+          <h3 class="mission-started__subhead" data-i18n="mission.mission_heading">Місія</h3>
+          <p class="mission-started__body" data-i18n="mission.body_mission">
+            Допомагати людям у складних обставинах подолати наслідки втрат і насильства; сприяти жіночому лідерству через психосоціальну, освітню та гуманітарну підтримку.
+          </p>
+          <h3 class="mission-started__subhead" data-i18n="mission.values_heading">Цінності</h3>
+          <ul class="mission-values" role="list">
+            <li data-i18n="mission.val_trust">Довіра — надійність і підтримка без засудження.</li>
+            <li data-i18n="mission.val_safety">Безпека — право жити без насильства й турбота про добробут команди, щоб запобігти вигоранню.</li>
+            <li data-i18n="mission.val_respect">Повага — вислуховувати різні думки й шанувати межі.</li>
+            <li data-i18n="mission.val_solidarity">Солідарність і сестринство — взаємна підтримка й мережування без конкуренції.</li>
+            <li data-i18n="mission.val_responsibility">Відповідальність — підзвітність перед командою та людьми, яким ми допомагаємо.</li>
+          </ul>
+          <blockquote class="pull-quote" data-i18n="mission.quote">«Коли поруч є люди без засудження, легше дихати навіть у найважчі тижні» — зворотний зв’язок учасниць програм ICAN.</blockquote>
+          <div class="our-projects__actions" style="margin-top:var(--space-xl);">
+            <a href="#donate" class="btn btn-primary" data-i18n="mission.cta_donate">Підтримати місію</a>
+            <a href="#history" class="btn btn-secondary" data-i18n="mission.cta_history">Подивитися історію фонду</a>
+          </div>
+        </div>
+        <figure class="mission-started__figure" data-animate>
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&q=80" alt="Портрет засновниці або керівниці координаційного напряму фонду" width="560" height="420" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── TEAM ───────────────────────────────────────────────────── -->
+    <section id="team" class="team section-warm-bg" aria-labelledby="team-title">
+      <div class="container">
+        <div class="section-header section-header--wide" data-animate>
+          <p class="section-tag" data-i18n="team.tag">Команда</p>
+          <h2 class="section-title" id="team-title" data-i18n="team.headline">Хто робить роботу на місці</h2>
+          <p class="section-subtitle" data-i18n="team.subtitle">
+            Прозора структура: керівниця координує локальних партнерів і волонтерів без зайвої бюрократії.
+          </p>
+        </div>
+        <div class="team__grid" data-animate-stagger>
+          <article class="team-card">
+            <div class="team-card__photo">
+              <img src="https://images.unsplash.com/photo-1594744803329-e58e31df8fad?w=400&q=80" alt="Засновниця організації" width="96" height="96" loading="lazy">
+            </div>
+            <h3 class="team-card__name" data-i18n="team.p1_name">Ірина Сергеєнко</h3>
+            <p class="team-card__role" data-i18n="team.p1_role">Співзасновниця й керуюча партнерка</p>
+            <p class="team-card__bio" data-i18n="team.p1_bio">Комунікує з донорами, затверджує гуманітарні заявки й тримає ескалації «людина — людині», коли війна блокує офіційні шляхи.</p>
+          </article>
+          <article class="team-card">
+            <div class="team-card__photo">
+              <div class="team-card__placeholder" aria-hidden="true">К</div>
+            </div>
+            <h3 class="team-card__name" data-i18n="team.p2_name">Кирило Пономарьов</h3>
+            <p class="team-card__role" data-i18n="team.p2_role">Координатор польових операцій</p>
+            <p class="team-card__bio" data-i18n="team.p2_bio">Планує виїзди психологів і юристів до 18 громад, тримає логістику та безпечні маршрути для команд із ризиками.</p>
+          </article>
+          <article class="team-card">
+            <div class="team-card__photo">
+              <div class="team-card__placeholder" aria-hidden="true">В</div>
+            </div>
+            <h3 class="team-card__name" data-i18n="team.p3_name">Волонтерська мережа</h3>
+            <p class="team-card__role" data-i18n="team.p3_role">55+ людей із сусідніх областей</p>
+            <p class="team-card__bio" data-i18n="team.p3_bio">Пакують комплекти, супроводжують на прийоми, ведуть запис у хабах. Кожний місяць — два онлайн-брифінги та наставник із штатної команди.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HISTORY / TIMELINE ─────────────────────────────────────── -->
+    <section id="history" class="history section-pad-snug" aria-labelledby="history-title">
+      <div class="container">
+        <div class="section-header section-header--wide section-header--left" data-animate>
+          <p class="section-tag" data-i18n="history.tag">Короткий шлях</p>
+          <h2 class="section-title" id="history-title" data-i18n="history.headline">Що встигло змінитися між хвилями</h2>
+          <p class="section-subtitle" data-i18n="history.subtitle">Не повна біографія — дороговказ, як ми дорослішаємо поруч із громадами.</p>
+        </div>
+        <div class="timeline" data-animate>
+          <div class="timeline__item">
+            <p class="timeline__year" data-i18n="history.y1">2023 — заснування ICAN у Харкові</p>
+            <p class="timeline__desc" data-i18n="history.d1">Старт роботи фонду з фокусом на людей, які найбільше постраждали від війни.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__year" data-i18n="history.y2">2024 — масштабування програм</p>
+            <p class="timeline__desc" data-i18n="history.d2">Розгортання психосоціальної підтримки, захисту та гуманітарної допомоги разом із партнерами.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__year" data-i18n="history.y3">2025 — звітність і партнерства</p>
+            <p class="timeline__desc" data-i18n="history.d3">Прозорі KPI, міжнародні гранти та сталі локальні точки доступу до допомоги в регіоні.</p>
+          </div>
+          <div class="timeline__item">
+            <p class="timeline__year" data-i18n="history.y4">Далі — стійкість громад</p>
+            <p class="timeline__desc" data-i18n="history.d4">Довгострокові програми для жінок і дітей, peer-мережі та економічне зміцнення родин.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW WE WORK ────────────────────────────────────────────── -->
+    <section id="how-we-work" class="how-we-work section-pad-relaxed" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <p class="section-tag" data-i18n="how.section_tag">Методологія</p>
+          <h2 class="section-title" id="how-title" data-i18n="how.headline">Як ми працюємо</h2>
+        </div>
+
+        <div class="how__steps" data-animate-stagger>
+
+          <div class="how__step">
+            <div class="how__step-number" aria-hidden="true">1</div>
+            <div>
+              <h3 class="how__step-title" data-i18n="how.step1.title">Виявлення потреб</h3>
+              <p class="how__step-body"   data-i18n="how.step1.body">Оцінюємо реальну ситуацію в кожній громаді через виїзди та партнерські організації.</p>
+            </div>
+          </div>
+
+          <div class="how__step">
+            <div class="how__step-number" aria-hidden="true">2</div>
+            <div>
+              <h3 class="how__step-title" data-i18n="how.step2.title">Комплексна відповідь</h3>
+              <p class="how__step-body"   data-i18n="how.step2.body">Поєднуємо психологічну, юридичну та матеріальну підтримку в єдиний пакет допомоги.</p>
+            </div>
+          </div>
+
+          <div class="how__step">
+            <div class="how__step-number" aria-hidden="true">3</div>
+            <div>
+              <h3 class="how__step-title" data-i18n="how.step3.title">Залучення місцевих</h3>
+              <p class="how__step-body"   data-i18n="how.step3.body">Навчаємо місцевих активісток та волонтерів, щоб підтримка тривала після нашого відходу.</p>
+            </div>
+          </div>
+
+          <div class="how__step">
+            <div class="how__step-number" aria-hidden="true">4</div>
+            <div>
+              <h3 class="how__step-title" data-i18n="how.step4.title">Моніторинг та звітність</h3>
+              <p class="how__step-body"   data-i18n="how.step4.body">Відстежуємо результати і публічно звітуємо перед донорами та громадою.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROJECTS ───────────────────────────────────────────────── -->
+    <section id="projects" class="projects section-pad-relaxed" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <p class="section-tag" data-i18n="projects.section_tag">Ініціативи</p>
+          <h2 class="section-title" id="projects-title" data-i18n="projects.headline">Ключові проєкти</h2>
+          <p class="section-subtitle" data-i18n="projects.subheading">Чотири ініціативи підтримки громад</p>
+        </div>
+
+        <div class="projects__grid" data-animate-stagger>
+
+          <article class="project-card">
+            <div class="project-card__media">
+              <img src="https://images.unsplash.com/photo-1578496479915-962174fc59cf?w=900&q=80" alt="Родина отримує соціальну та психологічну підтримку від команди" width="640" height="360" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__tag"  data-i18n="projects.p1_tag">Інтегрована допомога</span>
+              <h3  class="project-card__title" data-i18n="projects.p1_title">«Добрі руки»</h3>
+              <p   class="project-card__desc"  data-i18n="projects.p1_desc">Інтегрована психосоціальна та адресна соціальна допомога в Харківській області.</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__media">
+              <img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=900&q=80" alt="Група підтримки під час зустрічі за столом" width="640" height="360" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__tag"  data-i18n="projects.p2_tag">Стійкість і згуртованість</span>
+              <h3  class="project-card__title" data-i18n="projects.p2_title">Психологічна підтримка та соціальна згуртованість</h3>
+              <p   class="project-card__desc"  data-i18n="projects.p2_desc">Відновлення емоційної стійкості й зменшення соціальної ізоляції в постраждалих регіонах.</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__media">
+              <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900&q=80" alt="Діти під час спільної активності та подарунків" width="640" height="360" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__tag"  data-i18n="projects.p3_tag">Пряма солідарність</span>
+              <h3  class="project-card__title" data-i18n="projects.p3_title">«Від людини до людини»</h3>
+              <p   class="project-card__desc"  data-i18n="projects.p3_desc">Ініціатива збору коштів на основі прямої солідарності — підтримка дітей через події й подарунки.</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__media">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80" alt="Жінки під час навчання та професійної підтримки" width="640" height="360" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__tag"  data-i18n="projects.p4_tag">Економіка й психологія</span>
+              <h3  class="project-card__title" data-i18n="projects.p4_title">P.E.A.C.E III</h3>
+              <p   class="project-card__desc"  data-i18n="projects.p4_desc">Підтримка жінок і дітей через розбудову економічних можливостей і професійну психологічну допомогу.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DONATE ─────────────────────────────────────────────────── -->
+    <section id="donate" class="donate section-pad-relaxed" aria-labelledby="donate-title">
+      <div class="container">
+        <div class="donate__inner">
+
+          <!-- Info column -->
+          <div data-animate>
+            <p class="section-tag" data-i18n="donate.section_tag">Допомога</p>
+            <h2 class="donate__heading" id="donate-title" data-i18n="donate.headline">
+              Ваша підтримка відкриває жінкам доступ до турботи й спільноти
+            </h2>
+            <p class="donate__subheading" data-i18n="donate.subheading">
+              Кожна гривня йде безпосередньо до жінок і дітей у прифронтових громадах Харківщини.
+            </p>
+            <p class="donate__emotional" style="font-size:0.975rem;color:var(--color-mid);line-height:1.72;margin-bottom:var(--space-lg);max-width:36rem;" data-i18n="donate.emotional">
+              Жодна гривня не йде на маркетинг — лише виїзди, хаби та супровід волонтерів.
+            </p>
+
+            <p id="donate-impact-legend" class="visually-hidden" data-i18n="donate.impact_list_sr">Приклади, на що впливає ваш внесок</p>
+            <ul class="donate__impact-list" aria-labelledby="donate-impact-legend">
+              <li class="donate__impact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="donate.impact_200">200 ₴ — одна година психологічної підтримки</span>
+              </li>
+              <li class="donate__impact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="donate.impact_500">500 ₴ — гігієнічний набір для матері та дитини</span>
+              </li>
+              <li class="donate__impact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span data-i18n="donate.impact_1000">1000 ₴ — юридичне супроводження документів</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Smart Donation Module -->
+          <div class="donate__module" data-animate>
+            <h3 class="donate__module-title" data-i18n="donate.card_title">Підтримати</h3>
+
+            <p id="donate-freq-lbl" class="visually-hidden" data-i18n="donate.freq_group_sr">Тип платежу</p>
+            <div class="donate__seg" role="group" aria-labelledby="donate-freq-lbl">
+              <button type="button" class="donate__seg-btn is-active" data-donate-freq="recurring" aria-pressed="true" data-i18n="donate.freq_monthly">Щомісячно</button>
+              <button type="button" class="donate__seg-btn" data-donate-freq="once" aria-pressed="false" data-i18n="donate.freq_once">Одноразово</button>
+            </div>
+
+            <p id="donate-cur-lbl" class="donate__field-label" data-i18n="donate.currency_label">Оберіть валюту</p>
+            <div class="donate__seg" role="radiogroup" aria-labelledby="donate-cur-lbl">
+              <button type="button" class="donate__seg-btn is-active" data-donate-currency="UAH" aria-pressed="true" aria-label="UAH">UAH,&nbsp;₴</button>
+              <button type="button" class="donate__seg-btn" data-donate-currency="USD" aria-pressed="false" aria-label="USD">USD,&nbsp;$</button>
+              <button type="button" class="donate__seg-btn" data-donate-currency="EUR" aria-pressed="false" aria-label="EUR">EUR,&nbsp;€</button>
+            </div>
+
+            <p id="donate-amt-lbl" class="donate__field-label" data-i18n="donate.amount_label">Оберіть суму</p>
+            <span id="donate-preset-legend" class="visually-hidden" data-i18n="donate.preset_sr">Стандартні суми або своя сума нижче</span>
+
+            <div class="donate-preset-panels" role="group" aria-labelledby="donate-amt-lbl donate-preset-legend">
+              <div class="donate-amt-grid" data-donate-presets-for="UAH" aria-hidden="false">
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-3" data-amount="250" data-i18n-aria-label="donate.amt250_aria">250&nbsp;₴</button>
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-3" data-amount="500" data-i18n-aria-label="donate.amt500_aria">500&nbsp;₴</button>
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-3" data-amount="1000" data-i18n-aria-label="donate.amt1000_aria">1000&nbsp;₴</button>
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-6" data-amount="5000" data-i18n-aria-label="donate.amt5000_aria">5000&nbsp;₴</button>
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-6" data-other="1" data-i18n="donate.other_amount">інша сума</button>
+              </div>
+
+              <div class="donate-amt-grid" data-donate-presets-for="USD" hidden aria-hidden="true">
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-3" data-amount="10" data-i18n-aria-label="donate.amt250_aria">$&nbsp;10</button>
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-3" data-amount="25" data-i18n-aria-label="donate.amt500_aria">$&nbsp;25</button>
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-3" data-amount="50" data-i18n-aria-label="donate.amt1000_aria">$&nbsp;50</button>
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-6" data-amount="100" data-i18n-aria-label="donate.amt5000_aria">$&nbsp;100</button>
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-6" data-other="1" data-i18n="donate.other_amount">інша сума</button>
+              </div>
+
+              <div class="donate-amt-grid" data-donate-presets-for="EUR" hidden aria-hidden="true">
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-3" data-amount="10" data-i18n-aria-label="donate.amt250_aria">10&nbsp;€</button>
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-3" data-amount="25" data-i18n-aria-label="donate.amt500_aria">25&nbsp;€</button>
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-3" data-amount="50" data-i18n-aria-label="donate.amt1000_aria">50&nbsp;€</button>
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-6" data-amount="100" data-i18n-aria-label="donate.amt5000_aria">100&nbsp;€</button>
+                <button type="button" class="donate__amount-btn donate__amount-btn--cell-6" data-other="1" data-i18n="donate.other_amount">інша сума</button>
+              </div>
+            </div>
+
+            <div id="donate-custom-wrap">
+              <span id="donate-custom-label" class="visually-hidden" data-i18n="donate.custom_sr_label">Сума платежу</span>
+              <input
+                type="text"
+                class="donate__field"
+                id="donate-custom-input"
+                inputmode="numeric"
+                autocomplete="transaction-amount"
+                placeholder="Введіть суму"
+                data-i18n-placeholder="donate.custom_placeholder"
+                aria-labelledby="donate-custom-label"
+                aria-describedby="donate-error-msg"
+                aria-invalid="false"
+              >
+              <p class="donate__error-msg" id="donate-error-msg" role="alert" data-i18n="donate.error_amount">
+                Мінімальна сума — 10 (у вибраній валюті)
+              </p>
+            </div>
+
+            <button class="btn btn-primary donate__cta" id="donate-btn" type="button" data-i18n-aria-label="donate.cta_aria_label">
+              <span class="btn-text">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <span data-i18n="donate.cta">Продовжити до оплати</span>
+              </span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+
+            <p class="donate__trust-line" data-i18n="donate.trust">
+              🔒 Безпечна оплата WayForPay · Офіційний благодійний фонд України
+            </p>
+
+            <div class="donate-bank" aria-labelledby="donate-bank-title">
+              <h4 class="donate-bank__title" id="donate-bank-title" data-i18n="donate.bank_title">Реквізити для переказу</h4>
+
+              <div class="donate-iban-row">
+                <span class="donate-iban-cur" aria-hidden="true">UAH</span>
+                <div class="donate-iban-box">
+                  <code class="donate-iban-code" id="iban-uah">UA423052990000026005015934341</code>
+                  <button type="button" class="donate-iban-copy" data-copy-target="iban-uah" data-i18n-aria-label="donate.copy_iban">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span class="donate-iban-copy-text" data-i18n="donate.copy_iban">Скопіювати</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="donate-iban-row">
+                <span class="donate-iban-cur" aria-hidden="true">USD</span>
+                <div class="donate-iban-box">
+                  <code class="donate-iban-code" id="iban-usd">UA083052990000026002025902678</code>
+                  <button type="button" class="donate-iban-copy" data-copy-target="iban-usd" data-i18n-aria-label="donate.copy_iban">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span class="donate-iban-copy-text" data-i18n="donate.copy_iban">Скопіювати</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="donate-iban-row">
+                <span class="donate-iban-cur" aria-hidden="true">EUR</span>
+                <div class="donate-iban-box">
+                  <code class="donate-iban-code" id="iban-eur">UA943052990000026007025908138</code>
+                  <button type="button" class="donate-iban-copy" data-copy-target="iban-eur" data-i18n-aria-label="donate.copy_iban">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span class="donate-iban-copy-text" data-i18n="donate.copy_iban">Скопіювати</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PARTNERS ───────────────────────────────────────────────── -->
+    <section id="partners" class="partners section-pad-relaxed section-warm-bg" aria-labelledby="partners-title">
+      <div class="container">
+        <div class="section-header section-header--wide" data-animate>
+          <p class="section-tag" data-i18n="partners.section_tag">Партнери</p>
+          <h2 class="section-title" id="partners-title" data-i18n="partners.headline">Нам довіряють</h2>
+          <p class="section-subtitle" data-i18n="partners.subheading">
+            Міжнародні та національні організації, що підтримують нашу місію
+          </p>
+          <p class="section-subtitle" style="margin-top:var(--space-md);font-size:0.9375rem;" data-i18n="partners.community_note">
+            Дякуємо громадським об’єднанням і діяспорі за складну роботу, яка майже завжди залишається за лаштунками.
+          </p>
+        </div>
+        <!-- Populated by app.js renderPartners() -->
+        <div id="partners-grid" data-animate-stagger aria-label="Організації-партнери"></div>
+      </div>
+    </section>
+
+  </main><!-- /#main-content -->
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+
+        <!-- Brand -->
+        <div class="footer__brand">
+          <a href="#hero" class="nav-logo" aria-label="I CAN — на початок сторінки">
+            <span class="brand-logo-mark" aria-hidden="true"><img src="logo-ican-foundation.png" width="52" height="52" alt="" decoding="async"></span>
+            <span class="nav-logo__text"><span data-i18n="hero.brand_lockup">I CAN</span></span>
+          </a>
+          <p class="footer__tagline" data-i18n="footer.tagline">
+            Психологічна, юридична та соціальна підтримка жінок і дітей у громадах Харківщини.
+          </p>
+          <p class="footer__mission" data-i18n="footer.mission">
+            Ми створюємо відчуття опори там, де війна виснажує родини.
+          </p>
+          <div class="social-links" style="margin-top:var(--space-md);" aria-label="Соціальні мережі">
+            <a href="https://t.me/bo_bf_ican" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Telegram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 1 0 24 12 12.017 12.017 0 0 0 11.944 0Zm5.978 8.084-1.977 9.325c-.146.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.327-2.962-.924c-.643-.204-.657-.643.136-.953l11.573-4.463c.537-.194 1.006.131.837.897Z"/></svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer__col-title" data-i18n="footer.col_contact_title">Контакти</h3>
+          <div class="footer__contact-block">
+            <p>Email:<br><a href="mailto:info@icanwomen.org">info@icanwomen.org</a></p>
+            <p style="margin-top:var(--space-sm);">Telegram:<br><a href="https://t.me/bo_bf_ican" target="_blank" rel="noopener noreferrer">@bo_bf_ican</a></p>
+            <p style="margin-top:var(--space-sm);">Kharkiv region, Ukraine</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer__col-title" data-i18n="footer.col1_title">Швидкі посилання</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="#our-impact" data-i18n="nav.impact">Вплив</a></li>
+            <li><a href="#our-projects" data-i18n="nav.our_projects">Наші проекти</a></li>
+            <li><a href="#programs" data-i18n="nav.programs">Програми</a></li>
+            <li><a href="#activity-reports" data-i18n="nav.reports">Звіти</a></li>
+            <li><a href="#stories"    data-i18n="nav.stories">Історії</a></li>
+            <li><a href="#team"       data-i18n="nav.team">Команда</a></li>
+            <li><a href="#history" data-i18n="nav.history_nav">Хронологія</a></li>
+            <li><a href="#projects" data-i18n="nav.projects">Проекти</a></li>
+            <li><a href="#partners" data-i18n="nav.partners">Партнери</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__col-title" data-i18n="footer.col2_title">Дії</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="#donate" data-i18n="nav.donate_outline">Підтримати місію</a></li>
+            <li><a href="https://t.me/bo_bf_ican" target="_blank" rel="noopener noreferrer" data-i18n="footer.get_help">Отримати допомогу</a></li>
+            <li><a href="#activity-reports" data-i18n="footer.reports_link">Фінзвіти</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__col-title" data-i18n="footer.col3_title">Юридичне</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="#" data-i18n="footer.privacy">Конфіденційність</a></li>
+            <li><a href="#" data-i18n="footer.terms">Умови сайту</a></li>
+            <li><a href="#" data-i18n="footer.registration_link">Реєстраційні документи</a></li>
+          </ul>
+        </div>
+
+      </div><!-- /.footer__inner -->
+
+      <div class="footer__bottom">
+        <p class="footer__reg" data-i18n="footer.registration">
+          БФ «ICAN Women Foundation» · Код ЄДРПОУ: XXXXXXXX · Зареєстровано в Україні
+        </p>
+        <p class="footer__copy" data-i18n="footer.rights">
+          © 2024–2026 ICAN Women Foundation. Всі права захищені.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
