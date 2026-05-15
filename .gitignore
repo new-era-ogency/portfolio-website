@@ -1,8 +1,39 @@
-/node_modules
-/.next
-/out
-.env*.local
-*.log
-.DS_Store
+# Dependencies & builds
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+dist-ssr/
+.next/
+out/
+build/
+*.tsbuildinfo
 
+# Env & secrets (keep *.example committable)
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Logs & OS
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Archives (не хранить в репозитории)
+*.zip
+*.7z
+*.rar
+
+# Тяжёлые документы — лучше облако / Releases, не история git
+*.pdf
+
+# Не коммитить полную копию WordPress
+maksim/
+
+# Tooling
 .vercel
+.idea/
+.vscode/*
+!.vscode/extensions.json
