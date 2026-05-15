@@ -12,6 +12,7 @@ import {
 import { projectDefs } from './i18n/projectDefs.js'
 import { useLocale } from './i18n/useLocale.js'
 import { CONTACT, GITHUB_ORG } from './brand.js'
+import ContactForm from './ContactForm.jsx'
 
 function TelegramIcon({ className }) {
   return (
@@ -493,56 +494,63 @@ export default function App() {
           className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24"
         >
           <div className="rounded-3xl border border-white/[0.08] bg-white/[0.02] p-8 sm:p-12">
-            <h2 className="font-display text-2xl font-medium text-zinc-50 sm:text-3xl">
-              {t.footer.title}
-            </h2>
-            <p className="mt-3 max-w-lg text-sm text-zinc-500">
-              {t.footer.lead}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="mailto:hirneyrodion@gmail.com"
-                className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-sm text-zinc-300 transition hover:border-white/20 hover:bg-white/[0.07]"
-              >
-                <Mail className="h-4 w-4 text-[var(--color-accent)]" />
-                hirneyrodion@gmail.com
-              </a>
-              <a
-                href={`tel:${CONTACT.phoneTel}`}
-                className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-sm text-zinc-300 transition hover:border-white/20 hover:bg-white/[0.07]"
-                aria-label={t.footer.phoneLabel}
-              >
-                <Phone className="h-4 w-4 text-[var(--color-accent)]" />
-                {CONTACT.phoneDisplay}
-              </a>
-              <a
-                href={CONTACT.instagramHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-sm text-zinc-300 transition hover:border-white/20 hover:bg-white/[0.07]"
-              >
-                <Instagram className="h-4 w-4 text-[var(--color-accent)]" />
-                {t.footer.instagramLabel}
-              </a>
-              <a
-                href={GITHUB_ORG.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-zinc-400 transition hover:border-white/20 hover:text-zinc-100"
-                aria-label={`GitHub — ${GITHUB_ORG.handle}`}
-              >
-                <Github className="h-4 w-4" strokeWidth={1.5} />
-              </a>
-              <a
-                href="https://t.me/rodionkhrn"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-zinc-400 transition hover:border-white/20 hover:text-zinc-100"
-                aria-label="Telegram @rodionkhrn"
-                title="@rodionkhrn"
-              >
-                <TelegramIcon className="h-[18px] w-[18px]" />
-              </a>
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-start lg:gap-14">
+              <div>
+                <h2 className="font-display text-2xl font-medium text-zinc-50 sm:text-3xl">
+                  {t.footer.title}
+                </h2>
+                <p className="mt-3 max-w-lg text-sm text-zinc-500">
+                  {t.footer.lead}
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a
+                    href="mailto:hirneyrodion@gmail.com"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-sm text-zinc-300 transition hover:border-white/20 hover:bg-white/[0.07]"
+                  >
+                    <Mail className="h-4 w-4 text-[var(--color-accent)]" />
+                    hirneyrodion@gmail.com
+                  </a>
+                  <a
+                    href={`tel:${CONTACT.phoneTel}`}
+                    className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-sm text-zinc-300 transition hover:border-white/20 hover:bg-white/[0.07]"
+                    aria-label={t.footer.phoneLabel}
+                  >
+                    <Phone className="h-4 w-4 text-[var(--color-accent)]" />
+                    {CONTACT.phoneDisplay}
+                  </a>
+                  <a
+                    href={CONTACT.instagramHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-sm text-zinc-300 transition hover:border-white/20 hover:bg-white/[0.07]"
+                  >
+                    <Instagram className="h-4 w-4 text-[var(--color-accent)]" />
+                    {t.footer.instagramLabel}
+                  </a>
+                  <a
+                    href={GITHUB_ORG.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-zinc-400 transition hover:border-white/20 hover:text-zinc-100"
+                    aria-label={`GitHub — ${GITHUB_ORG.handle}`}
+                  >
+                    <Github className="h-4 w-4" strokeWidth={1.5} />
+                  </a>
+                  <a
+                    href="https://t.me/rodionkhrn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-zinc-400 transition hover:border-white/20 hover:text-zinc-100"
+                    aria-label="Telegram @rodionkhrn"
+                    title="@rodionkhrn"
+                  >
+                    <TelegramIcon className="h-[18px] w-[18px]" />
+                  </a>
+                </div>
+              </div>
+              <div className="min-w-0">
+                <ContactForm />
+              </div>
             </div>
           </div>
           <p className="mt-12 text-center text-[11px] uppercase tracking-[0.22em] text-zinc-700">

@@ -80,6 +80,33 @@ export const en = {
     note: ({ year }) =>
       `© ${year} New Era Agency — React & Tailwind`,
   },
+  contactForm: {
+    badge: 'Concierge',
+    title: 'Leave a brief',
+    hint:
+      'We read every message — expect a thoughtful reply within one business day.',
+    name: 'Name',
+    email: 'Email',
+    message: 'Message',
+    namePlaceholder: 'Your name',
+    emailPlaceholder: 'you@brand.com',
+    messagePlaceholder: 'Project scope, venue, timeline…',
+    submit: 'Send message',
+    sending: 'Sending…',
+    successTitle: 'Received',
+    successBody: 'Thank you — we’ll be in touch shortly.',
+    errorTitle: 'Something went wrong',
+    errorGeneric: 'Please try again in a moment.',
+    errorConfig:
+      'Contact form is not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.',
+    valNameRequired: 'Please enter your name.',
+    valNameMin: 'Name looks too short.',
+    valEmailRequired: 'Please enter your email.',
+    valEmailInvalid: 'Please enter a valid email address.',
+    valMessageRequired: 'Please tell us a bit about the project.',
+    valMessageMin: 'A few more details help us respond faster.',
+    valMessageMax: 'Please shorten your message (max 4000 characters).',
+  },
   projects: {
     lulu: {
       title: 'Lulu Flower Boutique',

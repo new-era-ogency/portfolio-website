@@ -80,6 +80,33 @@ export const bg = {
     note: ({ year }) =>
       `© ${year} New Era Agency — React и Tailwind`,
   },
+  contactForm: {
+    badge: 'Concierge',
+    title: 'Кратък бриф',
+    hint:
+      'Четем всяко съобщение — отговаряме обмислено до един работен ден.',
+    name: 'Име',
+    email: 'Имейл',
+    message: 'Съобщение',
+    namePlaceholder: 'Вашето име',
+    emailPlaceholder: 'you@brand.com',
+    messagePlaceholder: 'Обхват, обект, срокове…',
+    submit: 'Изпрати',
+    sending: 'Изпращане…',
+    successTitle: 'Получено',
+    successBody: 'Благодарим — очаквайте контакт скоро.',
+    errorTitle: 'Нещо се обърка',
+    errorGeneric: 'Опитайте отново след малко.',
+    errorConfig:
+      'Формата не е конфигурирана. Добавете VITE_SUPABASE_URL и VITE_SUPABASE_ANON_KEY.',
+    valNameRequired: 'Моля, въведете име.',
+    valNameMin: 'Името е твърде кратко.',
+    valEmailRequired: 'Моля, въведете имейл.',
+    valEmailInvalid: 'Невалиден формат на имейл.',
+    valMessageRequired: 'Опишете проекта накратко.',
+    valMessageMin: 'Добавете малко повече детайл за по-точен отговор.',
+    valMessageMax: 'Съкратете съобщението (макс. 4000 символа).',
+  },
   projects: {
     lulu: {
       title: 'Lulu Flower Boutique',

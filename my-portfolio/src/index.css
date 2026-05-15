@@ -28,4 +28,25 @@
   .font-display {
     font-family: 'Fraunces', ui-serif, Georgia, serif;
   }
+
+  @keyframes portfolio-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-portfolio-fade-up {
+    animation: portfolio-fade-up 420ms ease-out both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-portfolio-fade-up {
+      animation: none;
+    }
+  }
 }
