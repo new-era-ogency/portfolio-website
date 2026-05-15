@@ -3,7 +3,7 @@
 /** @type {Messages} */
 export const en = {
   nav: {
-    brand: 'New Era Agency',
+    brand: 'DevEra agency',
     projects: 'Work',
     contact: 'Contact',
     about: 'About',
@@ -12,7 +12,7 @@ export const en = {
     pricing: 'Pricing',
   },
   hero: {
-    badge: 'New Era Agency · open for projects',
+    badge: 'DevEra agency · open for projects',
     title1: 'Web Developer',
     title2: 'for Boutique & HoReCa',
     lead:
@@ -57,17 +57,17 @@ export const en = {
       {
         name: 'Basic',
         includes: 'One-page brochure site',
-        price: '150€',
+        price: '200€',
       },
       {
         name: 'Standard',
         includes: 'Site + SEO setup + Google Maps',
-        price: '250€',
+        price: '300€',
       },
       {
         name: 'Premium',
         includes: 'Site + SEO + booking form + 1 month support',
-        price: '350€',
+        price: '400€',
       },
     ],
   },
@@ -78,7 +78,7 @@ export const en = {
     instagramLabel: 'Instagram',
     phoneLabel: 'Phone',
     note: ({ year }) =>
-      `© ${year} New Era Agency — React & Tailwind`,
+      `© ${year} DevEra agency — React & Tailwind`,
   },
   contactForm: {
     badge: 'Concierge',
@@ -92,13 +92,19 @@ export const en = {
     emailPlaceholder: 'you@brand.com',
     messagePlaceholder: 'Project scope, venue, timeline…',
     submit: 'Send message',
-    sending: 'Sending…',
-    successTitle: 'Received',
-    successBody: 'Thank you — we’ll be in touch shortly.',
+    sending: 'Sending...',
+    successTitle: 'Request submitted!',
+    successBody: 'We’ll get back to you shortly.',
     errorTitle: 'Something went wrong',
     errorGeneric: 'Please try again in a moment.',
-    errorConfig:
-      'Contact form is not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.',
+    errorSupabase:
+      'Step: database (Supabase). The lead could not be saved.',
+    errorEmailJs:
+      'Step: EmailJS. The lead is saved in the leads table, but the email was not sent.',
+    errorConfigSupabase:
+      'Add to .env: VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.',
+    errorConfigEmailJs:
+      'Add to .env: VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY.',
     valNameRequired: 'Please enter your name.',
     valNameMin: 'Name looks too short.',
     valEmailRequired: 'Please enter your email.',
@@ -173,9 +179,9 @@ export const en = {
     blackLabelCoffee: {
       title: 'Black Label Coffee House & Bakery',
       tagline:
-        'Neo‑Noir Gothic Coffee Cult · Sofia · digital by New Era Agency',
+        'Neo‑Noir Gothic Coffee Cult · Sofia · digital by DevEra agency',
       task:
-        'Digital Agency: New Era Agency. The site channels underground Tokyo at night — premium coffee meets a “night city” aesthetic. A refuge from the everyday in deep shadow and neon: the Neo‑Noir Gothic Coffee Cult concept for a Sofia coffee house & bakery.',
+        'Digital Agency: DevEra agency. The site channels underground Tokyo at night — premium coffee meets a “night city” aesthetic. A refuge from the everyday in deep shadow and neon: the Neo‑Noir Gothic Coffee Cult concept for a Sofia coffee house & bakery.',
       solution:
         'Design system — The Void: #000 so content feels suspended. Vibrant Neon: #00FF41 / #39FF14 on CTAs, kanji, and interactive lines. Warm Wood: #3E2723 for coffee‑toned calm. Type: Oswald / Anton headlines, JetBrains Mono for terminal body copy. Atmosphere: vertical kanji (e.g. 珈琲), “skele‑rista” 3D baristas, flickering neon on links, light glitch on headings, smooth scroll, and a subtle brown‑tinted matrix rain.',
       stack: 'HTML5 · CSS3 · JavaScript',

@@ -3,7 +3,7 @@
 /** @type {Messages} */
 export const bg = {
   nav: {
-    brand: 'New Era Agency',
+    brand: 'DevEra agency',
     projects: 'Проекти',
     contact: 'Контакти',
     about: 'За нас',
@@ -12,7 +12,7 @@ export const bg = {
     pricing: 'Цени',
   },
   hero: {
-    badge: 'New Era Agency · отворени за проекти',
+    badge: 'DevEra agency · отворени за проекти',
     title1: 'Web Developer',
     title2: 'за бутици и HoReCa',
     lead:
@@ -57,17 +57,17 @@ export const bg = {
       {
         name: 'Базов',
         includes: 'Сайт-визитка',
-        price: '150€',
+        price: '200€',
       },
       {
         name: 'Стандарт',
         includes: 'Сайт + SEO настройка + Google Maps',
-        price: '250€',
+        price: '300€',
       },
       {
         name: 'Премиум',
         includes: 'Сайт + SEO + форма за резервация + месец поддръжка',
-        price: '350€',
+        price: '400€',
       },
     ],
   },
@@ -78,7 +78,7 @@ export const bg = {
     instagramLabel: 'Instagram',
     phoneLabel: 'Телефон',
     note: ({ year }) =>
-      `© ${year} New Era Agency — React и Tailwind`,
+      `© ${year} DevEra agency — React и Tailwind`,
   },
   contactForm: {
     badge: 'Concierge',
@@ -92,13 +92,19 @@ export const bg = {
     emailPlaceholder: 'you@brand.com',
     messagePlaceholder: 'Обхват, обект, срокове…',
     submit: 'Изпрати',
-    sending: 'Изпращане…',
-    successTitle: 'Получено',
-    successBody: 'Благодарим — очаквайте контакт скоро.',
+    sending: 'Изпращане...',
+    successTitle: 'Заявката е изпратена!',
+    successBody: 'Ще се свържем с вас в най-близко време.',
     errorTitle: 'Нещо се обърка',
     errorGeneric: 'Опитайте отново след малко.',
-    errorConfig:
-      'Формата не е конфигурирана. Добавете VITE_SUPABASE_URL и VITE_SUPABASE_ANON_KEY.',
+    errorSupabase:
+      'Етап: база данни (Supabase). Заявката не е записана.',
+    errorEmailJs:
+      'Етап: EmailJS. Заявката вече е в таблица leads, но имейлът не е изпратен.',
+    errorConfigSupabase:
+      'Добавете в .env: VITE_SUPABASE_URL и VITE_SUPABASE_ANON_KEY.',
+    errorConfigEmailJs:
+      'Добавете в .env: VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID и VITE_EMAILJS_PUBLIC_KEY.',
     valNameRequired: 'Моля, въведете име.',
     valNameMin: 'Името е твърде кратко.',
     valEmailRequired: 'Моля, въведете имейл.',
@@ -173,9 +179,9 @@ export const bg = {
     blackLabelCoffee: {
       title: 'Black Label Coffee House & Bakery',
       tagline:
-        'Neo-Noir Gothic Coffee Cult · София · New Era Agency',
+        'Neo-Noir Gothic Coffee Cult · София · DevEra agency',
       task:
-        'Digital Agency: New Era Agency. Сайтът е дигитална инкарнация на атмосферата на андеграундно Токио — премиално кафе с естетика на „нощния град“. Убежище от ежедневието среди дълбоки сенки и неон: концепция Neo-Noir Gothic Coffee Cult за кафене и пекарна в София.',
+        'Digital Agency: DevEra agency. Сайтът е дигитална инкарнация на атмосферата на андеграундно Токио — премиално кафе с естетика на „нощния град“. Убежище от ежедневието среди дълбоки сенки и неон: концепция Neo-Noir Gothic Coffee Cult за кафене и пекарна в София.',
       solution:
         'Визуален код: The Void — #000; Vibrant Neon — #00FF41 / #39FF14 за бутони, кандзи и линии; Warm Wood — #3E2723. Типография: Oswald / Anton, JetBrains Mono. Детайли: вертикални кандзи (напр. 珈琲), 3D skele-ristas, мерцащ неон при hover, лек glitch при зареждане, smooth scroll и фин matrix rain в тъмнокафяви тонове.',
       stack: 'HTML5 · CSS3 · JavaScript',

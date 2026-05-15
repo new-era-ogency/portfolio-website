@@ -1,8 +1,8 @@
 import { useCallback, useMemo, useState } from 'react'
 import { CheckCircle2, Loader2, Send } from 'lucide-react'
 
+import { useLeadSubmit } from './hooks/useLeadSubmit.js'
 import { useLocale } from './i18n/useLocale.js'
-import { isSupabaseConfigured, supabase } from './lib/supabaseClient.js'
 
 const MESSAGE_MAX = 4000
 
@@ -34,6 +34,7 @@ function validateFields({ name, email, message }, copy) {
 export default function ContactForm() {
   const { t } = useLocale()
   const copy = t.contactForm
+  const { status, setStatus, submit: submitLead } = useLeadSubmit()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -45,14 +46,11 @@ export default function ContactForm() {
     /** @type {Partial<Record<'name' | 'email' | 'message', string>>} */ ({}),
   )
   const [submitError, setSubmitError] = useState(/** @type {string | null} */ (null))
-  const [status, setStatus] = useState(
-    /** @type {'idle' | 'submitting' | 'success' | 'error'} */ ('idle'),
-  )
 
   const clearSubmitFeedback = useCallback(() => {
     setSubmitError(null)
     setStatus((s) => (s === 'error' ? 'idle' : s))
-  }, [])
+  }, [setStatus])
 
   const runValidation = useCallback(
     (nextName, nextEmail, nextMessage) => {
@@ -85,14 +83,8 @@ export default function ContactForm() {
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault()
-      setSubmitError(null)
+      clearSubmitFeedback()
       setTouched({ name: true, email: true, message: true })
-
-      if (!isSupabaseConfigured() || !supabase) {
-        setStatus('error')
-        setSubmitError(copy.errorConfig)
-        return
-      }
 
       const ok = runValidation(name, email, message)
       if (!ok) {
@@ -100,29 +92,49 @@ export default function ContactForm() {
         return
       }
 
-      setStatus('submitting')
-      const payload = {
-        name: name.trim(),
-        email: email.trim(),
-        message: message.trim(),
-      }
+      const result = await submitLead({
+        name,
+        email,
+        message,
+      })
 
-      const { error } = await supabase.from('leads').insert(payload)
-
-      if (error) {
-        setStatus('error')
-        setSubmitError(error.message || copy.errorGeneric)
+      if (!result.ok) {
+        if (result.stage === 'config') {
+          setStatus('error')
+          setSubmitError(
+            result.configTarget === 'emailjs'
+              ? copy.errorConfigEmailJs
+              : copy.errorConfigSupabase,
+          )
+          return
+        }
+        let text =
+          result.stage === 'supabase' ? copy.errorSupabase : copy.errorEmailJs
+        const suffix = result.message?.trim() || copy.errorGeneric
+        setSubmitError(`${text}\n\n${suffix}`)
         return
       }
 
-      setStatus('success')
       setName('')
       setEmail('')
       setMessage('')
       setTouched({})
       setFieldErrors({})
     },
-    [copy, email, message, name, runValidation],
+    [
+      clearSubmitFeedback,
+      copy.errorConfigEmailJs,
+      copy.errorConfigSupabase,
+      copy.errorEmailJs,
+      copy.errorGeneric,
+      copy.errorSupabase,
+      email,
+      message,
+      name,
+      runValidation,
+      setStatus,
+      submitLead,
+    ],
   )
 
   const inputClass =
@@ -276,7 +288,7 @@ export default function ContactForm() {
                 className="rounded-xl border border-rose-500/25 bg-rose-950/35 px-4 py-3 text-sm text-rose-100 transition duration-200"
               >
                 <p className="font-medium text-rose-50">{copy.errorTitle}</p>
-                <p className="mt-1 text-xs leading-relaxed text-rose-200/85">
+                <p className="mt-1 whitespace-pre-wrap text-xs leading-relaxed text-rose-200/85">
                   {submitError}
                 </p>
               </div>

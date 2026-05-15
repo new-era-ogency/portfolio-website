@@ -27,7 +27,7 @@ export const projectDefs = [
       'sofia',
       'neonoir',
       'gothiccoffee',
-      'neweraagency',
+      'deveraagency',
       'webdesign',
       'frontend',
     ],
@@ -47,7 +47,7 @@ export const projectDefs = [
       'sanity',
       'vercel',
       'ecommerce',
-      'neweraagency',
+      'deveraagency',
     ],
   },
   {
