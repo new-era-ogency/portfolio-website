@@ -44,17 +44,7 @@
     animation: portfolio-fade-up 420ms ease-out both;
   }
 
-  .hero-video-bg {
-    filter: brightness(0.72) contrast(1.06) saturate(1.05);
-    transform: translateZ(0);
-    backface-visibility: hidden;
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .hero-video-bg {
-      filter: none;
-    }
-
     .animate-portfolio-fade-up {
       animation: none;
     }

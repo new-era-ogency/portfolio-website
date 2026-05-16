@@ -81,6 +81,10 @@ export default function App() {
         >
           <HeroVideo />
           <div
+            className="pointer-events-none absolute inset-0 z-0 bg-black/40"
+            aria-hidden
+          />
+          <div
             className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-black/80 via-black/50 to-black/88"
             aria-hidden
           />

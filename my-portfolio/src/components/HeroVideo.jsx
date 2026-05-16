@@ -1,26 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-/**
- * Ролик лежит в `public/videos/`. Имя файла — только буквы/цифры (без пробелов, `_`, и т.д.).
- * Список ниже перебирается по порядку, пока один из файлов не откроется.
- *
- * Свой вариант: в `.env` задайте только имя файла, например
- *   VITE_HERO_VIDEO=myportfoliopublicvideosimgheropage.mp4
- */
-function getHeroMp4Sources() {
-  const custom = readViteEnv('VITE_HERO_VIDEO')
-  if (custom) {
-    const name = custom.replace(/^\/+/, '').replace(/^videos\//, '')
-    return [`/videos/${name}`]
-  }
-  return [
-    '/videos/my-portfoliopublicvideosIMG_HeroPage.mp4',
-    '/videos/imgheropage.mp4',
-    '/videos/IMGHeroPage.mp4',
-    '/videos/myportfoliopublicvideosimgheropage.mp4',
-    '/videos/IMG_HeroPage.mp4',
-  ]
-}
+/** Основной ролик hero (путь от корня `public`). */
+const HERO_VIDEO_SRC = '/videos/IMG_HeroPage.mp4.MP4'
 
 function readViteEnv(key) {
   const v = import.meta.env[key]
@@ -28,17 +9,13 @@ function readViteEnv(key) {
 }
 
 /**
- * Полноэкранное фоновое видео за hero: preload=none, монтирование после idle.
- * Родитель: `relative` + `min-height` (например `min-h-svh`). Слой `absolute inset-0`.
+ * Фоновое видео для hero-секции: слой под контентом (`-z-10`), autoplay через muted + playsInline.
  */
-export default function HeroVideoBackground() {
-  const videoRef = useRef(/** @type {HTMLVideoElement | null} */ (null))
+export default function HeroVideo() {
   const [reducedMotion, setReducedMotion] = useState(() => {
     if (typeof window === 'undefined') return false
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches
   })
-  const [deferMount, setDeferMount] = useState(false)
-  const [ready, setReady] = useState(false)
   const [broken, setBroken] = useState(false)
 
   useEffect(() => {
@@ -48,47 +25,15 @@ export default function HeroVideoBackground() {
     return () => mq.removeEventListener('change', onChange)
   }, [])
 
-  useEffect(() => {
-    if (reducedMotion) return
-    let idleId = /** @type {number | undefined} */ (undefined)
-    let timeoutId = /** @type {ReturnType<typeof setTimeout> | undefined} */ (
-      undefined
-    )
-    if (typeof window.requestIdleCallback === 'function') {
-      idleId = window.requestIdleCallback(
-        () => {
-          setDeferMount(true)
-        },
-        { timeout: 2000 },
-      )
-    } else {
-      timeoutId = window.setTimeout(() => {
-        setDeferMount(true)
-      }, 350)
-    }
-    return () => {
-      if (idleId !== undefined && typeof window.cancelIdleCallback === 'function') {
-        window.cancelIdleCallback(idleId)
-      }
-      if (timeoutId !== undefined) {
-        window.clearTimeout(timeoutId)
-      }
-    }
-  }, [reducedMotion])
-
-  const tryPlay = useCallback(() => {
-    const el = videoRef.current
-    if (!el) return
-    const p = el.play()
-    if (p !== undefined && typeof p.then === 'function') {
-      p.catch(() => {})
-    }
-  }, [])
+  const custom = readViteEnv('VITE_HERO_VIDEO')
+  const primarySrc = custom
+    ? `/videos/${custom.replace(/^\/+/, '').replace(/^videos\//, '')}`
+    : HERO_VIDEO_SRC
 
   if (reducedMotion || broken) {
     return (
       <div
-        className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#0a0a0b]"
+        className="absolute inset-0 -z-10 w-full h-full overflow-hidden bg-[#0a0a0b]"
         aria-hidden
       >
         <div
@@ -104,34 +49,20 @@ export default function HeroVideoBackground() {
 
   return (
     <div
-      className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#0a0a0b]"
+      className="absolute inset-0 -z-10 w-full h-full overflow-hidden"
       aria-hidden
     >
-      {!deferMount ? (
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-zinc-900/90 to-black"
-          aria-hidden
-        />
-      ) : (
-        <video
-          ref={videoRef}
-          className={`hero-video-bg absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${ready ? 'opacity-100' : 'opacity-0'}`}
-          muted
-          loop
-          playsInline
-          preload="none"
-          onLoadedData={() => {
-            setReady(true)
-            tryPlay()
-          }}
-          onCanPlay={() => tryPlay()}
-          onError={() => setBroken(true)}
-        >
-          {getHeroMp4Sources().map((src) => (
-            <source key={src} src={src} type="video/mp4" />
-          ))}
-        </video>
-      )}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="object-cover w-full h-full absolute inset-0"
+        preload="auto"
+        onError={() => setBroken(true)}
+      >
+        <source src={primarySrc} type="video/mp4" />
+      </video>
     </div>
   )
 }
