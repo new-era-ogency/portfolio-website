@@ -102,9 +102,10 @@ export const bg = {
     errorEmailJs:
       'Етап: EmailJS. Заявката вече е в таблица leads, но имейлът не е изпратен.',
     errorConfigSupabase:
-      'Добавете в .env: VITE_SUPABASE_URL и VITE_SUPABASE_ANON_KEY.',
+      'Създайте my-portfolio/.env (или .env.local) и добавете Supabase ключове (URL + anon key). Рестартирайте npm run dev след промяната.',
     errorConfigEmailJs:
-      'Добавете в .env: VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID и VITE_EMAILJS_PUBLIC_KEY.',
+      'Създайте my-portfolio/.env (или .env.local) и добавете EmailJS ключове (service / template / public key). Рестартирайте npm run dev след промяната.',
+    errorConfigMissing: 'Липсват променливи',
     valNameRequired: 'Моля, въведете име.',
     valNameMin: 'Името е твърде кратко.',
     valEmailRequired: 'Моля, въведете имейл.',

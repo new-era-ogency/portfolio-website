@@ -102,9 +102,10 @@ export const en = {
     errorEmailJs:
       'Step: EmailJS. The lead is saved in the leads table, but the email was not sent.',
     errorConfigSupabase:
-      'Add to .env: VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.',
+      'Create my-portfolio/.env (or .env.local) and add Supabase keys (URL + anon key). Restart npm run dev after editing.',
     errorConfigEmailJs:
-      'Add to .env: VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY.',
+      'Create my-portfolio/.env (or .env.local) and add EmailJS keys (service / template / public key). Restart npm run dev after editing.',
+    errorConfigMissing: 'Missing variables',
     valNameRequired: 'Please enter your name.',
     valNameMin: 'Name looks too short.',
     valEmailRequired: 'Please enter your email.',

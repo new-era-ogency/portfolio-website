@@ -101,11 +101,14 @@ export default function ContactForm() {
       if (!result.ok) {
         if (result.stage === 'config') {
           setStatus('error')
-          setSubmitError(
+          const baseText =
             result.configTarget === 'emailjs'
               ? copy.errorConfigEmailJs
-              : copy.errorConfigSupabase,
-          )
+              : copy.errorConfigSupabase
+          const missing = result.missingEnv?.length
+            ? `\n\n${copy.errorConfigMissing}: ${result.missingEnv.join(', ')}`
+            : ''
+          setSubmitError(`${baseText}${missing}`)
           return
         }
         let text =
@@ -124,6 +127,7 @@ export default function ContactForm() {
     [
       clearSubmitFeedback,
       copy.errorConfigEmailJs,
+      copy.errorConfigMissing,
       copy.errorConfigSupabase,
       copy.errorEmailJs,
       copy.errorGeneric,

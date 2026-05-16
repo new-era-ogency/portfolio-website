@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { lazy, Suspense, useMemo } from 'react'
 import {
   ArrowUpRight,
   Github,
@@ -12,7 +12,9 @@ import {
 import { projectDefs } from './i18n/projectDefs.js'
 import { useLocale } from './i18n/useLocale.js'
 import { CONTACT, GITHUB_ORG } from './brand.js'
-import ContactForm from './ContactForm.jsx'
+import HeroVideo from './components/HeroVideo.jsx'
+
+const ContactForm = lazy(() => import('./ContactForm.jsx'))
 
 function TelegramIcon({ className }) {
   return (
@@ -73,175 +75,195 @@ export default function App() {
       />
 
       <div className="relative z-10">
-      <header className="mx-auto flex w-full max-w-6xl items-center gap-3 px-6 py-8 sm:gap-6 sm:px-8">
-        <a
-          href="#"
-          className="group flex shrink-0 items-center gap-3 text-left"
+        <section
+          className="relative isolate min-h-svh overflow-hidden"
+          aria-label="Hero"
         >
-          <img
-            src={GITHUB_ORG.avatarUrl}
-            alt=""
-            width={36}
-            height={36}
-            className="h-9 w-9 rounded-full border border-white/15 object-cover ring-1 ring-white/10 transition group-hover:border-[var(--color-accent)]/40"
-          />
-          <span className="font-display text-base font-medium leading-tight tracking-tight text-zinc-100 sm:text-lg">
-            {t.nav.brand}
-            <span className="text-[var(--color-accent)]">.</span>
-          </span>
-        </a>
-        <nav className="flex min-w-0 flex-1 flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-zinc-400 sm:gap-x-7">
-          <a
-            href="#why-me"
-            className="transition-colors hover:text-zinc-100"
-          >
-            {t.nav.about}
-          </a>
-          <a
-            href="#work"
-            className="transition-colors hover:text-zinc-100"
-          >
-            {t.nav.projects}
-          </a>
-          <a
-            href="#pricing"
-            className="transition-colors hover:text-zinc-100"
-          >
-            {t.nav.pricing}
-          </a>
-          <a
-            href="#contact"
-            className="transition-colors hover:text-zinc-100"
-          >
-            {t.nav.contact}
-          </a>
-          <a
-            href={GITHUB_ORG.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 transition-colors hover:text-zinc-100"
-          >
-            {t.nav.github}
-            <ArrowUpRight className="h-3.5 w-3.5 opacity-70" aria-hidden />
-          </a>
-        </nav>
-        <div className="ml-auto flex shrink-0 flex-wrap items-center justify-end gap-2 sm:ml-0">
-          <span className="sr-only">{t.nav.language}</span>
+          <HeroVideo />
           <div
-            className="flex rounded-full border border-white/12 bg-black/40 p-0.5 backdrop-blur-sm"
-            role="group"
-            aria-label={t.nav.language}
-          >
-            {langOptions.map(({ id, label }) => (
-              <button
-                key={id}
-                type="button"
-                onClick={() => setLocale(id)}
-                aria-pressed={locale === id}
-                className={
-                  locale === id
-                    ? 'rounded-full bg-[var(--color-accent)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-950'
-                    : 'rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500 transition hover:text-zinc-300'
-                }
+            className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-black/80 via-black/50 to-black/88"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_100%_70%_at_50%_120%,rgba(0,0,0,0.55),transparent_50%)]"
+            aria-hidden
+          />
+
+          <div className="relative z-20 flex min-h-svh flex-col">
+            <header className="mx-auto flex w-full max-w-6xl items-center gap-3 border-b border-white/[0.06] bg-black/30 px-6 py-8 backdrop-blur-md sm:gap-6 sm:px-8">
+              <a
+                href="#"
+                className="group flex shrink-0 items-center gap-3 text-left"
               >
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </header>
+                <img
+                  src={GITHUB_ORG.avatarUrl}
+                  alt=""
+                  width={36}
+                  height={36}
+                  className="h-9 w-9 rounded-full border border-white/15 object-cover ring-1 ring-white/10 transition group-hover:border-[var(--color-accent)]/40"
+                />
+                <span className="font-display text-base font-medium leading-tight tracking-tight text-zinc-100 sm:text-lg">
+                  {t.nav.brand}
+                  <span className="text-[var(--color-accent)]">.</span>
+                </span>
+              </a>
+              <nav className="flex min-w-0 flex-1 flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-zinc-300 sm:gap-x-7">
+                <a
+                  href="#why-me"
+                  className="rounded-full px-2 py-1 transition-colors hover:bg-white/10 hover:text-zinc-50"
+                >
+                  {t.nav.about}
+                </a>
+                <a
+                  href="#work"
+                  className="rounded-full px-2 py-1 transition-colors hover:bg-white/10 hover:text-zinc-50"
+                >
+                  {t.nav.projects}
+                </a>
+                <a
+                  href="#pricing"
+                  className="rounded-full px-2 py-1 transition-colors hover:bg-white/10 hover:text-zinc-50"
+                >
+                  {t.nav.pricing}
+                </a>
+                <a
+                  href="#contact"
+                  className="rounded-full px-2 py-1 transition-colors hover:bg-white/10 hover:text-zinc-50"
+                >
+                  {t.nav.contact}
+                </a>
+                <a
+                  href={GITHUB_ORG.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 rounded-full px-2 py-1 transition-colors hover:bg-white/10 hover:text-zinc-50"
+                >
+                  {t.nav.github}
+                  <ArrowUpRight className="h-3.5 w-3.5 opacity-70" aria-hidden />
+                </a>
+              </nav>
+              <div className="ml-auto flex shrink-0 flex-wrap items-center justify-end gap-2 sm:ml-0">
+                <span className="sr-only">{t.nav.language}</span>
+                <div
+                  className="flex rounded-full border border-white/12 bg-black/40 p-0.5 backdrop-blur-sm"
+                  role="group"
+                  aria-label={t.nav.language}
+                >
+                  {langOptions.map(({ id, label }) => (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => setLocale(id)}
+                      aria-pressed={locale === id}
+                      className={
+                        locale === id
+                          ? 'rounded-full bg-[var(--color-accent)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-950'
+                          : 'rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500 transition hover:text-zinc-300'
+                      }
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </header>
 
-      <main>
-        <section className="mx-auto max-w-6xl px-6 pb-24 pt-4 sm:px-8 sm:pb-32 sm:pt-8 md:pt-12">
-          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500">
-            <span
-              className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]"
-              aria-hidden
-            />
-            {t.hero.badge}
-          </p>
+            <div className="flex flex-1 flex-col justify-end px-6 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16">
+              <div className="mx-auto w-full max-w-6xl">
+                <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-black/35 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-400 backdrop-blur-sm">
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]"
+                    aria-hidden
+                  />
+                  {t.hero.badge}
+                </p>
 
-          <h1 className="font-display text-[clamp(2.5rem,6vw,4.25rem)] font-medium leading-[1.05] tracking-tight text-zinc-50">
-            {t.hero.title1}
-            <br />
-            <span className="bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-500 bg-clip-text text-transparent">
-              {t.hero.title2}
-            </span>
-          </h1>
+                <h1 className="max-w-4xl font-display text-[clamp(2.5rem,6.5vw,4.5rem)] font-medium leading-[1.06] tracking-tight text-zinc-50 drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]">
+                  {t.hero.title1}
+                  <br />
+                  <span className="bg-gradient-to-r from-zinc-100 via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
+                    {t.hero.title2}
+                  </span>
+                </h1>
 
-          <p className="mt-3">
-            <a
-              href={GITHUB_ORG.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-zinc-500 transition hover:text-[var(--color-accent)]"
-            >
-              {t.hero.orgHandle}
-            </a>
-          </p>
+                <p className="mt-3">
+                  <a
+                    href={GITHUB_ORG.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-zinc-400 transition hover:text-[var(--color-accent)]"
+                  >
+                    {t.hero.orgHandle}
+                  </a>
+                </p>
 
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-zinc-500">
-            {t.hero.lead}
-          </p>
+                <p className="mt-8 max-w-xl text-lg leading-relaxed text-zinc-300">
+                  {t.hero.lead}
+                </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href="#work"
-              className="inline-flex items-center gap-2 rounded-full bg-zinc-100 px-6 py-3 text-sm font-medium text-zinc-950 transition hover:bg-white"
-            >
-              {t.hero.ctaWork}
-              <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.02] px-6 py-3 text-sm font-medium text-zinc-300 transition hover:border-white/25 hover:bg-white/[0.05]"
-            >
-              {t.hero.ctaContact}
-            </a>
-            <a
-              href={GITHUB_ORG.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.02] px-6 py-3 text-sm font-medium text-zinc-300 transition hover:border-white/20 hover:bg-white/[0.05]"
-            >
-              <Github className="h-4 w-4 text-[var(--color-accent)]" />
-              {t.hero.ctaGithub}
-            </a>
-          </div>
+                <div className="mt-10 flex flex-wrap items-center gap-4">
+                  <a
+                    href="#work"
+                    className="inline-flex items-center gap-2 rounded-full bg-zinc-100 px-6 py-3 text-sm font-medium text-zinc-950 shadow-lg shadow-black/30 transition hover:bg-white"
+                  >
+                    {t.hero.ctaWork}
+                    <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+                  </a>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/35 px-6 py-3 text-sm font-medium text-zinc-100 backdrop-blur-sm transition hover:border-white/35 hover:bg-black/45"
+                  >
+                    {t.hero.ctaContact}
+                  </a>
+                  <a
+                    href={GITHUB_ORG.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/30 px-6 py-3 text-sm font-medium text-zinc-200 backdrop-blur-sm transition hover:border-white/25 hover:bg-black/40"
+                  >
+                    <Github className="h-4 w-4 text-[var(--color-accent)]" />
+                    {t.hero.ctaGithub}
+                  </a>
+                </div>
 
-          <dl className="mt-16 grid gap-8 border-t border-white/[0.06] pt-12 sm:grid-cols-3">
-            <div>
-              <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-zinc-600">
-                {t.hero.focusLabel}
-              </dt>
-              <dd className="mt-2 text-sm text-zinc-400">
-                {t.hero.focusValue}
-              </dd>
-            </div>
-            <div>
-              <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-zinc-600">
-                {t.hero.stackLabel}
-              </dt>
-              <dd className="mt-2 text-sm text-zinc-400">
-                {t.hero.stackValue}
-              </dd>
-            </div>
-            <div className="flex items-start gap-2 sm:justify-end">
-              <MapPin
-                className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]"
-                strokeWidth={1.5}
-              />
-              <div>
-                <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-zinc-600">
-                  {t.hero.locationLabel}
-                </dt>
-                <dd className="mt-2 text-sm text-zinc-400">
-                  {t.hero.locationValue}
-                </dd>
+                <dl className="mt-16 grid gap-8 border-t border-white/[0.1] pt-12 sm:grid-cols-3">
+                  <div>
+                    <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-zinc-500">
+                      {t.hero.focusLabel}
+                    </dt>
+                    <dd className="mt-2 text-sm text-zinc-300">
+                      {t.hero.focusValue}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-zinc-500">
+                      {t.hero.stackLabel}
+                    </dt>
+                    <dd className="mt-2 text-sm text-zinc-300">
+                      {t.hero.stackValue}
+                    </dd>
+                  </div>
+                  <div className="flex items-start gap-2 sm:justify-end">
+                    <MapPin
+                      className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]"
+                      strokeWidth={1.5}
+                    />
+                    <div>
+                      <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-zinc-500">
+                        {t.hero.locationLabel}
+                      </dt>
+                      <dd className="mt-2 text-sm text-zinc-300">
+                        {t.hero.locationValue}
+                      </dd>
+                    </div>
+                  </div>
+                </dl>
               </div>
             </div>
-          </dl>
+          </div>
         </section>
+
+      <main>
 
         <section
           id="why-me"
@@ -305,6 +327,8 @@ export default function App() {
                             src={coverImage}
                             alt={`${title}: ${t.work.screenshotAltSuffix}`}
                             className="h-full w-full object-cover object-top transition duration-500 ease-out group-hover:scale-[1.02]"
+                            loading="lazy"
+                            decoding="async"
                           />
                         </div>
                       ) : null}
@@ -549,7 +573,16 @@ export default function App() {
                 </div>
               </div>
               <div className="min-w-0">
-                <ContactForm />
+                <Suspense
+                  fallback={
+                    <div
+                      className="min-h-[24rem] w-full animate-pulse rounded-2xl border border-white/[0.06] bg-white/[0.02]"
+                      aria-hidden
+                    />
+                  }
+                >
+                  <ContactForm />
+                </Suspense>
               </div>
             </div>
           </div>

@@ -1,13 +1,30 @@
 import { useCallback, useState } from 'react'
 import emailjs from '@emailjs/browser'
 
-import { getEmailJsEnv, isEmailJsConfigured } from '../lib/emailjsConfig.js'
-import { isSupabaseConfigured, supabase } from '../lib/supabaseClient.js'
+import {
+  getEmailJsEnv,
+  getMissingEmailJsEnv,
+  isEmailJsConfigured,
+} from '../lib/emailjsConfig.js'
+import {
+  getMissingSupabaseEnv,
+  isSupabaseConfigured,
+  supabase,
+} from '../lib/supabaseClient.js'
 
 /**
  * @typedef {'idle' | 'submitting' | 'success' | 'error'} LeadSubmitStatus
  * @typedef {{ name: string, email: string, message: string }} LeadPayload
- * @typedef {{ ok: true } | { ok: false, stage: 'config' | 'supabase' | 'emailjs', message?: string, configTarget?: 'supabase' | 'emailjs' }} LeadSubmitResult
+ * @typedef {(
+ *   | { ok: true }
+ *   | {
+ *       ok: false
+ *       stage: 'config' | 'supabase' | 'emailjs'
+ *       message?: string
+ *       configTarget?: 'supabase' | 'emailjs'
+ *       missingEnv?: string[]
+ *     }
+ * )} LeadSubmitResult
  */
 
 /**
@@ -24,6 +41,7 @@ export function useLeadSubmit() {
           ok: false,
           stage: 'config',
           configTarget: 'supabase',
+          missingEnv: getMissingSupabaseEnv(),
         }
       }
       if (!isEmailJsConfigured()) {
@@ -31,6 +49,7 @@ export function useLeadSubmit() {
           ok: false,
           stage: 'config',
           configTarget: 'emailjs',
+          missingEnv: getMissingEmailJsEnv(),
         }
       }
 
@@ -65,7 +84,7 @@ export function useLeadSubmit() {
         })
       } catch (err) {
         setStatus('error')
-        let detail =
+        const detail =
           err &&
           typeof err === 'object' &&
           'text' in err &&

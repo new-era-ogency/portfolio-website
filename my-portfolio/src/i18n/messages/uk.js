@@ -102,9 +102,10 @@ export const uk = {
     errorEmailJs:
       'Етап: EmailJS. Заявку вже збережено в leads, але лист не надіслано.',
     errorConfigSupabase:
-      'Додайте в .env: VITE_SUPABASE_URL і VITE_SUPABASE_ANON_KEY.',
+      'Створіть my-portfolio/.env (або .env.local) і додайте ключі Supabase (URL + anon key). Перезапустіть npm run dev після правок.',
     errorConfigEmailJs:
-      'Додайте в .env: VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID та VITE_EMAILJS_PUBLIC_KEY.',
+      'Створіть my-portfolio/.env (або .env.local) і додайте ключі EmailJS (service / template / public key). Перезапустіть npm run dev після правок.',
+    errorConfigMissing: 'Не задано змінні',
     valNameRequired: 'Вкажіть ім’я.',
     valNameMin: 'Ім’я занадто коротке.',
     valEmailRequired: 'Вкажіть email.',
