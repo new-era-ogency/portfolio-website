@@ -57,17 +57,17 @@ export const en = {
       {
         name: 'Basic',
         includes: 'One-page brochure site',
-        price: '150€',
+        price: '200€',
       },
       {
         name: 'Standard',
         includes: 'Site + SEO setup + Google Maps',
-        price: '250€',
+        price: '300€',
       },
       {
         name: 'Premium',
         includes: 'Site + SEO + booking form + 1 month support',
-        price: '350€',
+        price: '400€',
       },
     ],
   },

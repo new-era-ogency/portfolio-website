@@ -57,17 +57,17 @@ export const uk = {
       {
         name: 'Базовий',
         includes: 'Сайт-візитка',
-        price: '150€',
+        price: '200€',
       },
       {
         name: 'Стандарт',
         includes: 'Сайт + SEO-налаштування + Google Maps',
-        price: '250€',
+        price: '300€',
       },
       {
         name: 'Преміум',
         includes: 'Сайт + SEO + форма бронювання + місяць підтримки',
-        price: '350€',
+        price: '400€',
       },
     ],
   },

@@ -57,17 +57,17 @@ export const bg = {
       {
         name: 'Базов',
         includes: 'Сайт-визитка',
-        price: '150€',
+        price: '200€',
       },
       {
         name: 'Стандарт',
         includes: 'Сайт + SEO настройка + Google Maps',
-        price: '250€',
+        price: '300€',
       },
       {
         name: 'Премиум',
         includes: 'Сайт + SEO + форма за резервация + месец поддръжка',
-        price: '350€',
+        price: '400€',
       },
     ],
   },
