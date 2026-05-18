@@ -4,6 +4,7 @@ import {
   Cookie,
   Flame,
   Flower2,
+  Heart,
   Pizza,
   Skull,
   Sparkles,
@@ -15,6 +16,25 @@ import {
 
 /** Стабильные id + поля без перевода (иконка, ссылки, теги, обложка). */
 export const projectDefs = [
+  {
+    id: 'icanWomen',
+    accent: 'boutique',
+    icon: Heart,
+    href: 'https://icanwomen.org/',
+    coverImage: '/projects/ican-women-foundation-cover.png',
+    tags: [
+      'icanwomen',
+      'ngo',
+      'humanitarian',
+      'vanillajs',
+      'i18n',
+      'pagespeed',
+      'performance',
+      'accessibility',
+      'hostinger',
+      'scss',
+    ],
+  },
   {
     id: 'blackLabelCoffee',
     accent: 'horeca',

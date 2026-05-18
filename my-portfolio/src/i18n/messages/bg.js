@@ -81,6 +81,18 @@ export const bg = {
       `© ${year} New Era Agency — React и Tailwind`,
   },
   projects: {
+    icanWomen: {
+      title: 'ICAN Women Foundation',
+      tagline:
+        'Международна благотворителна фондация · уеб разработка / UI-UX / производителност',
+      task:
+        'Пълен редизайн и фронтенд от нулата за международна хуманитарна организация — замяна на бавен WordPress с ултралеко bespoke решение и персонализирана многоезичност.',
+      solution:
+        'Напълно извън WordPress: лека vanilla архитектура, бърза на всяко устройство. Кастомна UA/EN локализация с мигновено превключване без презареждане в чист JavaScript. Интерактивни модули: динамични проекти, екипен блок и плавен FAQ акордеон. Zero-downtime миграция на Hostinger след почистване на стария хостинг — доменът без прекъсване. Резултат: ~4× по-бързо зареждане, PageSpeed 98+, mobile-first за международни донори.',
+      stack:
+        'Vanilla JS (ES6+) · HTML5 · CSS3/SCSS · i18n архитектура',
+      linkLabel: 'Вижте на живо',
+    },
     lulu: {
       title: 'Lulu Flower Boutique',
       tagline: 'Digital atelier за премиално цветарство',
